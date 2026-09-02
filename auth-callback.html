@@ -64,7 +64,7 @@ function fail(m, d){
   // 1) Vite proxy (/api -> 8081/8086) when npm run dev is used
   // 2) Direct auth-service 8081 (when running only postgres+auth-service)
   // 3) Gateway 8080 (when full docker compose up)
-  const bases = ['/api/v1','http://localhost:8081/api/v1','http://localhost:8080/api/v1']
+  const bases = ['https://code-dna.vashishthapatel2005.workers.dev/api/v1','/api/v1','http://localhost:8081/api/v1','http://localhost:8080/api/v1']
   let lastErr = null
   let lastBody = ''
 

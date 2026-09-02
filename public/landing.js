@@ -1,5 +1,5 @@
-// API Configuration
-const API_BASE = 'http://localhost:8080/api/v1';
+// API Configuration — auto-switches: localhost for npm run dev, Worker for pages.dev
+const API_BASE = location.hostname.includes('pages.dev') ? 'https://code-dna.vashishthapatel2005.workers.dev/api/v1' : 'http://localhost:8080/api/v1';
 
 // Keys used for the GitHub connection. The token is held in this browser only —
 // it is sent to api.github.com, and to the CodeDNA backend when one is running.
@@ -9,7 +9,7 @@ const GH_CONNECTED_AT_KEY = 'gh_connected_at';
 
 // OAuth — public client id only; the secret never leaves the backend.
 const GITHUB_OAUTH_CLIENT_ID = 'Ov23liozfUubDI7kfWVD';
-const GITHUB_OAUTH_REDIRECT  = 'http://localhost:5173/auth-callback.html';
+const GITHUB_OAUTH_REDIRECT  = location.hostname.includes('pages.dev') ? 'https://codedna-developer-intelligence-platfrom.pages.dev/auth-callback.html' : 'http://localhost:5173/auth-callback.html';
 const GITHUB_OAUTH_SCOPE     = 'repo,read:user,read:org';
 
 // State
