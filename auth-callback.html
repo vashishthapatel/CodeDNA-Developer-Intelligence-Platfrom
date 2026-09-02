@@ -34,7 +34,7 @@
     <p id="msg">Talking to the CodeDNA backend.</p>
     <p id="detail" class="mono"></p>
   </div>
-<script type="module">
+<script>
 const title = document.getElementById('title')
 const msg = document.getElementById('msg')
 const detail = document.getElementById('detail')
@@ -48,16 +48,17 @@ function fail(m, d){
   const code = params.get('code')
   const err = params.get('error')
   const errDesc = params.get('error_description')
+  var _origin = location.origin;
   if(err){
     if(err === 'access_denied'){
-      fail('You cancelled the GitHub authorize screen.', 'Go back to http://localhost:5173 and click Connect with GitHub again.')
+      fail('You cancelled the GitHub authorize screen.', 'Go back to ' + _origin + ' and click Connect with GitHub again.')
     } else {
       fail(errDesc || 'GitHub refused the request.', err)
     }
     return
   }
   if(!code){
-    fail('No code in the redirect.','Start from http://localhost:5173 and click Connect with GitHub again.')
+    fail('No code in the redirect.','Start from ' + _origin + ' and click Connect with GitHub again.')
     return
   }
 
@@ -83,7 +84,7 @@ function fail(m, d){
         const raw = body.message || body.error || body.errorDescription || text || ('HTTP '+r.status)
         // GitHub code is single-use — refresh will always give this
         if(String(raw).toLowerCase().includes('bad_verification_code')){
-          throw new Error('This login link has already been used. Please go to http://localhost:5173 and click Connect with GitHub again. Do not refresh this page.')
+          throw new Error('This login link has already been used. Please go to ' + _origin + ' and click Connect with GitHub again. Do not refresh this page.')
         }
         // Spring whitelabel 403/500 often comes as HTML — keep short
         const shortRaw = String(raw).slice(0, 400)
@@ -134,9 +135,9 @@ function fail(m, d){
   var isNetwork = m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('Load failed') !== -1
   var isBurned = m.indexOf('already been used') !== -1
   var hint = isBurned ? '' :
-    isNetwork ? 'Is the backend running? Run: cd backend && docker compose up -d postgres auth-service (wait 15 sec) then npm run dev. Then go to http://localhost:5173 and click Connect with GitHub again. Do NOT refresh this page.' :
+    isNetwork ? 'Is the backend running? Run: cd backend && docker compose up -d postgres auth-service (wait 15 sec) then npm run dev. Then go to ' + _origin + ' and click Connect with GitHub again. Do NOT refresh this page.' :
     lastBody && lastBody.includes('<!doctype') ? 'Backend returned an error page. Check: docker logs codedna-auth --tail 80 and make sure backend/.env has the new GITHUB_CLIENT_SECRET, then docker compose up -d --build postgres auth-service' :
-    'If you refreshed this page, the code is now burned. Go back to http://localhost:5173 and click Connect with GitHub again.'
+    'If you refreshed this page, the code is now burned. Go back to ' + _origin + ' and click Connect with GitHub again.'
   fail(m, hint)
 })()
 </script>
