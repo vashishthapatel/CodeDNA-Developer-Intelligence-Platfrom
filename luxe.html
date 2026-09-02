@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeDNA — Intelligence Designed to Evolve</title>
+    <meta name="description" content="Transform your code into measurable DNA. Deep insights, growth tracking and AI-powered developer intelligence.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./luxe-landing.css">
+</head>
+<body>
+    <!-- Ambient 3D stage -->
+    <div class="background">
+        <div class="mesh-gradient"></div>
+        <div class="orb orb--ember"></div>
+        <div class="orb orb--burnt"></div>
+        <div class="orb orb--apricot"></div>
+        <div class="beam beam--a"></div>
+        <div class="beam beam--b"></div>
+        <div class="grid-lines"></div>
+        <div class="vignette"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                    <path d="M5 3c0 6.5 14 5.5 14 12M19 3c0 6.5-14 5.5-14 12"/>
+                    <path d="M5 21c0-2.4 2-3.8 4.4-4.6M19 21c0-2.4-2-3.8-4.4-4.6"/>
+                    <path d="M8 8h3.5M12.5 12.5H16"/>
+                </svg>
+            </div>
+            <span>CodeDNA</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/app.html#/refactoriq">RefactorIQ</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+        <a href="/app.html" class="btn-nav">Get Started</a>
+    </nav>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">
+            <div class="badge-glow"></div>
+            <span>AI-Powered Developer Intelligence</span>
+        </div>
+
+        <h1 class="hero-title">
+            <span class="gradient-text">Intelligence</span><br>
+            <span class="gradient-text">Designed to Evolve</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Transform your code into measurable DNA. Unlock deep insights, track growth,
+            and evolve your developer profile with AI-powered intelligence.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/app.html" class="btn-primary">Start Free Analysis</a>
+            <a href="#features" class="btn-secondary">Explore Features</a>
+        </div>
+
+        <div class="hero-visual">
+            <div class="card-3d" data-tilt>
+                <div class="card-3d-inner">
+                    <div class="bento-icon bento-icon--ember depth-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/>
+                            <path d="M8 17V9M13 17V5M18 17v-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-3d-title depth-2">Your Developer DNA</h3>
+                    <p class="card-3d-meta depth-1">Real-time analysis • 50K+ repositories • 98% accuracy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="reveal" style="--delay: 0ms">
+            <div class="stat-card" data-tilt>
+                <div class="stat-number" data-target="2000">0</div>
+                <div class="stat-label">Developers</div>
+            </div>
+        </div>
+        <div class="reveal" style="--delay: 90ms">
+            <div class="stat-card" data-tilt>
+                <div class="stat-number" data-target="50000">0</div>
+                <div class="stat-label">Repositories</div>
+            </div>
+        </div>
+        <div class="reveal" style="--delay: 180ms">
+            <div class="stat-card" data-tilt>
+                <div class="stat-number">98<span class="unit">%</span></div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+        <div class="reveal" style="--delay: 270ms">
+            <div class="stat-card" data-tilt>
+                <div class="stat-number">24<span class="unit">/7</span></div>
+                <div class="stat-label">Real-Time</div>
+            </div>
+        </div>
+    </section>
+    <!-- Features -->
+    <section class="features-section" id="features">
+        <div class="section-header reveal">
+            <h2 class="section-title"><span class="gradient-text">Powerful Features</span></h2>
+            <p class="section-subtitle">Everything you need to understand and improve your developer profile</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-large reveal" style="--delay: 0ms">
+                <div class="bento-item" data-tilt style="border-color: rgba(223, 190, 134, 0.35); background: linear-gradient(135deg, rgba(24, 17, 24, 0.8), rgba(16, 23, 34, 0.95));">
+                    <div class="bento-icon bento-icon--ember">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                        <h3 class="bento-title">CodeDNA RefactorIQ™</h3>
+                        <span style="font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(223, 190, 134, 0.2); color: #dfbe86; border: 1px solid rgba(223, 190, 134, 0.4);">NEW</span>
+                    </div>
+                    <p class="bento-description">
+                        Deterministic static analysis feedback loop: <strong>Analyze → Explain → Recommend → Refactor → Re-analyze → Show Improvement</strong>.
+                        Identifies cognitive hotspots, produces refactoring diffs, and guarantees zero regressions.
+                    </p>
+                    <div style="margin-top: 14px;">
+                        <a href="/app.html#/refactoriq" class="btn-primary" style="font-size: 12px; padding: 8px 16px; text-decoration: none; display: inline-block;">
+                            Explore RefactorIQ →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-large reveal" style="--delay: 40ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon bento-icon--ember">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="6" width="12" height="12" rx="2.5"/>
+                            <rect x="10" y="10" width="4" height="4" rx="1"/>
+                            <path d="M9 2v2.5M15 2v2.5M9 19.5V22M15 19.5V22M2 9h2.5M2 15h2.5M19.5 9H22M19.5 15H22"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">AI-Powered Analysis</h3>
+                    <p class="bento-description">
+                        Our advanced AI analyzes millions of code patterns to generate your unique Developer DNA.
+                        Get personalized insights based on your coding style, language proficiency, and project complexity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bento-medium reveal" style="--delay: 80ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/>
+                            <path d="M8 17V9M13 17V5M18 17v-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">DNA Score</h3>
+                    <p class="bento-description">
+                        A comprehensive score from 0&ndash;100 that measures your overall developer profile and skill level.
+                    </p>
+                </div>
+            </div>
+            <div class="bento-small reveal" style="--delay: 120ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 7l-8.5 8.5-5-5L2 17"/>
+                            <path d="M16 7h6v6"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">Growth Tracking</h3>
+                    <p class="bento-description">Monitor your progress with detailed analytics over time.</p>
+                </div>
+            </div>
+
+            <div class="bento-small reveal" style="--delay: 160ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <circle cx="12" cy="12" r="5"/>
+                            <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">Skill Mapping</h3>
+                    <p class="bento-description">Visualize your tech skills with interactive radar charts.</p>
+                </div>
+            </div>
+
+            <div class="bento-small reveal" style="--delay: 200ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13.5 2L5 13.5h5.5L9.5 22 18.5 10.5H13l0.5-8.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">Real-Time Sync</h3>
+                    <p class="bento-description">Automatic GitHub integration keeps everything updated.</p>
+                </div>
+            </div>
+            <div class="bento-medium reveal" style="--delay: 240ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                            <circle cx="11" cy="11" r="7"/>
+                            <path d="M20 20l-4.3-4.3"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">Deep Insights</h3>
+                    <p class="bento-description">
+                        Analyze every repository with health metrics, quality scores, and maintainability analysis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bento-large reveal" style="--delay: 280ms">
+                <div class="bento-item" data-tilt>
+                    <div class="bento-icon bento-icon--ember">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.5 18h5M10.5 21.5h3"/>
+                            <path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8V18h7.6v-3.7A6.5 6.5 0 0 0 12 2.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="bento-title">Smart Recommendations</h3>
+                    <p class="bento-description">
+                        Receive personalized skill recommendations powered by machine learning.
+                        Our AI understands your coding journey and suggests the perfect next steps for your career growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="reveal">
+            <div class="cta-card" data-tilt>
+                <div class="sheen"></div>
+                <div class="cta-content">
+                    <h2 class="cta-title"><span class="gradient-text">Ready to Evolve?</span></h2>
+                    <p class="cta-subtitle">Join thousands of developers discovering their true potential</p>
+                    <a href="/app.html" class="btn-primary">Start Your Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                        <path d="M5 3c0 6.5 14 5.5 14 12M19 3c0 6.5-14 5.5-14 12"/>
+                        <path d="M5 21c0-2.4 2-3.8 4.4-4.6M19 21c0-2.4-2-3.8-4.4-4.6"/>
+                        <path d="M8 8h3.5M12.5 12.5H16"/>
+                    </svg>
+                </div>
+                <span>CodeDNA</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            <p class="footer-note">&copy; 2026 CodeDNA. Built for developers.</p>
+        </div>
+    </footer>
+    <script>
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        /* Ember motes */
+        const particlesContainer = document.getElementById('particles');
+        if (particlesContainer && !reduceMotion) {
+            for (let i = 0; i < 44; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.setProperty('--tx', ((Math.random() - 0.5) * 240).toFixed(0) + 'px');
+                p.style.setProperty('--ty', (-70 - Math.random() * 260).toFixed(0) + 'px');
+                p.style.setProperty('--dur', (14 + Math.random() * 16).toFixed(1) + 's');
+                p.style.setProperty('--size', (2 + Math.random() * 2.4).toFixed(1) + 'px');
+                p.style.animationDelay = (Math.random() * 18).toFixed(1) + 's';
+                particlesContainer.appendChild(p);
+            }
+        }
+
+        /* Animated counters — eased so the numbers settle instead of stopping dead */
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'), 10);
+            if (!target) return;
+
+            const duration = 2200;
+            const start = performance.now();
+
+            const tick = setInterval(() => {
+                const t = Math.min((performance.now() - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 4);
+                element.textContent = Math.floor(target * eased).toLocaleString();
+                if (t >= 1) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(tick);
+                }
+            }, 16);
+        }
+
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const counter = entry.target.querySelector('[data-target]');
+                if (counter && !counter.classList.contains('animated')) {
+                    counter.classList.add('animated');
+                    animateCounter(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card').forEach((card) => statObserver.observe(card));
+        /* Choreographed scroll reveal */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+        /* Geometry fallback: reveals anything already in view even if the
+           observer is starved (hidden tab, restored scroll position). */
+        function revealInView() {
+            document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
+                    el.classList.add('is-visible');
+                    revealObserver.unobserve(el);
+                }
+            });
+            document.querySelectorAll('.stat-card').forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top > window.innerHeight * 0.85 || rect.bottom < 0) return;
+                const counter = card.querySelector('[data-target]');
+                if (counter && !counter.classList.contains('animated')) {
+                    counter.classList.add('animated');
+                    animateCounter(counter);
+                }
+            });
+        }
+
+        revealInView();
+        window.addEventListener('scroll', revealInView, { passive: true });
+        window.addEventListener('resize', revealInView, { passive: true });
+
+        /* Pointer-tracked 3D tilt + specular highlight */
+        if (finePointer && !reduceMotion) {
+            const MAX_TILT = 7;
+
+            document.querySelectorAll('[data-tilt]').forEach((el) => {
+                let frame = null;
+
+                el.addEventListener('pointermove', (event) => {
+                    if (frame) return;
+                    frame = requestAnimationFrame(() => {
+                        frame = null;
+                        const rect = el.getBoundingClientRect();
+                        const px = (event.clientX - rect.left) / rect.width;
+                        const py = (event.clientY - rect.top) / rect.height;
+                        el.style.setProperty('--ry', ((px - 0.5) * 2 * MAX_TILT).toFixed(2) + 'deg');
+                        el.style.setProperty('--rx', ((0.5 - py) * 2 * MAX_TILT).toFixed(2) + 'deg');
+                        el.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+                        el.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+                    });
+                });
+
+                el.addEventListener('pointerleave', () => {
+                    if (frame) { cancelAnimationFrame(frame); frame = null; }
+                    el.style.setProperty('--rx', '0deg');
+                    el.style.setProperty('--ry', '0deg');
+                    el.style.setProperty('--mx', '50%');
+                    el.style.setProperty('--my', '50%');
+                });
+            });
+        }
+
+        /* Smooth scroll for in-page anchors */
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

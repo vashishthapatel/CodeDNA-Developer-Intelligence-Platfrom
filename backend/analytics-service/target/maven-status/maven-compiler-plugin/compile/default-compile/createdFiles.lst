@@ -1,0 +1,17 @@
+com\codedna\analytics\dto\AnalyticsOverview$LanguageSlice$LanguageSliceBuilder.class
+com\codedna\analytics\service\AnalyticsService.class
+com\codedna\analytics\dto\AnalyticsOverview$ComplexityBar.class
+com\codedna\analytics\dto\AnalyticsOverview$QualityPoint$QualityPointBuilder.class
+com\codedna\analytics\dto\AnalyticsOverview$HeatCell$HeatCellBuilder.class
+com\codedna\analytics\dto\AnalyticsOverview$ComplexityBar$ComplexityBarBuilder.class
+com\codedna\analytics\dto\AnalyticsOverview$LanguageSlice.class
+com\codedna\analytics\dto\AnalyticsOverview$ActivityPoint$ActivityPointBuilder.class
+com\codedna\analytics\dto\AnalyticsOverview$CollaborationStats$CollaborationStatsBuilder.class
+com\codedna\analytics\dto\AnalyticsOverview.class
+com\codedna\analytics\dto\AnalyticsOverview$HeatCell.class
+com\codedna\analytics\dto\AnalyticsOverview$ActivityPoint.class
+com\codedna\analytics\controller\AnalyticsController.class
+com\codedna\analytics\AnalyticsServiceApplication.class
+com\codedna\analytics\dto\AnalyticsOverview$QualityPoint.class
+com\codedna\analytics\dto\AnalyticsOverview$CollaborationStats.class
+com\codedna\analytics\dto\AnalyticsOverview$AnalyticsOverviewBuilder.class

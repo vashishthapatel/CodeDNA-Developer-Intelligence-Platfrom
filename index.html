@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeDNA - Developer Intelligence Platform</title>
+    <meta name="description" content="AI-powered developer intelligence platform. Turn GitHub activity into measurable Developer DNA.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/dna-3d.js" defer></script>
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="bg">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <button class="logo" aria-label="CodeDNA Home" onclick="window.location.href='/'">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 13L31.5 23H20.5L26 13Z" fill="#0b1118"/>
+                    <path d="M18 28L23.5 38H12.5L18 28Z" fill="#0b1118" opacity="0.75"/>
+                    <path d="M34 28L39.5 38H28.5L34 28Z" fill="#0b1118" opacity="0.75"/>
+                    <circle cx="26" cy="26" r="3" fill="#0b1118"/>
+                </svg>
+            </button>
+
+            <nav class="nav-pill">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#refactoriq" class="nav-link">RefactorIQ</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#dna" class="nav-link">DNA Score</a>
+            </nav>
+
+            <button type="button" class="sign-in connect-gh" id="connectGithubBtn" aria-label="Connect with GitHub">
+                <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                <span class="connect-gh-label">Connect with GitHub</span>
+            </button>
+            <button class="burger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="overlay" hidden></div>
+        <div class="mobile-menu" hidden>
+            <nav class="mobile-nav">
+                <a href="#home" class="mobile-link active" style="--i: 0">Home</a>
+                <a href="#refactoriq" class="mobile-link" style="--i: 1">RefactorIQ</a>
+                <a href="#features" class="mobile-link" style="--i: 2">Features</a>
+                <a href="#architecture" class="mobile-link" style="--i: 3">Architecture</a>
+                <a href="#dna" class="mobile-link" style="--i: 4">DNA Score</a>
+                <button type="button" class="mobile-sign-in connect-gh" style="--i: 5" id="mobileConnectGithubBtn">
+                    <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                    <span class="connect-gh-label">Connect with GitHub</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero-wrapper">
+            <main class="hero">
+                <div class="hero-badge">
+                    <span class="badge-pulse"></span>
+                    <span>AI Developer Intelligence Platform</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="headline">
+                    <span class="headline-line">Developer DNA</span>
+                    <span class="headline-line headline-gradient">Designed to Evolve</span>
+                </h1>
+
+                <!-- Subhead -->
+                <p class="subhead">
+                    Transform raw GitHub activity, system architecture, and commit rhythm into measurable Developer DNA. Deep skill profiling, cohort analytics, and AI recommendations.
+                </p>
+
+                <!-- Hero Actions -->
+                <div class="hero-actions">
+                    <button type="button" class="btn-hero-primary connect-gh" id="heroConnectGhBtn" aria-label="Connect with GitHub">
+                        <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                        <span class="connect-gh-label">Connect with GitHub</span>
+                    </button>
+                </div>
+            </main>
+
+            <!-- 3D Interactive DNA Stage -->
+            <div class="hero-3d-stage" id="dnaCanvasContainer">
+                <div class="hero-3d-glow"></div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <footer class="stats">
+            <div class="stat anim" style="--d: 0.5s">
+                <div class="stat-icon">&lt;</div>
+                <div class="stat-value"><span id="stat1">7</span><span class="stat-suffix"></span></div>
+                <div class="stat-label">Microservices</div>
+            </div>
+            <div class="stat anim" style="--d: 0.58s">
+                <div class="stat-icon">%</div>
+                <div class="stat-value"><span id="stat2">100</span><span class="stat-suffix">%</span></div>
+                <div class="stat-label">Real-time Analysis</div>
+            </div>
+            <div class="stat anim" style="--d: 0.66s">
+                <div class="stat-icon">*</div>
+                <div class="stat-value"><span id="stat3">&infin;</span><span class="stat-suffix"></span></div>
+                <div class="stat-label">Repositories Supported</div>
+            </div>
+            <div class="stat anim" style="--d: 0.74s">
+                <div class="stat-icon">#</div>
+                <div class="stat-value"><span id="stat4">5</span><span class="stat-suffix"></span></div>
+                <div class="stat-label">AI Engines</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- RefactorIQ Feature Section -->
+    <section id="refactoriq" class="section" style="padding: 60px 0;">
+        <div class="section-content">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                <div>
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: #dfbe86;">Deterministic Static Analysis & Refactoring</span>
+                    <h2 class="section-title" style="margin-top: 4px; text-align: left;">CodeDNA RefactorIQ™</h2>
+                </div>
+                <a href="/app.html#/refactoriq" class="btn-hero-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 22px; font-size: 13px;">
+                    <span>Launch RefactorIQ Studio</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <p class="section-lede" style="text-align: left; margin-bottom: 32px; color: rgba(255,255,255,0.75);">
+                Close the loop on technical debt with deterministic static analysis rules. RefactorIQ analyzes JavaParser AST trees, explains root-cause complexity, recommends practical refactoring patterns, and proves measurable metric improvements with automated regression detection.
+            </p>
+
+            <!-- 6-Step Feedback Loop Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px;">
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(223, 190, 134, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #dfbe86;">1. ANALYZE</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">JavaParser AST</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">Decision trees, nesting & coupling</p>
+                </div>
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(223, 190, 134, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #dfbe86;">2. EXPLAIN</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">Hotspot Root Cause</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">Why the code is risky</p>
+                </div>
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(223, 190, 134, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #dfbe86;">3. RECOMMEND</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">Refactoring Plan</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">Extract Class, Guard Clauses</p>
+                </div>
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(94, 168, 155, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #5ea89b;">4. REFACTOR</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">Interactive Diffs</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">Safe transformations & preview</p>
+                </div>
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(94, 168, 155, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #5ea89b;">5. RE-ANALYZE</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">Verify Metrics</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">Automated re-inspection</p>
+                </div>
+                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(94, 168, 155, 0.2);">
+                    <div style="font-size: 11px; font-weight: 700; color: #5ea89b;">6. GAIN</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px;">Impact & Regressions</div>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">32.9% gain • 0 regressions</p>
+                </div>
+            </div>
+
+            <!-- Live Analyzer CTA (demo-free) -->
+            <div class="feature-card" style="padding: 28px; border: 1px solid rgba(223, 190, 134, 0.35); background: linear-gradient(135deg, rgba(16, 23, 34, 0.95), rgba(6, 9, 14, 0.98));">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;">
+                    <div>
+                        <span style="font-size: 11px; color: #dfbe86; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">No fixtures · Any Java repo or snippet</span>
+                        <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-top: 4px;">Analyze live — pasted code or a GitHub repo</h3>
+                    </div>
+                    <span style="padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; background: rgba(223, 190, 134, 0.14); color: #dfbe86; border: 1px solid rgba(223, 190, 134, 0.28);">OAuth · stays in your browser</span>
+                </div>
+                <p style="font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.72); max-width: 72ch;">
+                    RefactorIQ runs the same deterministic JavaParser + rule engine on every input — no seeded repo, no synthesized scores. Empty states tell you what to do next.
+                </p>
+                <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                    <a href="/app.html#/refactoriq" class="btn-hero-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 22px;">
+                        <span>Open RefactorIQ</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="/app.html#/refactoriq" class="btn-hero-secondary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 22px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); color: #fff; border-radius: 10px; font-weight: 600;">
+                        <span>Paste Java code</span>
+                        <i class="fa-solid fa-code"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Scrollable) -->
+    <section id="features" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <h3>DNA Score Calculation</h3>
+                    <p>Advanced algorithms analyze your commits, languages, and patterns to generate a unique Developer DNA score (0-100).</p>
+                    <span class="feature-badge">Scoring Engine</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <h3>GitHub Integration</h3>
+                    <p>Seamlessly sync repositories, commits, and contributions. Real-time analysis of your entire GitHub activity.</p>
+                    <span class="feature-badge">Repository Service</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Interactive charts showing activity trends, language distribution, code quality metrics, and contribution heatmaps.</p>
+                    <span class="feature-badge">Analytics Service</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Personalized skill suggestions based on your profile. Learn what to study next to level up your career.</p>
+                    <span class="feature-badge">Recommendation Engine</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Secure Authentication</h3>
+                    <p>JWT-based authentication with BCrypt password hashing. Your data is secure and encrypted.</p>
+                    <span class="feature-badge">Auth Service</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3>Real-time Updates</h3>
+                    <p>WebSocket notifications for instant DNA score updates. Kafka-powered event-driven architecture.</p>
+                    <span class="feature-badge">API Gateway</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Microservices Architecture</h2>
+            <p class="section-lede">
+                Every service sits behind one gateway and talks over a Kafka event stream — so scoring
+                never blocks a request, and a new score reaches your browser the moment it lands.
+            </p>
+
+            <div class="architecture-diagram">
+                <div class="arch-map">
+                    <div class="arch-tier" data-reveal>
+                        <article class="arch-node">
+                            <span class="arch-kind">Client</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>React Frontend</h3>
+                                    <span class="arch-port">Vite · 5173</span>
+                                </div>
+                            </div>
+                            <p>The dashboard, the charts and the DNA report you actually read.</p>
+                        </article>
+                    </div>
+
+                    <div class="arch-flow" data-reveal style="--fd: 0s">
+                        <span class="arch-flow-label">HTTPS · JWT</span>
+                    </div>
+
+                    <div class="arch-tier" data-reveal>
+                        <article class="arch-node arch-node--edge">
+                            <span class="arch-kind">Edge</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>API Gateway</h3>
+                                    <span class="arch-port">:8080</span>
+                                </div>
+                            </div>
+                            <p>One entry point — routing, token validation and rate limiting.</p>
+                        </article>
+                    </div>
+
+                    <div class="arch-flow" data-reveal style="--fd: 0.35s">
+                        <span class="arch-flow-label">routes /api/v1</span>
+                    </div>
+
+                    <div class="arch-tier arch-tier--fan arch-tier--3" data-reveal>
+                        <article class="arch-node">
+                            <span class="arch-kind">Service</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Auth</h3>
+                                    <span class="arch-port">:8081</span>
+                                </div>
+                            </div>
+                            <p>Accounts, BCrypt hashing and the JWT everything else trusts.</p>
+                        </article>
+                        <article class="arch-node">
+                            <span class="arch-kind">Service</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Repository</h3>
+                                    <span class="arch-port">:8082</span>
+                                </div>
+                            </div>
+                            <p>Pulls every repo, commit and language your token can see.</p>
+                        </article>
+                        <article class="arch-node">
+                            <span class="arch-kind">Service</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Analytics</h3>
+                                    <span class="arch-port">:8083</span>
+                                </div>
+                            </div>
+                            <p>Turns raw history into trends, heatmaps and quality metrics.</p>
+                        </article>
+                    </div>
+
+                    <div class="arch-flow" data-reveal style="--fd: 0.7s">
+                        <span class="arch-flow-label">publishes events</span>
+                    </div>
+
+                    <div class="arch-tier" data-reveal>
+                        <article class="arch-node arch-node--bus">
+                            <span class="arch-kind">Event stream</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Apache Kafka</h3>
+                                    <span class="arch-port">topics</span>
+                                </div>
+                            </div>
+                            <p>A durable log that decouples ingestion from scoring — nothing waits in line.</p>
+                        </article>
+                    </div>
+
+                    <div class="arch-flow" data-reveal style="--fd: 1.05s">
+                        <span class="arch-flow-label">consumes events</span>
+                    </div>
+
+                    <div class="arch-tier arch-tier--fan arch-tier--2" data-reveal>
+                        <article class="arch-node">
+                            <span class="arch-kind">Engine</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Scoring Engine</h3>
+                                    <span class="arch-port">:8084</span>
+                                </div>
+                            </div>
+                            <p>Weighs five signals into a single 0–100 Developer DNA score.</p>
+                        </article>
+                        <article class="arch-node">
+                            <span class="arch-kind">Engine</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>Recommendations</h3>
+                                    <span class="arch-port">:8085</span>
+                                </div>
+                            </div>
+                            <p>Reads that profile and ranks what is worth learning next.</p>
+                        </article>
+                    </div>
+
+                    <div class="arch-flow" data-reveal style="--fd: 1.4s">
+                        <span class="arch-flow-label">score updates</span>
+                    </div>
+
+                    <div class="arch-tier" data-reveal>
+                        <article class="arch-node arch-node--live">
+                            <span class="arch-kind">Realtime</span>
+                            <div class="arch-head">
+                                <span class="arch-icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></span>
+                                <div class="arch-title">
+                                    <h3>WebSocket Push</h3>
+                                    <span class="arch-port">/ws</span>
+                                </div>
+                            </div>
+                            <p>Streams the new score straight back to the dashboard — no refresh.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-stack">
+                <h3>Technology Stack</h3>
+                <div class="tech-grid">
+                    <span class="tech-badge">Spring Boot 3.2.5</span>
+                    <span class="tech-badge">Java 21</span>
+                    <span class="tech-badge">React 18</span>
+                    <span class="tech-badge">PostgreSQL 16</span>
+                    <span class="tech-badge">Apache Kafka</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">WebSocket</span>
+                    <span class="tech-badge">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inside the DNA Score -->
+    <section id="dna" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Inside Your DNA Score</h2>
+            <p class="section-lede">
+                Every repository you connect feeds five weighted signals. Together they resolve into a single
+                number out of 100 — and a ranked list of what to learn next.
+            </p>
+
+            <div class="dna-panel">
+                <div class="dna-dial" data-reveal>
+                    <div class="dna-ring">
+                        <div class="dna-ring-core">
+                            <span class="dna-ring-value">100</span>
+                            <span class="dna-ring-unit">points</span>
+                        </div>
+                    </div>
+                    <p class="dna-dial-note">Five weighted signals, one composite score</p>
+                </div>
+
+                <ul class="dna-signals">
+                    <li class="dna-signal" data-reveal style="--w: 100%; --c: var(--accent-soft); --i: 0">
+                        <span class="dna-swatch" aria-hidden="true"></span>
+                        <div class="dna-signal-body">
+                            <div class="dna-signal-head">
+                                <h3>Code volume</h3>
+                                <span class="dna-weight">25%</span>
+                            </div>
+                            <p>Commits, additions and deletions across every repository you own or contribute to.</p>
+                            <div class="dna-bar"><span></span></div>
+                        </div>
+                    </li>
+                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent); --i: 1">
+                        <span class="dna-swatch" aria-hidden="true"></span>
+                        <div class="dna-signal-body">
+                            <div class="dna-signal-head">
+                                <h3>Language breadth</h3>
+                                <span class="dna-weight">20%</span>
+                            </div>
+                            <p>How many ecosystems you actually ship in — and how deep each one runs.</p>
+                            <div class="dna-bar"><span></span></div>
+                        </div>
+                    </li>
+                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent-deep); --i: 2">
+                        <span class="dna-swatch" aria-hidden="true"></span>
+                        <div class="dna-signal-body">
+                            <div class="dna-signal-head">
+                                <h3>Commit consistency</h3>
+                                <span class="dna-weight">20%</span>
+                            </div>
+                            <p>Rhythm beats bursts: a steady streak scores above one heroic weekend.</p>
+                            <div class="dna-bar"><span></span></div>
+                        </div>
+                    </li>
+                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent-sapphire); --i: 3">
+                        <span class="dna-swatch" aria-hidden="true"></span>
+                        <div class="dna-signal-body">
+                            <div class="dna-signal-head">
+                                <h3>Collaboration</h3>
+                                <span class="dna-weight">20%</span>
+                            </div>
+                            <p>Pull requests, reviews and issues — the work that happens with other people.</p>
+                            <div class="dna-bar"><span></span></div>
+                        </div>
+                    </li>
+                    <li class="dna-signal" data-reveal style="--w: 60%; --c: var(--accent-teal); --i: 4">
+                        <span class="dna-swatch" aria-hidden="true"></span>
+                        <div class="dna-signal-body">
+                            <div class="dna-signal-head">
+                                <h3>Code quality</h3>
+                                <span class="dna-weight">15%</span>
+                            </div>
+                            <p>Tests, documentation and structure, read straight from the repositories themselves.</p>
+                            <div class="dna-bar"><span></span></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dna-cta" data-reveal>
+                <div class="dna-cta-copy">
+                    <h3>See your own five</h3>
+                    <p>Read-only access, a token you can revoke whenever you like, and your score in about a minute.</p>
+                </div>
+                <button type="button" class="band-btn connect-gh" id="dnaConnectBtn">
+                    <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                    <span class="connect-gh-label">Connect with GitHub</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect GitHub Modal — OAuth only -->
+    <div id="githubModal" class="modal" hidden>
+        <div class="modal-overlay"></div>
+        <div class="modal-content gh-modal gh-modal--oauth-only" role="dialog" aria-modal="true" aria-labelledby="githubModalTitle">
+            <button type="button" class="modal-close" id="githubModalClose" aria-label="Close">&times;</button>
+
+            <div class="gh-modal-head">
+                <span class="gh-modal-icon">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </span>
+                <div>
+                    <h2 id="githubModalTitle">Connect GitHub</h2>
+                    <p class="modal-lede" style="margin:0; font-size:0.85rem; color:var(--ink-muted);">Everything is read live from your account. The token stays in this browser and is sent only to api.github.com.</p>
+                </div>
+            </div>
+
+            <!-- Single centered OAuth hero — PAT card removed, OAuth untouched -->
+            <div class="gh-connect-single" id="githubConnectGrid">
+                <div class="gh-oauth-card gh-oauth-card--solo">
+                    <div class="gh-oauth-glow" aria-hidden="true"></div>
+                    <div class="gh-oauth-head">
+                        <span class="gh-oauth-badge"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Recommended</span>
+                        <span class="gh-oauth-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+                    </div>
+                    <div>
+                        <h3 class="gh-oauth-title">Connect with GitHub <i class="fa-solid fa-bolt" style="color:#dfbe86; font-size:0.9em" aria-hidden="true"></i></h3>
+                        <p class="gh-oauth-lede">One click. Redirects to <strong>github.com</strong> to authorize read-only access. No token to copy, no scopes to tick by hand.</p>
+                    </div>
+                    <ul class="gh-oauth-checks">
+                        <li><span class="gh-check">✓</span> Works for private repos &amp; orgs</li>
+                        <li><span class="gh-check">✓</span> Token stays in this browser only</li>
+                        <li><span class="gh-check">✓</span> Revoke anytime on GitHub</li>
+                    </ul>
+                    <div class="gh-oauth-foot">
+                        <button type="button" class="gh-oauth-btn" id="ghOauthBtn">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            <span class="connect-gh-label">Connect with GitHub</span>
+                        </button>
+                        <p class="gh-oauth-scopes">Requires <code>repo</code> · <code>read:user</code> · <code>read:org</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="form-status" id="githubStatus" role="status" aria-live="polite" style="margin:10px 0 0; min-height:0"></p>
+
+            <div class="gh-scopes-note">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true" style="color:var(--accent); margin-top:2px;"></i>
+                <div>
+                    <p style="font-size:0.82rem; line-height:1.6; color:var(--ink-muted);">Three scopes are enough: <code>repo</code> to read private repositories, <code>read:user</code> for your profile, and <code>read:org</code> for organisation repositories. Grant less and the private half stays empty.</p>
+                    <p style="font-size:0.72rem; line-height:1.6; color:var(--ink-faint); margin-top:6px;">The token is kept in this browser's localStorage so the dashboard survives a reload. Anything with access to this browser profile can read it — revoke it from GitHub's settings when you are done.</p>
+                </div>
+            </div>
+
+            <div class="gh-connected" id="githubConnected" hidden>
+                <img class="gh-avatar" id="githubAvatar" alt="" width="56" height="56">
+                <p class="gh-handle" id="githubHandle"></p>
+                <p class="gh-meta" id="githubMeta"></p>
+                <a class="modal-btn gh-enter" href="/app.html#/">Open your dashboard</a>
+                <p class="form-footer">
+                    <button type="button" class="link-btn" id="githubForget">Disconnect this GitHub account</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/landing.js"></script>
+</body>
+</html>

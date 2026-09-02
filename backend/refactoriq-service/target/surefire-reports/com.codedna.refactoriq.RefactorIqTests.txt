@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.codedna.refactoriq.RefactorIqTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.601 s -- in com.codedna.refactoriq.RefactorIqTests

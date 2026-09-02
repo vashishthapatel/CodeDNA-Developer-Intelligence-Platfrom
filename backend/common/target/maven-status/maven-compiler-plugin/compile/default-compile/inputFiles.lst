@@ -1,0 +1,12 @@
+/usr/src/code-dna/common/src/main/java/com/codedna/common/exception/ErrorResponse.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/event/RepositorySyncedEvent.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/dto/AuthResponse.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/User.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/RepositoryHealth.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/dto/LoginRequest.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/DnaProfile.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/Recommendation.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/event/DnaCalculatedEvent.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/Repository.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/model/Skill.java
+/usr/src/code-dna/common/src/main/java/com/codedna/common/dto/RegisterRequest.java

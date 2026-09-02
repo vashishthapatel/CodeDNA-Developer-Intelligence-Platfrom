@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Completing GitHub sign-in — CodeDNA</title>
+  <style>
+    :root {
+      --coddna-ink-950: #06090e;
+      --coddna-ink-900: #0a0f16;
+      --coddna-ink-800: #101722;
+      --coddna-gold: #dfbe86;
+      --coddna-gold-soft: #f3e4cb;
+      --coddna-mint: #5ea89b;
+      --coddna-text: #f8fafc;
+      --coddna-text-muted: #8494a5;
+      --coddna-border: rgba(223, 190, 134, 0.28);
+      --coddna-panel: rgba(16, 23, 34, 0.95);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;display:grid;place-items:center;background:radial-gradient(1100px 600px at 14% -8%, rgba(223, 190, 134, .12), transparent 62%),radial-gradient(900px 520px at 88% 4%, rgba(79, 122, 154, .10), transparent 64%),linear-gradient(180deg,var(--coddna-ink-950) 0%,var(--coddna-ink-900) 48%,var(--coddna-ink-800) 100%);color:var(--coddna-text);font-family:Inter,system-ui,sans-serif;padding:24px}
+    .card{width:min(520px,100%);background:var(--coddna-panel);border:1px solid var(--coddna-border);border-radius:22px;padding:32px;box-shadow:0 24px 60px -26px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(16px)}
+    .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--coddna-gold);font-weight:700;margin-bottom:12px}
+    h1{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:24px;line-height:1.2;color:var(--coddna-gold-soft)}
+    p{margin-top:10px;color:rgba(248,250,252,.75);line-height:1.6;font-size:14px}
+    .mono{font-family:ui-monospace,monospace;font-size:12px;color:rgba(248,250,252,.45);word-break:break-all}
+    a{color:var(--coddna-gold)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow">GitHub sign-in</div>
+    <h1 id="title">Finishing up…</h1>
+    <p id="msg">Talking to the CodeDNA backend.</p>
+    <p id="detail" class="mono"></p>
+  </div>
+<script type="module">
+const title = document.getElementById('title')
+const msg = document.getElementById('msg')
+const detail = document.getElementById('detail')
+function fail(m, d){
+  title.textContent = 'Something went wrong'
+  msg.textContent = m
+  if(d) detail.textContent = d
+}
+;(async function main(){
+  const params = new URLSearchParams(location.search)
+  const code = params.get('code')
+  const err = params.get('error')
+  const errDesc = params.get('error_description')
+  if(err){
+    if(err === 'access_denied'){
+      fail('You cancelled the GitHub authorize screen.', 'Go back to http://localhost:5173 and click Connect with GitHub again.')
+    } else {
+      fail(errDesc || 'GitHub refused the request.', err)
+    }
+    return
+  }
+  if(!code){
+    fail('No code in the redirect.','Start from http://localhost:5173 and click Connect with GitHub again.')
+    return
+  }
+
+  // 1) Vite proxy (/api -> 8081/8086) when npm run dev is used
+  // 2) Direct auth-service 8081 (when running only postgres+auth-service)
+  // 3) Gateway 8080 (when full docker compose up)
+  const bases = ['/api/v1','http://localhost:8081/api/v1','http://localhost:8080/api/v1']
+  let lastErr = null
+  let lastBody = ''
+
+  for(const base of bases){
+    try{
+      const r = await fetch(base + '/auth/github/callback', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({code})
+      })
+      const text = await r.text()
+      lastBody = text
+      let body = {}
+      try{ body = text ? JSON.parse(text) : {} }catch{ body = {} }
+      if(!r.ok){
+        const raw = body.message || body.error || body.errorDescription || text || ('HTTP '+r.status)
+        // GitHub code is single-use — refresh will always give this
+        if(String(raw).toLowerCase().includes('bad_verification_code')){
+          throw new Error('This login link has already been used. Please go to http://localhost:5173 and click Connect with GitHub again. Do not refresh this page.')
+        }
+        // Spring whitelabel 403/500 often comes as HTML — keep short
+        const shortRaw = String(raw).slice(0, 400)
+        throw new Error(shortRaw)
+      }
+      const token = body.token
+      const refresh = body.refreshToken
+      const user = body.user
+      if(!token || !user) throw new Error('Backend returned no token. Check: docker logs codedna-auth --tail 50')
+      try{
+        localStorage.setItem('token', token)
+        if(refresh) localStorage.setItem('refreshToken', refresh)
+        if(user.id) localStorage.setItem('userId', String(user.id))
+        if(user.githubAccessToken) localStorage.setItem('gh_token', user.githubAccessToken)
+        var login = user.githubUsername || user.handle || user.email || 'you'
+        var name = user.name || login
+        var avatarUrl = user.avatarUrl || ''
+        try{
+          var prev = JSON.parse(localStorage.getItem('gh_user')||'null')
+          localStorage.setItem('gh_user', JSON.stringify({
+            login: login, name: name, avatarUrl: avatarUrl,
+            publicRepos: (prev && prev.publicRepos) || 0,
+            privateRepos: 0,
+            repoCount: (prev && prev.repoCount) || 0
+          }))
+        }catch(e2){
+          localStorage.setItem('gh_user', JSON.stringify({login: login, name: name, avatarUrl: avatarUrl, publicRepos:0, privateRepos:0, repoCount:0}))
+        }
+        localStorage.setItem('gh_connected_at', new Date().toISOString())
+      }catch(e){}
+      title.textContent = 'Connected'
+      msg.textContent = 'Signed in as ' + (user.githubUsername || user.handle || user.email) + '. Taking you to your dashboard...'
+      detail.textContent = ''
+      setTimeout(function(){ location.replace('/app.html#/') }, 900)
+      return
+    }catch(e){
+      lastErr = e
+      // burned code won't succeed on next base either — stop looping
+      if(String(e.message).includes('already been used')) break
+      // Failed to fetch = backend not reachable on this base — try next
+      // HTTP 4xx/5xx with message = try next base too, last one will surface error
+      if(bases.indexOf(base) === bases.length - 1) break
+    }
+  }
+  var m = (lastErr instanceof Error ? lastErr.message : String(lastErr)) || 'Backend did not answer.'
+  // don't show raw HTML dump — already shortened above
+  if(m.length > 500) m = m.slice(0, 500)
+  var isNetwork = m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('Load failed') !== -1
+  var isBurned = m.indexOf('already been used') !== -1
+  var hint = isBurned ? '' :
+    isNetwork ? 'Is the backend running? Run: cd backend && docker compose up -d postgres auth-service (wait 15 sec) then npm run dev. Then go to http://localhost:5173 and click Connect with GitHub again. Do NOT refresh this page.' :
+    lastBody && lastBody.includes('<!doctype') ? 'Backend returned an error page. Check: docker logs codedna-auth --tail 80 and make sure backend/.env has the new GITHUB_CLIENT_SECRET, then docker compose up -d --build postgres auth-service' :
+    'If you refreshed this page, the code is now burned. Go back to http://localhost:5173 and click Connect with GitHub again.'
+  fail(m, hint)
+})()
+</script>
+</body>
+</html>

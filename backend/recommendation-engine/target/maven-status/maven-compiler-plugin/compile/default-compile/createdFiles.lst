@@ -1,0 +1,7 @@
+com\codedna\recommendation\RecommendationEngineApplication.class
+com\codedna\recommendation\entity\RecommendationEntity.class
+com\codedna\recommendation\service\RecommendationService.class
+com\codedna\recommendation\controller\RecommendationController.class
+com\codedna\recommendation\entity\RecommendationEntity$RecommendationEntityBuilder.class
+com\codedna\recommendation\repository\RecommendationRepository.class
+com\codedna\recommendation\kafka\DnaCalculatedConsumer.class

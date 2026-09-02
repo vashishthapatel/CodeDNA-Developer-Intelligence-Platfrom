@@ -1,0 +1,13 @@
+package com.codedna.refactoriq.common.enums;
+
+public enum RefactoringType {
+    EXTRACT_CLASS,
+    EXTRACT_METHOD,
+    INTRODUCE_GUARD_CLAUSES,
+    REDUCE_DEPENDENCIES,
+    EXTRACT_SHARED_LOGIC,
+    ADD_UNIT_TESTS,
+    FIX_LAYER_VIOLATION,
+    RENAME_METHOD,
+    REMOVE_UNUSED_IMPORTS
+}

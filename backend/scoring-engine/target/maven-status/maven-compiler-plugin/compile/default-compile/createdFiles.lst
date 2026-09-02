@@ -1,0 +1,7 @@
+com\codedna\scoring\ScoringEngineApplication.class
+com\codedna\scoring\entity\DnaProfileEntity.class
+com\codedna\scoring\service\ScoringService.class
+com\codedna\scoring\kafka\RepositorySyncedConsumer.class
+com\codedna\scoring\controller\ScoringController.class
+com\codedna\scoring\repository\DnaProfileRepository.class
+com\codedna\scoring\entity\DnaProfileEntity$DnaProfileEntityBuilder.class
