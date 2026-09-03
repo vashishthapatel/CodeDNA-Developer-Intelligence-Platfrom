@@ -4,27 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Completing GitHub sign-in — CodeDNA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --coddna-ink-950: #06090e;
-      --coddna-ink-900: #0a0f16;
-      --coddna-ink-800: #101722;
-      --coddna-gold: #dfbe86;
-      --coddna-gold-soft: #f3e4cb;
-      --coddna-mint: #5ea89b;
-      --coddna-text: #f8fafc;
-      --coddna-text-muted: #8494a5;
-      --coddna-border: rgba(223, 190, 134, 0.28);
-      --coddna-panel: rgba(16, 23, 34, 0.95);
+      --paper: #FDFCF9;
+      --card: #FFFFFF;
+      --ink: #0F1A20;
+      --muted: #6B7A89;
+      --faint: #9AA8B6;
+      --line: rgba(15, 26, 32, 0.08);
+      --accent: #C2A47A;
+      --accent-soft: #E8DCC8;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{min-height:100vh;display:grid;place-items:center;background:radial-gradient(1100px 600px at 14% -8%, rgba(223, 190, 134, .12), transparent 62%),radial-gradient(900px 520px at 88% 4%, rgba(79, 122, 154, .10), transparent 64%),linear-gradient(180deg,var(--coddna-ink-950) 0%,var(--coddna-ink-900) 48%,var(--coddna-ink-800) 100%);color:var(--coddna-text);font-family:Inter,system-ui,sans-serif;padding:24px}
-    .card{width:min(520px,100%);background:var(--coddna-panel);border:1px solid var(--coddna-border);border-radius:22px;padding:32px;box-shadow:0 24px 60px -26px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(16px)}
-    .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--coddna-gold);font-weight:700;margin-bottom:12px}
-    h1{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:24px;line-height:1.2;color:var(--coddna-gold-soft)}
-    p{margin-top:10px;color:rgba(248,250,252,.75);line-height:1.6;font-size:14px}
-    .mono{font-family:ui-monospace,monospace;font-size:12px;color:rgba(248,250,252,.45);word-break:break-all}
-    a{color:var(--coddna-gold)}
+    body{
+      min-height:100vh;
+      display:grid;place-items:center;
+      background: var(--paper);
+      color:var(--ink);
+      font-family:Inter,system-ui,sans-serif;
+      padding:24px;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:0.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+    }
+    .card{position:relative;z-index:1;width:min(520px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 1px 0 rgba(15,26,32,0.04), 0 20px 48px -20px rgba(15,26,32,0.12)}
+    .card::before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(194,164,122,0.38),transparent)}
+    .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(194,164,122,0.45)}
+    h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
+    p{margin-top:10px;color:var(--muted);line-height:1.6;font-size:13.5px}
+    .mono{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--faint);word-break:break-all;margin-top:10px}
+    a{color:var(--accent);text-underline-offset:2px}
+    a:hover{color:#8C704F}
   </style>
 </head>
 <body>
@@ -82,11 +95,9 @@ function fail(m, d){
       try{ body = text ? JSON.parse(text) : {} }catch{ body = {} }
       if(!r.ok){
         const raw = body.message || body.error || body.errorDescription || text || ('HTTP '+r.status)
-        // GitHub code is single-use — refresh will always give this
         if(String(raw).toLowerCase().includes('bad_verification_code')){
           throw new Error('This login link has already been used. Please go to ' + _origin + ' and click Connect with GitHub again. Do not refresh this page.')
         }
-        // Spring whitelabel 403/500 often comes as HTML — keep short
         const shortRaw = String(raw).slice(0, 400)
         throw new Error(shortRaw)
       }
@@ -122,15 +133,11 @@ function fail(m, d){
       return
     }catch(e){
       lastErr = e
-      // burned code won't succeed on next base either — stop looping
       if(String(e.message).includes('already been used')) break
-      // Failed to fetch = backend not reachable on this base — try next
-      // HTTP 4xx/5xx with message = try next base too, last one will surface error
       if(bases.indexOf(base) === bases.length - 1) break
     }
   }
   var m = (lastErr instanceof Error ? lastErr.message : String(lastErr)) || 'Backend did not answer.'
-  // don't show raw HTML dump — already shortened above
   if(m.length > 500) m = m.slice(0, 500)
   var isNetwork = m.indexOf('Failed to fetch') !== -1 || m.indexOf('NetworkError') !== -1 || m.indexOf('Load failed') !== -1
   var isBurned = m.indexOf('already been used') !== -1

@@ -30,10 +30,10 @@
       this.nodeCount = 28;
       this.radius = 110;
       this.pitch = 540;
-      this.strand1Color = '#dfbe86'; // Champagne Gold
-      this.strand1Highlight = '#f3e4cb'; // Platinum
-      this.strand2Color = '#4f7a9a'; // Celestial Sapphire
-      this.strand2Highlight = '#84b0d8';
+      this.strand1Color = '#C2A47A'; // ALBA Champagne Brass
+      this.strand1Highlight = '#E8DCC8'; // ALBA Soft Brass
+      this.strand2Color = '#4F6B8A'; // ALBA Sapphire
+      this.strand2Highlight = '#8AA0B5';
 
       // 3D Particles
       this.particleCount = 130;

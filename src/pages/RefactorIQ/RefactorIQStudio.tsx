@@ -157,16 +157,16 @@ export default function RefactorIQStudio() {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-[400px]"><div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#dfbe86]" /></div>;
+    return <div className="flex items-center justify-center min-h-[400px]"><div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#C2A47A]" /></div>;
   }
   if (error || !plan) {
     return (
       <div className="max-w-3xl mx-auto py-12 text-center space-y-6">
-        <div className="w-14 h-14 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/20 grid place-items-center"><AlertTriangle className="w-7 h-7 text-amber-400" /></div>
-        <div><h2 className="text-xl font-bold text-white">Refactoring plan unavailable</h2><p className="text-sm text-slate-400 mt-1">{error || 'Could not load the plan for this issue.'}</p></div>
+        <div className="w-14 h-14 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/20 grid place-items-center"><AlertTriangle className="w-7 h-7 text-amber-600" /></div>
+        <div><h2 className="text-xl font-bold text-[#0F1A20]">Refactoring plan unavailable</h2><p className="text-sm text-[#6B7A89] mt-1">{error || 'Could not load the plan for this issue.'}</p></div>
         <div className="flex justify-center gap-3">
-          <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-[#dfbe86] text-[#0b1118] text-xs font-bold">Back to Hub</button>
-          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">Go Back</button>
+          <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs">Back to Hub</button>
+          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] text-xs font-semibold text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)]">Go Back</button>
         </div>
       </div>
     );
@@ -177,30 +177,30 @@ export default function RefactorIQStudio() {
 
   return (
     <div className="space-y-8 pb-16 animate-fade-in max-w-6xl mx-auto">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[rgba(15,26,32,0.06)] pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#dfbe86]">Refactoring Studio</span>
-            <span className="px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold bg-[#dfbe86]/10 text-[#dfbe86] border border-[#dfbe86]/30">Interactive Execution & Diffs</span>
+            <span className="text-xs uppercase font-bold tracking-widest text-[#8C704F]">Refactoring Studio</span>
+            <span className="px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold bg-[rgba(194,164,122,0.10)] text-[#8C704F] border border-[rgba(194,164,122,0.22)]">Interactive Execution & Diffs</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">Refactoring Plan for {fileName}</h1>
-          {plan.title && <p className="text-xs text-slate-400 mt-1 max-w-3xl">{plan.title} · {plan.refactoringType}</p>}
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1A20] mt-1">Refactoring Plan for {fileName}</h1>
+          {plan.title && <p className="text-xs text-[#6B7A89] mt-1 max-w-3xl">{plan.title} · {plan.refactoringType}</p>}
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={handleReanalyze} disabled={reanalyzing} className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#dfbe86] to-[#c9a66d] text-[#0b1118] text-xs font-bold shadow-xl shadow-[#dfbe86]/20 hover:opacity-95 transition-all flex items-center gap-2 disabled:opacity-50">
+          <button onClick={handleReanalyze} disabled={reanalyzing} className="px-6 py-2.5 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs transition-all flex items-center gap-2 disabled:opacity-50">
             {reanalyzing ? (<><RefreshCw className="w-3.5 h-3.5 animate-spin" /><span>Re-analyzing…</span></>) : (<><CheckCircle2 className="w-4 h-4" /><span>Apply & Re-analyze</span><ArrowRight className="w-3.5 h-3.5" /></>)}
           </button>
         </div>
       </div>
 
       {reanalyzeError && (
-        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-start gap-2"><AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" /><span>{reanalyzeError}</span></div>
+        <div className="p-4 rounded-2xl bg-[rgba(184,92,74,0.08)] border border-[rgba(184,92,74,0.18)] text-[#B85C4A] text-xs flex items-start gap-2"><AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" /><span>{reanalyzeError}</span></div>
       )}
 
-      <div className="rounded-3xl border border-white/10 bg-[#101722]/90 p-6 shadow-xl space-y-4">
+      <div className="rounded-3xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-base font-bold text-white flex items-center gap-2"><Sliders className="w-4 h-4 text-[#dfbe86]" />Structured Step-by-Step Refactoring Plan</h3>
-          <span className="text-xs text-slate-400">{appliedSteps.length} of {steps.length || 1} steps selected</span>
+          <h3 className="text-base font-bold text-[#0F1A20] flex items-center gap-2"><Sliders className="w-4 h-4 text-[#C2A47A]" />Structured Step-by-Step Refactoring Plan</h3>
+          <span className="text-xs text-[#6B7A89]">{appliedSteps.length} of {steps.length || 1} steps selected</span>
         </div>
         {steps.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
@@ -208,82 +208,82 @@ export default function RefactorIQStudio() {
               const num = idx + 1;
               const isDone = appliedSteps.includes(num);
               return (
-                <div key={idx} onClick={() => toggleStep(num)} className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${isDone ? 'border-[#5ea89b]/50 bg-[#5ea89b]/10 text-white' : 'border-white/10 bg-black/40 text-slate-400 hover:border-white/20'}`}>
+                <div key={idx} onClick={() => toggleStep(num)} className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${isDone ? 'border-[rgba(106,154,143,0.28)] bg-[rgba(106,154,143,0.10)] text-[#0F1A20]' : 'border-[rgba(15,26,32,0.08)] bg-[#FDFCF9] text-[#6B7A89] hover:border-[rgba(194,164,122,0.22)]'}`}>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[0.65rem] font-bold uppercase tracking-wider text-[#dfbe86]">Step {num}</span>
-                    <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-bold ${isDone ? 'bg-[#5ea89b] text-[#0b1118]' : 'border border-white/20'}`}>{isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : num}</div>
+                    <span className="text-[0.65rem] font-bold uppercase tracking-wider text-[#8C704F]">Step {num}</span>
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-bold ${isDone ? 'bg-[#6A9A8F] text-[#FDFCF9]' : 'border border-[rgba(15,26,32,0.08)] text-[#6B7A89]'}`}>{isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : num}</div>
                   </div>
-                  <div className="text-xs font-bold text-white leading-snug line-clamp-3">{title}</div>
+                  <div className="text-xs font-bold text-[#0F1A20] leading-snug line-clamp-3">{title}</div>
                 </div>
               );
             })}
           </div>
         ) : (
-          <p className="text-sm text-slate-400">No structured steps were returned for this issue. Use the transform tools below to generate a preview.</p>
+          <p className="text-sm text-[#6B7A89]">No structured steps were returned for this issue. Use the transform tools below to generate a preview.</p>
         )}
       </div>
 
-      <div className="rounded-3xl border border-white/10 bg-[#0a0f16]/95 p-6 shadow-2xl space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-3"><Code2 className="w-5 h-5 text-[#dfbe86]" /><span className="text-sm font-bold text-white">Before vs After Code</span><span className="text-xs text-slate-400 hidden sm:inline">— {fileName}</span></div>
+      <div className="rounded-3xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[rgba(15,26,32,0.06)] pb-4">
+          <div className="flex items-center gap-3"><Code2 className="w-5 h-5 text-[#C2A47A]" /><span className="text-sm font-bold text-[#0F1A20]">Before vs After Code</span><span className="text-xs text-[#6B7A89] hidden sm:inline">— {fileName}</span></div>
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="flex items-center gap-2 bg-black/60 p-1 rounded-xl border border-white/10 text-xs">
+            <div className="flex items-center gap-2 bg-[#FDFCF9] p-1 rounded-xl border border-[rgba(15,26,32,0.08)] text-xs">
               {(['split', 'before', 'after', 'diff'] as const).map((v) => (
-                <button key={v} onClick={() => setActiveView(v)} className={`px-3 py-1 rounded-lg font-semibold transition-all ${activeView === v ? 'bg-[#dfbe86] text-[#0b1118]' : 'text-slate-400 hover:text-white'}`}>{v === 'split' ? 'Side-by-Side' : v === 'diff' ? 'Unified Diff' : v === 'before' ? 'Original' : 'Refactored'}</button>
+                <button key={v} onClick={() => setActiveView(v)} className={`px-3 py-1 rounded-lg font-semibold transition-all ${activeView === v ? 'bg-[#0F1A20] text-[#FDFCF9]' : 'text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)]'}`}>{v === 'split' ? 'Side-by-Side' : v === 'diff' ? 'Unified Diff' : v === 'before' ? 'Original' : 'Refactored'}</button>
               ))}
             </div>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 bg-black/40 p-1 rounded-xl border border-white/10 text-xs">
-            <button onClick={() => setTransformType('GUARD_CLAUSE')} className={`px-3 py-1.5 rounded-lg font-semibold ${transformType === 'GUARD_CLAUSE' ? 'bg-white text-[#0b1118]' : 'text-slate-400'}`}>Guard Clauses</button>
-            <button onClick={() => setTransformType('EXTRACT_CLASS')} className={`px-3 py-1.5 rounded-lg font-semibold ${transformType === 'EXTRACT_CLASS' ? 'bg-white text-[#0b1118]' : 'text-slate-400'}`}>Extract Validator</button>
+          <div className="flex items-center gap-2 bg-[#FDFCF9] p-1 rounded-xl border border-[rgba(15,26,32,0.08)] text-xs">
+            <button onClick={() => setTransformType('GUARD_CLAUSE')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'GUARD_CLAUSE' ? 'bg-[#0F1A20] text-[#FDFCF9]' : 'text-[#6B7A89] hover:text-[#0F1A20]'}`}>Guard Clauses</button>
+            <button onClick={() => setTransformType('EXTRACT_CLASS')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'EXTRACT_CLASS' ? 'bg-[#0F1A20] text-[#FDFCF9]' : 'text-[#6B7A89] hover:text-[#0F1A20]'}`}>Extract Validator</button>
           </div>
-          <button onClick={handleTransform} disabled={transforming} className="px-4 py-2 rounded-xl bg-[#dfbe86] text-[#0b1118] text-xs font-bold hover:opacity-95 disabled:opacity-50 flex items-center gap-2">
+          <button onClick={handleTransform} disabled={transforming} className="px-4 py-2 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs transition-all disabled:opacity-50 flex items-center gap-2">
             {transforming ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Wand2 className="w-3.5 h-3.5" />}<span>Generate Preview</span>
           </button>
-          <span className="text-xs text-slate-500 hidden sm:inline">Uses POST /refactoring/transform (real AST transforms, no demo fixture).</span>
+          <span className="text-xs text-[#6B7A89] hidden sm:inline">Uses POST /refactoring/transform (real AST transforms, no demo fixture).</span>
         </div>
-        {transformError && <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-center gap-2"><AlertTriangle className="w-3.5 h-3.5" />{transformError}</div>}
+        {transformError && <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 text-xs flex items-center gap-2"><AlertTriangle className="w-3.5 h-3.5" />{transformError}</div>}
 
         {activeView === 'split' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-2">
-            <div className="rounded-2xl border border-white/10 bg-black/60 p-4 space-y-2">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span className="text-xs font-mono font-bold text-slate-300 flex items-center gap-2"><FileCode className="w-3.5 h-3.5" /> Before: {fileName}</span>
-                <span className="text-[0.65rem] text-slate-500">{beforeCode ? `${beforeCode.split('\n').length} lines` : 'empty'}</span>
+            <div className="rounded-2xl border border-[rgba(15,26,32,0.08)] bg-[#FFFFFF] shadow-sm p-4 space-y-2">
+              <div className="flex items-center justify-between border-b border-[rgba(15,26,32,0.06)] pb-2">
+                <span className="text-xs font-mono font-bold text-[#33414F] flex items-center gap-2"><FileCode className="w-3.5 h-3.5 text-[#C2A47A]" /> Before: {fileName}</span>
+                <span className="text-[0.65rem] text-[#9AA8B6]">{beforeCode ? `${beforeCode.split('\n').length} lines` : 'empty'}</span>
               </div>
-              <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={18} placeholder="Original source — paste Java here if empty, or leave as fetched." className="w-full font-mono text-[0.7rem] text-slate-300 bg-transparent outline-none resize-y leading-relaxed" />
+              <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={18} placeholder="Original source — paste Java here if empty, or leave as fetched." className="w-full font-mono text-[0.7rem] bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] rounded-xl p-3 text-[#0F1A20] placeholder:text-[#9AA8B6] focus:border-[rgba(194,164,122,0.42)] focus:ring-2 focus:ring-[rgba(194,164,122,0.12)] outline-none resize-y leading-relaxed" />
             </div>
-            <div className="rounded-2xl border border-[#5ea89b]/30 bg-black/60 p-4 space-y-2">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span className="text-xs font-mono font-bold text-[#5ea89b]">After: {fileName} (Preview)</span>
-                <span className="text-[0.65rem] text-emerald-400 font-mono">{afterCode ? 'preview ready — editable' : 'run Generate Preview'}</span>
+            <div className="rounded-2xl border border-[rgba(106,154,143,0.22)] bg-[#FFFFFF] shadow-sm p-4 space-y-2">
+              <div className="flex items-center justify-between border-b border-[rgba(15,26,32,0.06)] pb-2">
+                <span className="text-xs font-mono font-bold text-[#6A9A8F]">After: {fileName} (Preview)</span>
+                <span className="text-[0.65rem] text-[#6A9A8F] font-mono">{afterCode ? 'preview ready — editable' : 'run Generate Preview'}</span>
               </div>
-              <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={18} placeholder="Refactored preview will appear here. You can edit before re-analyzing." className="w-full font-mono text-[0.7rem] text-slate-300 bg-transparent outline-none resize-y leading-relaxed" />
+              <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={18} placeholder="Refactored preview will appear here. You can edit before re-analyzing." className="w-full font-mono text-[0.7rem] bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] rounded-xl p-3 text-[#0F1A20] placeholder:text-[#9AA8B6] focus:border-[rgba(194,164,122,0.42)] focus:ring-2 focus:ring-[rgba(194,164,122,0.12)] outline-none resize-y leading-relaxed" />
             </div>
           </div>
         )}
         {activeView === 'before' && (
-          <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
-            <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={20} className="w-full font-mono text-xs text-slate-300 bg-transparent outline-none resize-y leading-relaxed" placeholder="Original source" />
+          <div className="rounded-2xl border border-[rgba(15,26,32,0.08)] bg-[#FFFFFF] shadow-sm p-4">
+            <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] rounded-xl p-3 text-[#0F1A20] placeholder:text-[#9AA8B6] focus:border-[rgba(194,164,122,0.42)] focus:ring-2 focus:ring-[rgba(194,164,122,0.12)] outline-none resize-y leading-relaxed" placeholder="Original source" />
           </div>
         )}
         {activeView === 'after' && (
-          <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
-            <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={20} className="w-full font-mono text-xs text-slate-300 bg-transparent outline-none resize-y leading-relaxed" placeholder="Refactored preview — editable before re-analysis" />
+          <div className="rounded-2xl border border-[rgba(15,26,32,0.08)] bg-[#FFFFFF] shadow-sm p-4">
+            <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] rounded-xl p-3 text-[#0F1A20] placeholder:text-[#9AA8B6] focus:border-[rgba(194,164,122,0.42)] focus:ring-2 focus:ring-[rgba(194,164,122,0.12)] outline-none resize-y leading-relaxed" placeholder="Refactored preview — editable before re-analysis" />
           </div>
         )}
         {activeView === 'diff' && (
-          <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
-            {diffText ? <pre className="font-mono text-xs text-slate-300 overflow-x-auto max-h-[520px] leading-relaxed whitespace-pre-wrap">{diffText}</pre> : <p className="text-sm text-slate-400 text-center py-8">No diff yet — run Generate Preview first.</p>}
+          <div className="rounded-2xl border border-[rgba(15,26,32,0.08)] bg-[#FDFCF9] p-4">
+            {diffText ? <pre className="font-mono text-xs text-[#33414F] overflow-x-auto max-h-[520px] leading-relaxed whitespace-pre-wrap">{diffText}</pre> : <p className="text-sm text-[#6B7A89] text-center py-8">No diff yet — run Generate Preview first.</p>}
           </div>
         )}
 
-        <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
-          <div className="flex items-center gap-2 text-xs text-slate-300"><ShieldCheck className="w-4 h-4 text-[#5ea89b]" /><span>Safe transformations generated via RefactoringEngine (guard clauses / validator scaffold).</span></div>
-          <button onClick={handleReanalyze} disabled={reanalyzing} className="px-6 py-3 rounded-xl bg-[#dfbe86] text-[#0b1118] font-bold text-xs shadow-xl shadow-[#dfbe86]/20 hover:opacity-95 transition-all flex items-center gap-2 disabled:opacity-50">
+        <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(15,26,32,0.06)]">
+          <div className="flex items-center gap-2 text-xs text-[#33414F]"><ShieldCheck className="w-4 h-4 text-[#6A9A8F]" /><span>Safe transformations generated via RefactoringEngine (guard clauses / validator scaffold).</span></div>
+          <button onClick={handleReanalyze} disabled={reanalyzing} className="px-6 py-3 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs transition-all flex items-center gap-2 disabled:opacity-50">
             {reanalyzing ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : null}<span>{reanalyzing ? 'Re-analyzing…' : 'Apply & View Comparison'}</span><ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

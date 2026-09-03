@@ -146,7 +146,7 @@ export default function RepoCard({ repo, compact }: Props) {
       </div>
 
       {/* Health Metrics */}
-      <div className="mt-6 pt-6 border-t border-white/10">
+      <div className="mt-6 pt-6 border-t border-[rgba(15,26,32,0.06)]">
         <p className="mb-4 text-[0.6rem] uppercase tracking-luxe text-ink-faint">
           Derived from repository signals
         </p>
@@ -160,7 +160,7 @@ export default function RepoCard({ repo, compact }: Props) {
                     cy="20"
                     r="16"
                     fill="none"
-                    stroke="rgba(255,255,255,0.08)"
+                    stroke="rgba(15,26,32,0.08)"
                     strokeWidth="3"
                   />
                   <circle

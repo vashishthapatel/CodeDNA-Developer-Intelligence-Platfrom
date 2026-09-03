@@ -126,7 +126,7 @@ export default function Dashboard() {
                 Skill Radar
               </h3>
               <DnaRadar data={dna.radial} />
-              <div className="mt-8 pt-8 border-t border-white/[0.07]">
+              <div className="mt-8 pt-8 border-t border-[rgba(15,26,32,0.06)]">
                 <div className="flex items-center gap-4 p-4 rounded-xl glass glass-rim-light">
                   <div className="icon-tile icon-tile--ember w-10 h-10">
                     <Flame className="w-5 h-5 text-accent-light" />
