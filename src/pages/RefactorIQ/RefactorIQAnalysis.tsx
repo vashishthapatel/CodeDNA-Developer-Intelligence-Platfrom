@@ -116,12 +116,12 @@ export default function RefactorIQAnalysis() {
   if (error || !analysis) {
     return (
       <div className="max-w-3xl mx-auto py-16 text-center space-y-6">
-        <div className="w-14 h-14 mx-auto rounded-2xl bg-[rgba(184,92,74,0.08)] border border-[rgba(184,92,74,0.18)] grid place-items-center"><AlertTriangle className="w-7 h-7 text-[#B85C4A]" /></div>
+        <div className="w-14 h-14 mx-auto rounded-2xl bg-rose-500/10 border border-rose-500/20 grid place-items-center"><AlertTriangle className="w-7 h-7 text-rose-400" /></div>
         <div>
-          <h2 className="text-xl font-bold text-[#0F1A20]">Analysis not available</h2>
-          <p className="text-sm text-[#6B7A89] mt-1">{error || 'This analysis could not be loaded.'}</p>
+          <h2 className="text-xl font-bold text-ink">Analysis not available</h2>
+          <p className="text-sm text-ink-muted mt-1">{error || 'This analysis could not be loaded.'}</p>
         </div>
-        <button onClick={() => navigate('/refactoriq')} className="px-6 py-2.5 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-sm transition-all inline-flex items-center gap-2"><ArrowRight className="w-4 h-4 rotate-180" /> Back to RefactorIQ Hub</button>
+        <button onClick={() => navigate('/refactoriq')} className="px-6 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-sm transition-all inline-flex items-center gap-2"><ArrowRight className="w-4 h-4 rotate-180" /> Back to RefactorIQ Hub</button>
       </div>
     );
   }
@@ -137,86 +137,86 @@ export default function RefactorIQAnalysis() {
 
   return (
     <div className="space-y-8 pb-16 animate-fade-in">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[rgba(15,26,32,0.06)] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#8C704F]">RefactorIQ Analysis Run #{id}</span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold bg-[rgba(106,154,143,0.12)] text-[#6A9A8F] border border-[rgba(106,154,143,0.22)]"><CheckCircle2 className="w-3 h-3" /> COMPLETED</span>
+            <span className="text-xs uppercase font-bold tracking-widest text-accent">RefactorIQ Analysis Run #{id}</span>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><CheckCircle2 className="w-3 h-3" /> COMPLETED</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1A20] mt-1">Repository Complexity & Hotspot Report</h1>
-          {analysis.summary && <p className="text-xs text-[#6B7A89] mt-1 max-w-3xl">{analysis.summary}</p>}
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-ink mt-1">Repository Complexity & Hotspot Report</h1>
+          {analysis.summary && <p className="text-xs text-ink-muted mt-1 max-w-3xl">{analysis.summary}</p>}
         </div>
         <div className="flex items-center gap-3">
           {issues.length > 0 && (
-            <button onClick={() => { const top = issues[0]; navigate(`/refactoriq/issues/${top.id}`, { state: { issue: top, fileMetric: metricForIssue(top), directData: (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }, rawSource: rawMap[top.filePath] } }); }} className="px-4 py-2 rounded-xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] text-xs font-semibold text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)] transition-all flex items-center gap-2 shadow-sm"><Sliders className="w-3.5 h-3.5" /><span>Refactoring Studio</span></button>
+            <button onClick={() => { const top = issues[0]; navigate(`/refactoriq/issues/${top.id}`, { state: { issue: top, fileMetric: metricForIssue(top), directData: (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }, rawSource: rawMap[top.filePath] } }); }} className="px-4 py-2 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface transition-all flex items-center gap-2 shadow-sm"><Sliders className="w-3.5 h-3.5 text-accent" /><span>Refactoring Studio</span></button>
           )}
-          <button onClick={() => navigate('/refactoriq')} className="px-4 py-2 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs transition-all flex items-center gap-1.5"><span>Back to Hub</span><ArrowRight className="w-3.5 h-3.5" /></button>
+          <button onClick={() => navigate('/refactoriq')} className="px-4 py-2 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all flex items-center gap-1.5"><span>Back to Hub</span><ArrowRight className="w-3.5 h-3.5" /></button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="rounded-3xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 flex flex-col justify-between">
+        <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#6B7A89]">Overall Complexity Score</span>
-            <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${isHighRisk ? 'bg-[rgba(184,92,74,0.08)] text-[#B85C4A] border-[rgba(184,92,74,0.18)]' : isModerate ? 'bg-amber-500/10 text-amber-700 border-amber-500/20' : 'bg-[rgba(106,154,143,0.10)] text-[#6A9A8F] border-[rgba(106,154,143,0.18)]'}`}>{isHighRisk ? 'CRITICAL RISK' : isModerate ? 'MODERATE SMELLS' : 'HEALTHY'}</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-ink-muted">Overall Complexity Score</span>
+            <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${isHighRisk ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : isModerate ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'}`}>{isHighRisk ? 'CRITICAL RISK' : isModerate ? 'MODERATE SMELLS' : 'HEALTHY'}</span>
           </div>
           <div className="py-6 flex items-baseline gap-3">
-            <span className="font-serif text-6xl font-bold text-[#0F1A20]">{Math.round(score)}</span><span className="text-xl text-[#9AA8B6] font-serif">/ 100</span>
+            <span className="font-serif text-6xl font-bold text-ink">{Math.round(score)}</span><span className="text-xl text-ink-muted font-serif">/ 100</span>
           </div>
-          <div className="space-y-2 border-t border-[rgba(15,26,32,0.06)] pt-4">
-            <div className="flex justify-between text-xs text-[#6B7A89]"><span>Weighted Formula (0 = Clean, 100 = Debt)</span><span className="text-[#8C704F] font-semibold">{issues.length} Smells Detected</span></div>
-            <div className="w-full h-2 rounded-full bg-[#F2EFE9] overflow-hidden"><div className={`h-full transition-all duration-1000 ${isHighRisk ? 'bg-gradient-to-r from-amber-500 to-[#B85C4A]' : 'bg-gradient-to-r from-[#C2A47A] to-[#6A9A8F]'}`} style={{ width: `${Math.min(100, score)}%` }} /></div>
-            <div className="flex justify-between text-[0.65rem] text-[#9AA8B6]"><span>{analysis.totalFiles} files · {analysis.totalLines} LOC · {analysis.totalMethods} methods</span><span>Avg complexity {analysis.averageComplexity}</span></div>
+          <div className="space-y-2 border-t border-white/[0.08] pt-4">
+            <div className="flex justify-between text-xs text-ink-muted"><span>Weighted Formula (0 = Clean, 100 = Debt)</span><span className="text-accent font-semibold">{issues.length} Smells Detected</span></div>
+            <div className="w-full h-2 rounded-full bg-void overflow-hidden"><div className={`h-full transition-all duration-1000 ${isHighRisk ? 'bg-gradient-to-r from-amber-500 to-rose-500' : 'bg-gradient-to-r from-accent to-emerald-400'}`} style={{ width: `${Math.min(100, score)}%` }} /></div>
+            <div className="flex justify-between text-[0.65rem] text-ink-faint"><span>{analysis.totalFiles} files · {analysis.totalLines} LOC · {analysis.totalMethods} methods</span><span>Avg complexity {analysis.averageComplexity}</span></div>
           </div>
         </div>
 
-        <div className="lg:col-span-2 rounded-3xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-4">
+        <div className="lg:col-span-2 rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-[#0F1A20] flex items-center gap-2"><Sparkles className="w-4 h-4 text-[#C2A47A]" />Explainable Scoring Breakdown</h3>
-              <p className="text-xs text-[#6B7A89] mt-0.5">{topMetric ? `Top hotspot: ${ClientRefactorEngine.displayFileName(topMetric)} — deterministic weights on AST facts` : 'Deterministic weights applied to AST facts'}</p>
+              <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sparkles className="w-4 h-4 text-accent" />Explainable Scoring Breakdown</h3>
+              <p className="text-xs text-ink-muted mt-0.5">{topMetric ? `Top hotspot: ${ClientRefactorEngine.displayFileName(topMetric)} — deterministic weights on AST facts` : 'Deterministic weights applied to AST facts'}</p>
             </div>
-            <span className="text-xs font-mono text-[#8C704F] bg-[rgba(194,164,122,0.10)] px-2.5 py-1 rounded-lg border border-[rgba(194,164,122,0.22)]">Deterministic Rule Engine</span>
+            <span className="text-xs font-mono text-accent bg-accent/10 px-2.5 py-1 rounded-lg border border-accent/20">Deterministic Rule Engine</span>
           </div>
           {breakdown ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
               {breakdown.map((item, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] space-y-1">
-                  <div className="text-xs font-medium text-[#33414F] truncate">{item.label}</div>
-                  <div className="flex justify-between items-baseline"><span className="text-xs text-[#6B7A89]">{item.weight}</span><span className="text-xs font-bold text-[#0F1A20]">{item.val}</span></div>
-                  <div className="text-[0.65rem] text-[#8C704F] font-mono">{item.status}</div>
+                <div key={idx} className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] space-y-1">
+                  <div className="text-xs font-medium text-ink-secondary truncate">{item.label}</div>
+                  <div className="flex justify-between items-baseline"><span className="text-xs text-ink-muted">{item.weight}</span><span className="text-xs font-bold text-ink">{item.val}</span></div>
+                  <div className="text-[0.65rem] text-accent font-mono">{item.status}</div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] p-6 text-center text-sm text-[#6B7A89]">No file metrics yet — analysis covered no Java files.</div>
+            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">No file metrics yet — analysis covered no Java files.</div>
           )}
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-2"><Flame className="w-5 h-5 text-[#B85C4A]" /><h2 className="text-xl font-bold text-[#0F1A20]">Complexity Hotspots</h2></div>
-          <span className="text-xs text-[#6B7A89]">Ranked by Hotspot Score = 40% Complexity + 20% LOC + 15% Changes + 15% Low Coverage + 10% Coupling</span>
+          <div className="flex items-center gap-2"><Flame className="w-5 h-5 text-rose-400" /><h2 className="text-xl font-bold text-ink">Complexity Hotspots</h2></div>
+          <span className="text-xs text-ink-muted">Ranked by Hotspot Score = 40% Complexity + 20% LOC + 15% Changes + 15% Low Coverage + 10% Coupling</span>
         </div>
-        <div className="overflow-hidden rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)]">
+        <div className="overflow-hidden rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)]">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[rgba(15,26,32,0.06)] bg-[#FDFCF9] text-[#6B7A89] font-semibold uppercase tracking-wider">
+            <thead className="border-b border-white/[0.08] bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-4">Class / File</th><th className="py-3.5 px-4 text-center">Score</th><th className="py-3.5 px-4 text-center">LOC</th><th className="py-3.5 px-4 text-center">Complexity</th><th className="py-3.5 px-4 text-center">Nesting</th><th className="py-3.5 px-4 text-center">Imports</th><th className="py-3.5 px-4 text-center">Coverage</th><th className="py-3.5 px-4 text-right">Action</th></tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(15,26,32,0.06)] text-[#33414F]">
+            <tbody className="divide-y divide-white/[0.06] text-ink-secondary">
               {fileMetrics.length === 0 ? (
-                <tr><td colSpan={8} className="py-10 text-center text-[#6B7A89]"><div className="flex flex-col items-center gap-2"><Inbox className="w-6 h-6 text-[#9AA8B6]" /><span>No hotspot data — this analysis had no Java files or all files were clean.</span></div></td></tr>
+                <tr><td colSpan={8} className="py-10 text-center text-ink-muted"><div className="flex flex-col items-center gap-2"><Inbox className="w-6 h-6 text-ink-muted" /><span>No hotspot data — this analysis had no Java files or all files were clean.</span></div></td></tr>
               ) : fileMetrics.map((fm) => (
-                <tr key={fm.id} className="hover:bg-[rgba(194,164,122,0.06)] transition-colors">
-                  <td className="py-4 px-4 font-mono font-medium text-[#0F1A20] flex items-center gap-2"><FileCode className="w-4 h-4 text-[#C2A47A]" /><span>{ClientRefactorEngine.displayFileName(fm)}</span>{fm.hotspotScore >= 80 && (<span className="px-2 py-0.5 rounded-full text-[0.65rem] font-bold bg-[rgba(184,92,74,0.08)] text-[#B85C4A] border border-[rgba(184,92,74,0.18)]">HOTSPOT</span>)}</td>
-                  <td className="py-4 px-4 text-center font-bold text-[#0F1A20]">{Math.round(fm.complexityScore)}</td>
-                  <td className="py-4 px-4 text-center font-mono text-[#33414F]">{fm.linesOfCode}</td>
-                  <td className="py-4 px-4 text-center font-mono text-[#B85C4A] font-semibold">{fm.cyclomaticComplexity}</td>
-                  <td className="py-4 px-4 text-center font-mono text-amber-700">{fm.maxNestingDepth}</td>
-                  <td className="py-4 px-4 text-center font-mono text-[#33414F]">{fm.importCount}</td>
-                  <td className="py-4 px-4 text-center font-mono text-[#33414F]">{fm.testCoverage}%</td>
-                  <td className="py-4 px-4 text-right"><button onClick={() => { const best = issueForFile(fm); const targetId = best?.id ?? fm.id; const dd = (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }; navigate(`/refactoriq/issues/${targetId}`, { state: { issue: best, fileMetric: fm, directData: dd, rawSource: rawMap[fm.filePath] } }); }} className="px-3 py-1.5 rounded-lg bg-[rgba(194,164,122,0.10)] border border-[rgba(194,164,122,0.22)] text-xs font-semibold text-[#8C704F] hover:bg-[#0F1A20] hover:text-[#FDFCF9] hover:border-[#0F1A20] transition-all inline-flex items-center gap-1.5"><span>Inspect</span><ArrowRight className="w-3 h-3" /></button></td>
+                <tr key={fm.id} className="hover:bg-accent/[0.06] transition-colors">
+                  <td className="py-4 px-4 font-mono font-medium text-ink flex items-center gap-2"><FileCode className="w-4 h-4 text-accent" /><span>{ClientRefactorEngine.displayFileName(fm)}</span>{fm.hotspotScore >= 80 && (<span className="px-2 py-0.5 rounded-full text-[0.65rem] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">HOTSPOT</span>)}</td>
+                  <td className="py-4 px-4 text-center font-bold text-ink">{Math.round(fm.complexityScore)}</td>
+                  <td className="py-4 px-4 text-center font-mono text-ink-secondary">{fm.linesOfCode}</td>
+                  <td className="py-4 px-4 text-center font-mono text-rose-400 font-semibold">{fm.cyclomaticComplexity}</td>
+                  <td className="py-4 px-4 text-center font-mono text-amber-400">{fm.maxNestingDepth}</td>
+                  <td className="py-4 px-4 text-center font-mono text-ink-secondary">{fm.importCount}</td>
+                  <td className="py-4 px-4 text-center font-mono text-ink-secondary">{fm.testCoverage}%</td>
+                  <td className="py-4 px-4 text-right"><button onClick={() => { const best = issueForFile(fm); const targetId = best?.id ?? fm.id; const dd = (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }; navigate(`/refactoriq/issues/${targetId}`, { state: { issue: best, fileMetric: fm, directData: dd, rawSource: rawMap[fm.filePath] } }); }} className="px-3 py-1.5 rounded-lg bg-accent/10 border border-accent/20 text-xs font-semibold text-accent hover:bg-accent hover:text-void hover:border-accent transition-all inline-flex items-center gap-1.5"><span>Inspect</span><ArrowRight className="w-3 h-3" /></button></td>
                 </tr>
               ))}
             </tbody>
@@ -226,30 +226,30 @@ export default function RefactorIQAnalysis() {
 
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div><h2 className="text-xl font-bold text-[#0F1A20] flex items-center gap-2"><ShieldAlert className="w-5 h-5 text-[#C2A47A]" />Detected Issues & Refactoring Opportunities</h2><p className="text-xs text-[#6B7A89] mt-0.5">Deterministic threshold violations identified during AST traversal</p></div>
-          <div className="flex items-center gap-1.5 bg-[#FDFCF9] p-1 rounded-xl border border-[rgba(15,26,32,0.08)]">
+          <div><h2 className="text-xl font-bold text-ink flex items-center gap-2"><ShieldAlert className="w-5 h-5 text-accent" />Detected Issues & Refactoring Opportunities</h2><p className="text-xs text-ink-muted mt-0.5">Deterministic threshold violations identified during AST traversal</p></div>
+          <div className="flex items-center gap-1.5 bg-surface p-1 rounded-xl border border-white/[0.08]">
             {(['ALL', 'CRITICAL', 'HIGH', 'MEDIUM'] as const).map((filter) => (
-              <button key={filter} onClick={() => setActiveFilter(filter)} className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${activeFilter === filter ? 'bg-[#0F1A20] text-[#FDFCF9]' : 'text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)]'}`}>{filter}</button>
+              <button key={filter} onClick={() => setActiveFilter(filter)} className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${activeFilter === filter ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>{filter}</button>
             ))}
           </div>
         </div>
         {filteredIssues.length === 0 ? (
-          <div className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-10 text-center space-y-2">
-            <div className="w-10 h-10 mx-auto rounded-xl bg-[rgba(106,154,143,0.10)] border border-[rgba(106,154,143,0.18)] grid place-items-center"><CheckCircle2 className="w-5 h-5 text-[#6A9A8F]" /></div>
-            <p className="text-sm font-semibold text-[#0F1A20]">{issues.length === 0 ? 'No issues detected — this codebase looks clean.' : `No ${activeFilter} issues in this analysis.`}</p>
-            <p className="text-xs text-[#6B7A89]">{issues.length === 0 ? 'Try a more complex file or a larger repository to surface hotspots.' : 'Try a different severity filter.'}</p>
+          <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-10 text-center space-y-2">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-500/10 border border-emerald-500/20 grid place-items-center"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></div>
+            <p className="text-sm font-semibold text-ink">{issues.length === 0 ? 'No issues detected — this codebase looks clean.' : `No ${activeFilter} issues in this analysis.`}</p>
+            <p className="text-xs text-ink-muted">{issues.length === 0 ? 'Try a more complex file or a larger repository to surface hotspots.' : 'Try a different severity filter.'}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredIssues.map((issue) => (
-              <div key={issue.id} className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-5 space-y-3 hover:border-[rgba(194,164,122,0.22)] transition-all flex flex-col justify-between">
+              <div key={issue.id} className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-5 space-y-3 hover:border-accent/30 transition-all flex flex-col justify-between">
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between gap-2"><span className={`px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border ${issue.severity === 'CRITICAL' ? 'bg-[rgba(184,92,74,0.08)] text-[#B85C4A] border-[rgba(184,92,74,0.18)]' : issue.severity === 'HIGH' ? 'bg-orange-500/10 text-orange-700 border-orange-500/20' : 'bg-amber-500/10 text-amber-700 border-amber-500/20'}`}>{issue.severity} · {issue.type}</span><span className="text-xs font-mono text-[#6B7A89] truncate max-w-[160px]">{issue.filePath}</span></div>
-                  <h4 className="text-sm font-bold text-[#0F1A20]">{issue.message}</h4>
+                  <div className="flex items-center justify-between gap-2"><span className={`px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border ${issue.severity === 'CRITICAL' ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : issue.severity === 'HIGH' ? 'bg-orange-500/10 text-orange-400 border-orange-500/20' : 'bg-amber-500/10 text-amber-300 border-amber-500/20'}`}>{issue.severity} · {issue.type}</span><span className="text-xs font-mono text-ink-muted truncate max-w-[160px]">{issue.filePath}</span></div>
+                  <h4 className="text-sm font-bold text-ink">{issue.message}</h4>
                 </div>
-                <div className="pt-4 flex items-center justify-between border-t border-[rgba(15,26,32,0.06)] mt-2">
-                  <span className="text-[0.7rem] text-[#6B7A89]">Metric: <strong className="text-[#0F1A20]">{issue.metricValue}</strong> (threshold: {issue.threshold})</span>
-                  <button onClick={() => navigate(`/refactoriq/issues/${issue.id}`, { state: { issue, fileMetric: metricForIssue(issue), directData: (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }, rawSource: rawMap[issue.filePath] } })} className="text-xs font-semibold text-[#8C704F] hover:underline flex items-center gap-1"><span>Why is this bad?</span><ArrowRight className="w-3 h-3" /></button>
+                <div className="pt-4 flex items-center justify-between border-t border-white/[0.08] mt-2">
+                  <span className="text-[0.7rem] text-ink-muted">Metric: <strong className="text-ink">{issue.metricValue}</strong> (threshold: {issue.threshold})</span>
+                  <button onClick={() => navigate(`/refactoriq/issues/${issue.id}`, { state: { issue, fileMetric: metricForIssue(issue), directData: (location.state as any)?.directData || { analysis, fileMetrics, issues, fileContents: (analysis as any).fileContents || rawMap }, rawSource: rawMap[issue.filePath] } })} className="text-xs font-semibold text-accent hover:underline flex items-center gap-1"><span>Why is this bad?</span><ArrowRight className="w-3 h-3" /></button>
                 </div>
               </div>
             ))}

@@ -21,7 +21,7 @@ export default function DnaRadar({ data }: Props) {
           <defs>
             <linearGradient id="radarFill" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor={luxe.emberPale} stopOpacity={0.45} />
-              <stop offset="100%" stopColor={luxe.burnt} stopOpacity={0.22} />
+              <stop offset="100%" stopColor={luxe.emberDeep} stopOpacity={0.22} />
             </linearGradient>
           </defs>
           <PolarGrid stroke="rgba(255,255,255,0.08)" />

@@ -149,17 +149,17 @@ export default function RefactorIQIssueDetails() {
   }, [id, location.state, directIssue, directFileMetric, directDataState, rawSourceFromState]);
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-[300px]"><div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#C2A47A]" /></div>;
+    return <div className="flex items-center justify-center min-h-[300px]"><div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-accent" /></div>;
   }
 
   if (error) {
     return (
       <div className="max-w-3xl mx-auto py-12 text-center space-y-6">
-        <div className="w-14 h-14 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/20 grid place-items-center"><AlertTriangle className="w-7 h-7 text-amber-600" /></div>
-        <div><h2 className="text-xl font-bold text-[#0F1A20]">Issue details unavailable</h2><p className="text-sm text-[#6B7A89] mt-1">{error}</p></div>
+        <div className="w-14 h-14 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/20 grid place-items-center"><AlertTriangle className="w-7 h-7 text-amber-400" /></div>
+        <div><h2 className="text-xl font-bold text-ink">Issue details unavailable</h2><p className="text-sm text-ink-muted mt-1">{error}</p></div>
         <div className="flex justify-center gap-3">
-          <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs">Back to RefactorIQ Hub</button>
-          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] text-xs font-semibold text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)]">Go Back</button>
+          <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs">Back to RefactorIQ Hub</button>
+          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
         </div>
       </div>
     );
@@ -172,54 +172,54 @@ export default function RefactorIQIssueDetails() {
 
   return (
     <div className="space-y-8 pb-16 animate-fade-in max-w-5xl mx-auto">
-      <div className="flex items-center gap-2 text-xs text-[#6B7A89]">
-        <button onClick={() => navigate('/refactoriq')} className="hover:text-[#0F1A20] transition-colors">RefactorIQ</button>
+      <div className="flex items-center gap-2 text-xs text-ink-muted">
+        <button onClick={() => navigate('/refactoriq')} className="hover:text-ink transition-colors">RefactorIQ</button>
         <ChevronRight className="w-3.5 h-3.5" />
-        <button onClick={() => navigate(-1)} className="hover:text-[#0F1A20] transition-colors">Analysis</button>
+        <button onClick={() => navigate(-1)} className="hover:text-ink transition-colors">Analysis</button>
         <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-[#8C704F] font-medium truncate">{fileName}</span>
+        <span className="text-accent font-medium truncate">{fileName}</span>
       </div>
 
-      <div className="rounded-3xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-6">
+      <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-700 border border-amber-500/20">{plan?.impact || 'HOTSPOT'}</span>
-              <span className="text-xs font-mono text-[#6B7A89] truncate">{plan?.refactoringType || 'Code Smell'}</span>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20">{plan?.impact || 'HOTSPOT'}</span>
+              <span className="text-xs font-mono text-ink-muted truncate">{plan?.refactoringType || 'Code Smell'}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F1A20] flex items-center gap-2 mt-1"><FileCode className="w-7 h-7 text-[#C2A47A]" />{fileName}</h1>
-            {plan?.problem && <p className="text-xs text-[#6B7A89] max-w-3xl leading-relaxed">{plan.problem}</p>}
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink flex items-center gap-2 mt-1"><FileCode className="w-7 h-7 text-accent" />{fileName}</h1>
+            {plan?.problem && <p className="text-xs text-ink-muted max-w-3xl leading-relaxed">{plan.problem}</p>}
           </div>
-          <div className="flex items-center gap-4 bg-[#FDFCF9] px-5 py-3 rounded-2xl border border-[rgba(15,26,32,0.08)]">
+          <div className="flex items-center gap-4 bg-surface-raised px-5 py-3 rounded-2xl border border-white/[0.08]">
             <div className="text-right">
-              <div className="text-[0.65rem] uppercase tracking-wider text-[#6B7A89] font-semibold">Priority</div>
-              <div className="font-serif text-2xl font-bold text-amber-700">{priority} <span className="text-xs font-sans text-[#9AA8B6]">pts</span></div>
+              <div className="text-[0.65rem] uppercase tracking-wider text-ink-muted font-semibold">Priority</div>
+              <div className="font-serif text-2xl font-bold text-amber-400">{priority} <span className="text-xs font-sans text-ink-faint">pts</span></div>
             </div>
-            <div className="h-8 w-px bg-[rgba(15,26,32,0.08)]" />
+            <div className="h-8 w-px bg-white/[0.08]" />
             <div className="text-right">
-              <div className="text-[0.65rem] uppercase tracking-wider text-[#6B7A89] font-semibold">Complexity</div>
-              <div className="font-serif text-2xl font-bold text-[#0F1A20]">{fileMetric ? fileMetric.cyclomaticComplexity : '—'} <span className="text-xs font-sans text-[#9AA8B6]">/ depth {fileMetric?.maxNestingDepth ?? '—'}</span></div>
+              <div className="text-[0.65rem] uppercase tracking-wider text-ink-muted font-semibold">Complexity</div>
+              <div className="font-serif text-2xl font-bold text-ink">{fileMetric ? fileMetric.cyclomaticComplexity : '—'} <span className="text-xs font-sans text-ink-faint">/ depth {fileMetric?.maxNestingDepth ?? '—'}</span></div>
             </div>
           </div>
         </div>
 
         {fileMetric ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Lines of Code</div><div className="text-base font-bold text-[#0F1A20] mt-1">{fileMetric.linesOfCode}</div></div>
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Methods</div><div className="text-base font-bold text-[#0F1A20] mt-1">{fileMetric.methodCount}</div></div>
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Complexity</div><div className="text-base font-bold text-[#B85C4A] mt-1">{fileMetric.cyclomaticComplexity}</div></div>
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Nesting Depth</div><div className="text-base font-bold text-[#B85C4A] mt-1">{fileMetric.maxNestingDepth}</div></div>
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Dependencies</div><div className="text-base font-bold text-amber-700 mt-1">{fileMetric.dependencyCount ?? fileMetric.importCount}</div></div>
-            <div className="p-3 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)]"><div className="text-[0.7rem] text-[#6B7A89]">Complexity Score</div><div className="text-base font-bold text-amber-700 mt-1">{Math.round(fileMetric.complexityScore)}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Lines of Code</div><div className="text-base font-bold text-ink mt-1">{fileMetric.linesOfCode}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Methods</div><div className="text-base font-bold text-ink mt-1">{fileMetric.methodCount}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Complexity</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.cyclomaticComplexity}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Nesting Depth</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.maxNestingDepth}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Dependencies</div><div className="text-base font-bold text-amber-300 mt-1">{fileMetric.dependencyCount ?? fileMetric.importCount}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Complexity Score</div><div className="text-base font-bold text-amber-300 mt-1">{Math.round(fileMetric.complexityScore)}</div></div>
           </div>
         ) : (
-          <div className="rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] p-4 text-xs text-[#6B7A89]">File-level metrics will appear here once a file metric is available for this issue.</div>
+          <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-4 text-xs text-ink-muted">File-level metrics will appear here once a file metric is available for this issue.</div>
         )}
       </div>
 
-      <div className="flex gap-2 border-b border-[rgba(15,26,32,0.06)] pb-3 flex-wrap">
+      <div className="flex gap-2 border-b border-white/[0.08] pb-3 flex-wrap">
         {(['explanation', 'metrics', 'code'] as Tab[]).map((t) => (
-          <button key={t} onClick={() => setActiveTab(t)} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeTab === t ? 'bg-[#0F1A20] text-[#FDFCF9]' : 'text-[#6B7A89] hover:text-[#0F1A20] hover:bg-[rgba(194,164,122,0.08)]'}`}>
+          <button key={t} onClick={() => setActiveTab(t)} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeTab === t ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
             {t === 'explanation' ? 'Why is this a problem? & Recommendations' : t === 'metrics' ? 'AST Structural Breakdown' : 'Inspect Source'}
           </button>
         ))}
@@ -227,72 +227,72 @@ export default function RefactorIQIssueDetails() {
 
       {activeTab === 'explanation' && (
         <div className="space-y-6">
-          <div className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
-            <div className="flex items-center gap-2 text-amber-700"><ShieldAlert className="w-5 h-5" /><h3 className="text-base font-bold text-[#0F1A20]">Why is this a problem?</h3></div>
-            <p className="text-sm text-[#33414F] leading-relaxed">{plan?.problem || 'This hotspot was flagged by deterministic threshold rules during AST traversal.'}</p>
-            <ul className="space-y-2 text-xs text-[#33414F] list-disc list-inside">
-              <li><span className="font-semibold text-[#0F1A20]">Single Responsibility:</span> Classes that mix validation, orchestration and side-effects are harder to change and test.</li>
-              <li><span className="font-semibold text-[#0F1A20]">Cognitive branching:</span> High cyclomatic complexity and deep nesting increase defect risk.</li>
-              <li><span className="font-semibold text-[#0F1A20]">Test protection:</span> Low coverage around complex branches raises regression hazard.</li>
+          <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+            <div className="flex items-center gap-2 text-amber-400"><ShieldAlert className="w-5 h-5" /><h3 className="text-base font-bold text-ink">Why is this a problem?</h3></div>
+            <p className="text-sm text-ink-secondary leading-relaxed">{plan?.problem || 'This hotspot was flagged by deterministic threshold rules during AST traversal.'}</p>
+            <ul className="space-y-2 text-xs text-ink-secondary list-disc list-inside">
+              <li><span className="font-semibold text-ink">Single Responsibility:</span> Classes that mix validation, orchestration and side-effects are harder to change and test.</li>
+              <li><span className="font-semibold text-ink">Cognitive branching:</span> High cyclomatic complexity and deep nesting increase defect risk.</li>
+              <li><span className="font-semibold text-ink">Test protection:</span> Low coverage around complex branches raises regression hazard.</li>
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-5">
+          <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-5">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <div className="flex items-center gap-2 text-[#8C704F]"><Sparkles className="w-5 h-5 text-[#C2A47A]" /><h3 className="text-base font-bold text-[#0F1A20]">Recommended Refactoring Pattern</h3></div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[rgba(194,164,122,0.10)] text-[#8C704F] border border-[rgba(194,164,122,0.22)]">{plan?.refactoringType || 'EXTRACT_CLASS'}</span>
+              <div className="flex items-center gap-2 text-accent"><Sparkles className="w-5 h-5 text-accent" /><h3 className="text-base font-bold text-ink">Recommended Refactoring Pattern</h3></div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-accent/10 text-accent border border-accent/20">{plan?.refactoringType || 'EXTRACT_CLASS'}</span>
             </div>
             {plan?.steps?.length ? (
               <ol className="space-y-2">
                 {plan.steps.map((step: string, i: number) => (
-                  <li key={i} className="flex gap-3 text-sm text-[#33414F]"><span className="w-6 h-6 shrink-0 rounded-full bg-[rgba(194,164,122,0.10)] border border-[rgba(194,164,122,0.22)] grid place-items-center text-xs font-bold text-[#8C704F]">{i + 1}</span><span>{step}</span></li>
+                  <li key={i} className="flex gap-3 text-sm text-ink-secondary"><span className="w-6 h-6 shrink-0 rounded-full bg-accent/10 border border-accent/20 grid place-items-center text-xs font-bold text-accent">{i + 1}</span><span>{step}</span></li>
                 ))}
               </ol>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] space-y-2"><div className="text-xs font-bold text-[#8C704F] flex items-center gap-1.5"><Split className="w-4 h-4" /> Extract Validator</div><p className="text-xs text-[#6B7A89]">Move validation / guard logic into a dedicated component.</p></div>
-                <div className="p-4 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] space-y-2"><div className="text-xs font-bold text-[#6A9A8F] flex items-center gap-1.5"><Layers className="w-4 h-4" /> Extract Side-Effects</div><p className="text-xs text-[#6B7A89]">Isolate notifications / persistence into a separate service.</p></div>
-                <div className="p-4 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] space-y-2"><div className="text-xs font-bold text-[#6A9A8F] flex items-center gap-1.5"><Workflow className="w-4 h-4" /> Guard Clauses</div><p className="text-xs text-[#6B7A89]">Invert nested conditionals into early returns to reduce nesting depth.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-accent flex items-center gap-1.5"><Split className="w-4 h-4" /> Extract Validator</div><p className="text-xs text-ink-muted">Move validation / guard logic into a dedicated component.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Layers className="w-4 h-4" /> Extract Side-Effects</div><p className="text-xs text-ink-muted">Isolate notifications / persistence into a separate service.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Workflow className="w-4 h-4" /> Guard Clauses</div><p className="text-xs text-ink-muted">Invert nested conditionals into early returns to reduce nesting depth.</p></div>
               </div>
             )}
-            <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-[rgba(15,26,32,0.06)]">
-              <div className="text-xs text-[#6B7A89]">Refactoring type: <span className="font-bold text-[#8C704F]">{plan?.refactoringType || '—'}</span></div>
-              <button onClick={() => navigate(`/refactoriq/refactor/${id}`, { state: { plan, fileMetric, rawSource: codeSource } })} className="px-6 py-3 rounded-xl bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] hover:bg-[#1E2F3D] shadow-sm font-bold text-xs transition-all flex items-center gap-2"><span>Open in Refactoring Studio</span><ArrowRight className="w-4 h-4" /></button>
+            <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08]">
+              <div className="text-xs text-ink-muted">Refactoring type: <span className="font-bold text-accent">{plan?.refactoringType || '—'}</span></div>
+              <button onClick={() => navigate(`/refactoriq/refactor/${id}`, { state: { plan, fileMetric, rawSource: codeSource } })} className="px-6 py-3 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all flex items-center gap-2"><span>Open in Refactoring Studio</span><ArrowRight className="w-4 h-4" /></button>
             </div>
           </div>
         </div>
       )}
 
       {activeTab === 'metrics' && (
-        <div className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
-          <h3 className="text-base font-bold text-[#0F1A20]">JavaParser AST Inspection Details</h3>
-          <p className="text-xs text-[#6B7A89]">Method-level decision trees and nesting depths extracted via JavaParser</p>
+        <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+          <h3 className="text-base font-bold text-ink">JavaParser AST Inspection Details</h3>
+          <p className="text-xs text-ink-muted">Method-level decision trees and nesting depths extracted via JavaParser</p>
           {methodMetrics.length > 0 ? (
             <div className="space-y-3 pt-2">
               {methodMetrics.map((m: any, idx: number) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] flex items-center justify-between text-xs flex-wrap gap-2">
-                  <div><span className="font-mono font-bold text-[#0F1A20]">{m.methodName}()</span><span className="text-[#9AA8B6] ml-2 font-mono">{m.linesOfCode} lines</span></div>
-                  <div className="flex items-center gap-4"><span className="text-[#6B7A89]">Complexity: <strong className={m.cyclomaticComplexity > 10 ? 'text-[#B85C4A]' : 'text-[#33414F]'}>{m.cyclomaticComplexity}</strong></span><span className="text-[#6B7A89]">Nesting: <strong className={m.nestingDepth > 3 ? 'text-[#B85C4A]' : 'text-[#33414F]'}>{m.nestingDepth}</strong></span></div>
+                <div key={idx} className="p-3.5 rounded-xl bg-surface-raised border border-white/[0.06] flex items-center justify-between text-xs flex-wrap gap-2">
+                  <div><span className="font-mono font-bold text-ink">{m.methodName}()</span><span className="text-ink-muted ml-2 font-mono">{m.linesOfCode} lines</span></div>
+                  <div className="flex items-center gap-4"><span className="text-ink-muted">Complexity: <strong className={m.cyclomaticComplexity > 10 ? 'text-rose-400' : 'text-ink-secondary'}>{m.cyclomaticComplexity}</strong></span><span className="text-ink-muted">Nesting: <strong className={m.nestingDepth > 3 ? 'text-rose-400' : 'text-ink-secondary'}>{m.nestingDepth}</strong></span></div>
                 </div>
               ))}
             </div>
           ) : fileMetric ? (
-            <div className="rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] p-6 text-center text-sm text-[#6B7A89]">Method breakdown not available for this client-side analysis. Use a backend-persisted analysis to see per-method AST details.</div>
+            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">Method breakdown not available for this client-side analysis. Use a backend-persisted analysis to see per-method AST details.</div>
           ) : (
-            <div className="rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] p-6 text-center text-sm text-[#6B7A89]">No method metrics available for this issue.</div>
+            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">No method metrics available for this issue.</div>
           )}
         </div>
       )}
 
       {activeTab === 'code' && (
-        <div className="rounded-2xl bg-[#FFFFFF] border border-[rgba(15,26,32,0.08)] shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-5 space-y-3">
-          <div className="flex justify-between items-center text-xs text-[#6B7A89]"><span>{fileName} — Source Preview</span><span className="font-mono">{fileMetric ? `${fileMetric.linesOfCode} LOC` : ''}</span></div>
+        <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-5 space-y-3">
+          <div className="flex justify-between items-center text-xs text-ink-muted"><span>{fileName} — Source Preview</span><span className="font-mono">{fileMetric ? `${fileMetric.linesOfCode} LOC` : ''}</span></div>
           {codeSource ? (
-            <pre className="font-mono text-xs text-[#33414F] overflow-x-auto p-4 bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>
+            <pre className="font-mono text-xs text-ink-secondary overflow-x-auto p-4 bg-void border border-white/[0.08] rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>
           ) : (
-            <div className="rounded-xl bg-[#FDFCF9] border border-[rgba(15,26,32,0.05)] p-8 text-center space-y-2">
-              <p className="text-sm text-[#33414F]">Source not available for this file.</p>
-              <p className="text-xs text-[#6B7A89]">For paste-based analyses, the source shown in the Analysis view is the pasted snippet. For live repo analyses, file contents were analyzed via the browser-side engine.</p>
+            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-8 text-center space-y-2">
+              <p className="text-sm text-ink">Source not available for this file.</p>
+              <p className="text-xs text-ink-muted">For paste-based analyses, the source shown in the Analysis view is the pasted snippet. For live repo analyses, file contents were analyzed via the browser-side engine.</p>
             </div>
           )}
         </div>

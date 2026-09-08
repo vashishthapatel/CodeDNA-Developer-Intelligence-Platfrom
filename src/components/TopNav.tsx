@@ -132,7 +132,7 @@ export default function TopNav() {
         {/* brand */}
         <NavLink to="/" className="topnav-brand">
           <span className="topnav-logo">
-            <Dna className="w-5 h-5 text-[#FDFCF9]" />
+            <Dna className="w-5 h-5 text-accent" />
           </span>
           <span className="topnav-wordmark">CodeDNA</span>
         </NavLink>
@@ -149,7 +149,7 @@ export default function TopNav() {
               <Icon className="w-4 h-4 shrink-0" />
               <span>{label}</span>
               {badge && (
-                <span className="px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold bg-[rgba(194,164,122,0.13)] text-[#8C704F] border border-[rgba(194,164,122,0.22)] ml-1">
+                <span className="px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold bg-accent/15 text-accent border border-accent/30 ml-1">
                   {badge}
                 </span>
               )}
@@ -176,7 +176,7 @@ export default function TopNav() {
               type="button"
               onClick={handleConnectGithub}
               disabled={oauthBusy}
-              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] px-4 py-2 text-xs font-bold shadow-sm hover:bg-[#1E2F3D] hover:border-[#1E2F3D] disabled:opacity-50 transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-deep text-white font-bold tracking-wide border border-accent/60 px-4 py-2 text-xs shadow-glow hover:brightness-110 disabled:opacity-50 transition-all"
             >
               {oauthBusy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Github className="w-3.5 h-3.5" />}
               {oauthBusy ? 'Connecting…' : 'Connect GitHub'}
@@ -283,7 +283,7 @@ export default function TopNav() {
               <Icon className="w-4 h-4" />
               <span>{label}</span>
               {badge && (
-                <span className="px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold bg-[rgba(194,164,122,0.13)] text-[#8C704F] border border-[rgba(194,164,122,0.22)] ml-auto">
+                <span className="px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold bg-accent/15 text-accent border border-accent/30 ml-auto">
                   {badge}
                 </span>
               )}
@@ -298,7 +298,7 @@ export default function TopNav() {
               void handleConnectGithub()
             }}
             disabled={oauthBusy}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1A20] text-[#FDFCF9] border border-[#0F1A20] px-4 py-3 text-sm font-bold disabled:opacity-50"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-deep text-white font-bold tracking-wide border border-accent/60 px-4 py-3 text-sm disabled:opacity-50 shadow-glow"
           >
             {oauthBusy ? <Loader2 className="w-4 h-4 animate-spin" /> : <Github className="w-4 h-4" />}
             {oauthBusy ? 'Connecting…' : 'Connect GitHub'}
@@ -307,9 +307,9 @@ export default function TopNav() {
         {user && (
           <div className="topnav-mobile-profile">
             {user.avatarUrl ? (
-              <img src={user.avatarUrl} alt="" width={32} height={32} className="w-8 h-8 rounded-xl object-cover border border-[rgba(15,26,32,0.08)]" />
+              <img src={user.avatarUrl} alt="" width={32} height={32} className="w-8 h-8 rounded-xl object-cover border border-line" />
             ) : (
-              <span className="w-8 h-8 rounded-xl bg-[#0F1A20] grid place-items-center text-sm font-semibold text-[#FDFCF9]">{user.name.charAt(0)}</span>
+              <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-accent-deep grid place-items-center text-sm font-bold text-white">{user.name.charAt(0)}</span>
             )}
             <span className="min-w-0">
               <span className="block text-sm font-medium text-ink truncate">{user.name}</span>
