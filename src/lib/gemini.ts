@@ -1,23 +1,27 @@
 /**
  * Gemini client for CodeDNA — works on any repository.
- * Handles free-tier keys (AIza…) and gracefully falls back across models.
- * The key you pasted (AQ.…) is NOT a Google AI Studio key — see getKeyHelp().
+ * Handles free-tier keys (AIza… and the newer AQ.…) and
+ * gracefully falls back across models. AQ keys only support
+ * the latest aliases (gemini-flash-latest etc) — old 1.5/2.0 404.
  */
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
-// Try in order — first that exists for this key wins.
+/** Tried in order — first that exists for this key wins. */
 const MODELS = [
+  "gemini-flash-latest",        // AQ keys: works (2.5 Flash stable)
+  "gemini-3-flash-preview",     // AQ keys: works
+  "gemini-flash-lite-latest",   // AQ keys: works (lite)
+  "gemini-2.5-flash",
   "gemini-2.0-flash",
   "gemini-2.0-flash-001",
   "gemini-1.5-flash",
   "gemini-1.5-flash-latest",
-  "gemini-1.5-flash-001",
+  "gemini-pro-latest",
   "gemini-1.5-pro",
-  "gemini-pro",
 ] as const
 
 export function getKeyHelp(): string {
-  return "Get a valid key at https://aistudio.google.com/apikey — it starts with AIza… . The key AQ.Ab8… you pasted is not a Generative Language API key."
+  return "Get a free key at https://aistudio.google.com/apikey → Create API key → Copy the AIza… key. If you see 'API not enabled' open https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com → ENABLE."
 }
 
 function getRawKey(): string | undefined {
@@ -27,28 +31,30 @@ function getRawKey(): string | undefined {
 export function getKeyStatus(): { ok: boolean; hint: string } {
   const k = getRawKey()
   if (!k) return { ok: false, hint: "Missing VITE_GEMINI_API_KEY — add it to .env and restart vite." }
-  if (k.startsWith("AQ.")) return { ok: false, hint: `This key starts with AQ. — ${getKeyHelp()}` }
-  if (!k.startsWith("AIza")) return { ok: false, hint: `Key should start with AIza… — ${getKeyHelp()} Current: ${k.slice(0, 8)}…` }
-  return { ok: true, hint: "Key looks valid." }
+  if (!k.startsWith("AIza") && !k.startsWith("AQ.")) return { ok: false, hint: `Key should start with AIza… or AQ.… — ${getKeyHelp()} Current: ${k.slice(0, 8)}…` }
+  return { ok: true, hint: k.startsWith("AQ.") ? "AQ key — using gemini-flash-latest" : "Key looks valid." }
 }
 
 function getClient() {
   const key = getRawKey()
   if (!key) throw new Error("Missing VITE_GEMINI_API_KEY — add it to .env and restart vite")
-  if (key.startsWith("AQ.")) throw new Error(getKeyHelp())
   return new GoogleGenerativeAI(key)
 }
 
 function isModelNotFound(e: any): boolean {
   const m = String(e?.message ?? e)
-  return /404|not found|unsupported/i.test(m)
+  return /404|not found|unsupported|no longer available/i.test(m)
+}
+
+function isQuota(e: any): boolean {
+  return /quota|exceeded|billing/i.test(String(e?.message ?? e))
 }
 
 function friendlyError(e: any): Error {
   const raw = String(e?.message ?? e)
   if (isModelNotFound(e)) {
     return new Error(
-      `${raw}\n\n→ ${getKeyHelp()}\n→ Also enable Generative Language API at https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com if you created the key in Cloud Console.`,
+      `${raw}\n\n→ Tried all models. For AQ. keys use gemini-flash-latest in AI Studio. ${getKeyHelp()}`,
     )
   }
   if (/API key not valid|API_KEY_INVALID/i.test(raw)) {
@@ -72,8 +78,8 @@ export async function generateText(prompt: string, opts?: { json?: boolean; syst
       return res.response.text()
     } catch (e) {
       lastErr = e
+      if (isQuota(e)) throw friendlyError(e)
       if (!isModelNotFound(e)) throw friendlyError(e)
-      // else try next model
     }
   }
   throw friendlyError(lastErr)
@@ -94,6 +100,7 @@ export async function streamText(prompt: string, onChunk: (text: string) => void
       return
     } catch (e) {
       lastErr = e
+      if (isQuota(e)) throw friendlyError(e)
       if (!isModelNotFound(e)) throw friendlyError(e)
     }
   }
@@ -117,7 +124,6 @@ export async function pingGemini() {
   return generateText("Reply with exactly: ok")
 }
 
-// Optional: list what this key can actually call (useful when debugging 404s)
 export async function listModels(): Promise<string[]> {
   const key = getRawKey()
   if (!key) throw new Error("Missing VITE_GEMINI_API_KEY")
