@@ -134,7 +134,7 @@ export default function RefactorIQComparison() {
         </div>
         <div className="flex justify-center gap-3">
           <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs">Back to Hub</button>
-          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
+          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-line text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
         </div>
       </div>
     );
@@ -166,7 +166,7 @@ export default function RefactorIQComparison() {
 
   return (
     <div className="space-y-8 pb-16 animate-fade-in max-w-6xl mx-auto">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
         <div>
           <div className="flex items-center gap-2 text-xs text-ink-muted">
             <button onClick={() => navigate('/refactoriq')} className="hover:text-ink transition-colors">RefactorIQ</button>
@@ -180,7 +180,7 @@ export default function RefactorIQComparison() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate(`/refactoriq/refactor/${studioBackId}`)} className="px-4 py-2 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface transition-all flex items-center gap-2 shadow-sm">
+          <button onClick={() => navigate(`/refactoriq/refactor/${studioBackId}`)} className="px-4 py-2 rounded-xl bg-surface-raised border border-line text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface transition-all flex items-center gap-2 shadow-sm">
             <Sliders className="w-3.5 h-3.5 text-accent" /><span>Refactoring Studio</span>
           </button>
           <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all flex items-center gap-1.5">
@@ -190,7 +190,7 @@ export default function RefactorIQComparison() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 flex flex-col justify-between">
+        <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5"><Award className="w-4 h-4 text-accent" />Refactoring Impact Score</span>
             <span className={`px-3 py-0.5 rounded-full text-xs font-bold border ${ia.impactScore >= 80 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : ia.impactScore >= 50 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20'}`}>{ia.label}</span>
@@ -198,7 +198,7 @@ export default function RefactorIQComparison() {
           <div className="py-6 flex items-baseline gap-3">
             <span className="font-serif text-6xl font-bold text-ink">{ia.impactScore}</span><span className="text-xl text-ink-muted font-serif">/ 100</span>
           </div>
-          <div className="border-t border-white/[0.08] pt-4 space-y-2">
+          <div className="border-t border-line pt-4 space-y-2">
             <div className="flex justify-between text-xs">
               <span className="text-ink-muted">Overall Score Improvement</span>
               <span className={`font-bold ${comparison.overallImprovementPercent > 0 ? 'text-emerald-400' : comparison.overallImprovementPercent < 0 ? 'text-rose-400' : 'text-ink-muted'}`}>
@@ -209,7 +209,7 @@ export default function RefactorIQComparison() {
           </div>
         </div>
 
-        <div className={`lg:col-span-2 rounded-3xl bg-surface border shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 space-y-4 flex flex-col justify-between ${hasRegressions ? 'border-amber-500/20' : 'border-emerald-500/20'}`}>
+        <div className={`lg:col-span-2 rounded-3xl bg-surface border shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-4 flex flex-col justify-between ${hasRegressions ? 'border-amber-500/20' : 'border-emerald-500/20'}`}>
           <div className="flex items-center justify-between">
             <div className={`flex items-center gap-2 ${hasRegressions ? 'text-amber-400' : 'text-emerald-400'}`}>
               <ShieldCheck className="w-5 h-5" /><h3 className="text-base font-bold text-ink">Regression Detection Engine</h3>
@@ -229,7 +229,7 @@ export default function RefactorIQComparison() {
             <p className="text-sm text-ink-secondary leading-relaxed">RefactorIQ continuously monitors side-effect risks across all dimensions. In this refactor, core quality metrics improved without inflating coupling or breaking test coverage.</p>
           )}
           {comparison.positiveHighlights.length > 0 && (
-            <ul className="space-y-1 pt-1 border-t border-white/[0.08]">
+            <ul className="space-y-1 pt-1 border-t border-line">
               {comparison.positiveHighlights.slice(0, 4).map((h, i) => (
                 <li key={i} className="text-xs text-ink-secondary flex gap-2"><CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5 text-emerald-400" /><span>{h}</span></li>
               ))}
@@ -252,9 +252,9 @@ export default function RefactorIQComparison() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-bold text-ink flex items-center gap-2"><BarChart3 className="w-5 h-5 text-accent" />Refactoring Results Comparison</h2>
-        <div className="overflow-hidden rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)]">
+        <div className="overflow-hidden rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)]">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-white/[0.08] bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
+            <thead className="border-b border-line bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-6">Dimension</th><th className="py-3.5 px-6 text-center text-rose-400">Before</th><th className="py-3.5 px-6 text-center text-emerald-400">After</th><th className="py-3.5 px-6 text-center">Improvement %</th><th className="py-3.5 px-6 text-right">Status</th></tr>
             </thead>
             <tbody className="divide-y divide-white/[0.06] text-ink-secondary">
@@ -276,14 +276,14 @@ export default function RefactorIQComparison() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
         <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sparkles className="w-4 h-4 text-accent" />Visual Dimension Comparison (Before vs After)</h3>
         <div className="h-72 w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <XAxis dataKey="metric" stroke="#94A3B8" fontSize={12} />
               <YAxis stroke="#94A3B8" fontSize={12} />
-              <Tooltip contentStyle={{ backgroundColor: '#0A0A0A', borderColor: 'rgba(255,40,0,0.45)', borderRadius: '12px', color: '#FFFFFF' }} />
+              <Tooltip contentStyle={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(255,40,0,0.45)', borderRadius: '12px', color: '#0F1A20' }} />
               <Legend wrapperStyle={{ color: '#E2E8F0' }} />
               <Bar dataKey="before" name="Before Refactor" fill="#FB7185" radius={[4, 4, 0, 0]} />
               <Bar dataKey="after" name="After Refactor" fill="#34D399" radius={[4, 4, 0, 0]} />

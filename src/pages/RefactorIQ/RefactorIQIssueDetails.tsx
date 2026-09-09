@@ -159,7 +159,7 @@ export default function RefactorIQIssueDetails() {
         <div><h2 className="text-xl font-bold text-ink">Issue details unavailable</h2><p className="text-sm text-ink-muted mt-1">{error}</p></div>
         <div className="flex justify-center gap-3">
           <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs">Back to RefactorIQ Hub</button>
-          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
+          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-line text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
         </div>
       </div>
     );
@@ -180,7 +180,7 @@ export default function RefactorIQIssueDetails() {
         <span className="text-accent font-medium truncate">{fileName}</span>
       </div>
 
-      <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-7 space-y-6">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -190,7 +190,7 @@ export default function RefactorIQIssueDetails() {
             <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink flex items-center gap-2 mt-1"><FileCode className="w-7 h-7 text-accent" />{fileName}</h1>
             {plan?.problem && <p className="text-xs text-ink-muted max-w-3xl leading-relaxed">{plan.problem}</p>}
           </div>
-          <div className="flex items-center gap-4 bg-surface-raised px-5 py-3 rounded-2xl border border-white/[0.08]">
+          <div className="flex items-center gap-4 bg-surface-raised px-5 py-3 rounded-2xl border border-line">
             <div className="text-right">
               <div className="text-[0.65rem] uppercase tracking-wider text-ink-muted font-semibold">Priority</div>
               <div className="font-serif text-2xl font-bold text-amber-400">{priority} <span className="text-xs font-sans text-ink-faint">pts</span></div>
@@ -217,7 +217,7 @@ export default function RefactorIQIssueDetails() {
         )}
       </div>
 
-      <div className="flex gap-2 border-b border-white/[0.08] pb-3 flex-wrap">
+      <div className="flex gap-2 border-b border-line pb-3 flex-wrap">
         {(['explanation', 'metrics', 'code'] as Tab[]).map((t) => (
           <button key={t} onClick={() => setActiveTab(t)} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeTab === t ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
             {t === 'explanation' ? 'Why is this a problem? & Recommendations' : t === 'metrics' ? 'AST Structural Breakdown' : 'Inspect Source'}
@@ -227,7 +227,7 @@ export default function RefactorIQIssueDetails() {
 
       {activeTab === 'explanation' && (
         <div className="space-y-6">
-          <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
             <div className="flex items-center gap-2 text-amber-400"><ShieldAlert className="w-5 h-5" /><h3 className="text-base font-bold text-ink">Why is this a problem?</h3></div>
             <p className="text-sm text-ink-secondary leading-relaxed">{plan?.problem || 'This hotspot was flagged by deterministic threshold rules during AST traversal.'}</p>
             <ul className="space-y-2 text-xs text-ink-secondary list-disc list-inside">
@@ -237,7 +237,7 @@ export default function RefactorIQIssueDetails() {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-5">
+          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-5">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2 text-accent"><Sparkles className="w-5 h-5 text-accent" /><h3 className="text-base font-bold text-ink">Recommended Refactoring Pattern</h3></div>
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-accent/10 text-accent border border-accent/20">{plan?.refactoringType || 'EXTRACT_CLASS'}</span>
@@ -255,7 +255,7 @@ export default function RefactorIQIssueDetails() {
                 <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Workflow className="w-4 h-4" /> Guard Clauses</div><p className="text-xs text-ink-muted">Invert nested conditionals into early returns to reduce nesting depth.</p></div>
               </div>
             )}
-            <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08]">
+            <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-line">
               <div className="text-xs text-ink-muted">Refactoring type: <span className="font-bold text-accent">{plan?.refactoringType || '—'}</span></div>
               <button onClick={() => navigate(`/refactoriq/refactor/${id}`, { state: { plan, fileMetric, rawSource: codeSource } })} className="px-6 py-3 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all flex items-center gap-2"><span>Open in Refactoring Studio</span><ArrowRight className="w-4 h-4" /></button>
             </div>
@@ -264,7 +264,7 @@ export default function RefactorIQIssueDetails() {
       )}
 
       {activeTab === 'metrics' && (
-        <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
           <h3 className="text-base font-bold text-ink">JavaParser AST Inspection Details</h3>
           <p className="text-xs text-ink-muted">Method-level decision trees and nesting depths extracted via JavaParser</p>
           {methodMetrics.length > 0 ? (
@@ -285,10 +285,10 @@ export default function RefactorIQIssueDetails() {
       )}
 
       {activeTab === 'code' && (
-        <div className="rounded-2xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-5 space-y-3">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-5 space-y-3">
           <div className="flex justify-between items-center text-xs text-ink-muted"><span>{fileName} — Source Preview</span><span className="font-mono">{fileMetric ? `${fileMetric.linesOfCode} LOC` : ''}</span></div>
           {codeSource ? (
-            <pre className="font-mono text-xs text-ink-secondary overflow-x-auto p-4 bg-void border border-white/[0.08] rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>
+            <pre className="font-mono text-xs text-ink-secondary overflow-x-auto p-4 bg-void border border-line rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>
           ) : (
             <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-8 text-center space-y-2">
               <p className="text-sm text-ink">Source not available for this file.</p>

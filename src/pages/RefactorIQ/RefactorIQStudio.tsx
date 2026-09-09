@@ -166,7 +166,7 @@ export default function RefactorIQStudio() {
         <div><h2 className="text-xl font-bold text-ink">Refactoring plan unavailable</h2><p className="text-sm text-ink-muted mt-1">{error || 'Could not load the plan for this issue.'}</p></div>
         <div className="flex justify-center gap-3">
           <button onClick={() => navigate('/refactoriq')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs">Back to Hub</button>
-          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-white/[0.08] text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
+          <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-xl bg-surface-raised border border-line text-xs font-semibold text-ink-muted hover:text-ink hover:bg-surface">Go Back</button>
         </div>
       </div>
     );
@@ -177,7 +177,7 @@ export default function RefactorIQStudio() {
 
   return (
     <div className="space-y-8 pb-16 animate-fade-in max-w-6xl mx-auto">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-xs uppercase font-bold tracking-widest text-accent">Refactoring Studio</span>
@@ -197,7 +197,7 @@ export default function RefactorIQStudio() {
         <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-start gap-2"><AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" /><span>{reanalyzeError}</span></div>
       )}
 
-      <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sliders className="w-4 h-4 text-accent" />Structured Step-by-Step Refactoring Plan</h3>
           <span className="text-xs text-ink-muted">{appliedSteps.length} of {steps.length || 1} steps selected</span>
@@ -208,7 +208,7 @@ export default function RefactorIQStudio() {
               const num = idx + 1;
               const isDone = appliedSteps.includes(num);
               return (
-                <div key={idx} onClick={() => toggleStep(num)} className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${isDone ? 'border-emerald-500/30 bg-emerald-500/10 text-ink' : 'border-white/[0.08] bg-surface-raised text-ink-muted hover:border-accent/30'}`}>
+                <div key={idx} onClick={() => toggleStep(num)} className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${isDone ? 'border-emerald-500/30 bg-emerald-500/10 text-ink' : 'border-line bg-surface-raised text-ink-muted hover:border-accent/30'}`}>
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-[0.65rem] font-bold uppercase tracking-wider text-accent">Step {num}</span>
                     <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-bold ${isDone ? 'bg-emerald-500 text-void' : 'border border-white/[0.12] text-ink-muted'}`}>{isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : num}</div>
@@ -223,11 +223,11 @@ export default function RefactorIQStudio() {
         )}
       </div>
 
-      <div className="rounded-3xl bg-surface border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.04),0_12px_32px_-16px_rgba(0,0,0,0.5)] p-6 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-4">
           <div className="flex items-center gap-3"><Code2 className="w-5 h-5 text-accent" /><span className="text-sm font-bold text-ink">Before vs After Code</span><span className="text-xs text-ink-muted hidden sm:inline">— {fileName}</span></div>
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="flex items-center gap-2 bg-surface-raised p-1 rounded-xl border border-white/[0.08] text-xs">
+            <div className="flex items-center gap-2 bg-surface-raised p-1 rounded-xl border border-line text-xs">
               {(['split', 'before', 'after', 'diff'] as const).map((v) => (
                 <button key={v} onClick={() => setActiveView(v)} className={`px-3 py-1 rounded-lg font-semibold transition-all ${activeView === v ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface'}`}>{v === 'split' ? 'Side-by-Side' : v === 'diff' ? 'Unified Diff' : v === 'before' ? 'Original' : 'Refactored'}</button>
               ))}
@@ -236,7 +236,7 @@ export default function RefactorIQStudio() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 bg-surface-raised p-1 rounded-xl border border-white/[0.08] text-xs">
+          <div className="flex items-center gap-2 bg-surface-raised p-1 rounded-xl border border-line text-xs">
             <button onClick={() => setTransformType('GUARD_CLAUSE')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'GUARD_CLAUSE' ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Guard Clauses</button>
             <button onClick={() => setTransformType('EXTRACT_CLASS')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'EXTRACT_CLASS' ? 'bg-accent text-void font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Extract Validator</button>
           </div>
@@ -249,15 +249,15 @@ export default function RefactorIQStudio() {
 
         {activeView === 'split' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-2">
-            <div className="rounded-2xl border border-white/[0.08] bg-surface-raised shadow-sm p-4 space-y-2">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
+            <div className="rounded-2xl border border-line bg-surface-raised shadow-sm p-4 space-y-2">
+              <div className="flex items-center justify-between border-b border-line pb-2">
                 <span className="text-xs font-mono font-bold text-ink flex items-center gap-2"><FileCode className="w-3.5 h-3.5 text-accent" /> Before: {fileName}</span>
                 <span className="text-[0.65rem] text-ink-muted">{beforeCode ? `${beforeCode.split('\n').length} lines` : 'empty'}</span>
               </div>
               <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={18} placeholder="Original source — paste Java here if empty, or leave as fetched." className="w-full font-mono text-[0.7rem] bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" />
             </div>
             <div className="rounded-2xl border border-emerald-500/20 bg-surface-raised shadow-sm p-4 space-y-2">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
+              <div className="flex items-center justify-between border-b border-line pb-2">
                 <span className="text-xs font-mono font-bold text-emerald-400">After: {fileName} (Preview)</span>
                 <span className="text-[0.65rem] text-emerald-400 font-mono">{afterCode ? 'preview ready — editable' : 'run Generate Preview'}</span>
               </div>
@@ -266,22 +266,22 @@ export default function RefactorIQStudio() {
           </div>
         )}
         {activeView === 'before' && (
-          <div className="rounded-2xl border border-white/[0.08] bg-surface-raised shadow-sm p-4">
+          <div className="rounded-2xl border border-line bg-surface-raised shadow-sm p-4">
             <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Original source" />
           </div>
         )}
         {activeView === 'after' && (
-          <div className="rounded-2xl border border-white/[0.08] bg-surface-raised shadow-sm p-4">
+          <div className="rounded-2xl border border-line bg-surface-raised shadow-sm p-4">
             <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Refactored preview — editable before re-analysis" />
           </div>
         )}
         {activeView === 'diff' && (
-          <div className="rounded-2xl border border-white/[0.08] bg-void p-4">
+          <div className="rounded-2xl border border-line bg-void p-4">
             {diffText ? <pre className="font-mono text-xs text-ink-secondary overflow-x-auto max-h-[520px] leading-relaxed whitespace-pre-wrap">{diffText}</pre> : <p className="text-sm text-ink-muted text-center py-8">No diff yet — run Generate Preview first.</p>}
           </div>
         )}
 
-        <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08]">
+        <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-line">
           <div className="flex items-center gap-2 text-xs text-ink-muted"><ShieldCheck className="w-4 h-4 text-emerald-400" /><span>Safe transformations generated via RefactoringEngine (guard clauses / validator scaffold).</span></div>
           <button onClick={handleReanalyze} disabled={reanalyzing} className="px-6 py-3 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all flex items-center gap-2 disabled:opacity-50">
             {reanalyzing ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : null}<span>{reanalyzing ? 'Re-analyzing…' : 'Apply & View Comparison'}</span><ArrowRight className="w-3.5 h-3.5" />

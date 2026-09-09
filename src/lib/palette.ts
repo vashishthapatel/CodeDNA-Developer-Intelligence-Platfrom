@@ -14,39 +14,39 @@ export const luxe = {
   pearl: '#FFFFFF',     // Crisp Pure White
   garnet: '#FF2800',    // Ferrari Rosso Corsa
   amber: '#F59E0B',     // Speedometer Amber
-  ink: '#FFFFFF',       // 100% luminous contrast text
-  inkSecondary: '#F1F5F9', // Crisp silver text
-  inkMuted: '#94A3B8',  // Steel gray
-  inkFaint: '#64748B',  // Graphite
-  hairline: 'rgba(255, 255, 255, 0.08)',
-  axis: 'rgba(255, 255, 255, 0.12)',
+  ink: '#0F1A20',       // Ink on white
+  inkSecondary: '#1E293B', // Deep slate
+  inkMuted: '#000000',  // Steel gray
+  inkFaint: '#000000',  // Graphite light
+  hairline: 'rgba(15, 26, 32, 0.08)',
+  axis: 'rgba(15, 26, 32, 0.10)',
 } as const
 
-/** Ordered series — vibrant & high-contrast on pure pitch black surfaces */
+/** Ordered series — vibrant & high-contrast on clean white surfaces */
 export const series = [
   luxe.ember,
   luxe.burnt,
   '#FF5940',
   luxe.emberDeep,
-  '#94A3B8',
+  '#000000',
   '#991400',
 ] as const
 
-/** Luxury pure pitch black glass tooltip with Ferrari Red micro-border */
+/** Luxury clean white glass tooltip with Ferrari Red micro-border */
 export const glassTooltip = {
-  backgroundColor: '#0A0A0A',
+  backgroundColor: '#FFFFFF',
   border: '1px solid rgba(255, 40, 0, 0.45)',
   borderRadius: '14px',
-  color: '#FFFFFF',
-  boxShadow: '0 16px 40px -12px rgba(0,0,0,0.95), 0 0 16px -4px rgba(255, 40, 0, 0.30)',
+  color: '#0F1A20',
+  boxShadow: '0 16px 40px -12px rgba(15,26,32,0.08), 0 0 16px -4px rgba(255, 40, 0, 0.18)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#94A3B8', fontSize: 12 } as const
+export const axisTick = { fill: '#000000', fontSize: 12 } as const
 
-/** Heatmap ramp: pure black tile → subtle red → vivid red → radiant flare → Ferrari Rosso Corsa */
+/** Heatmap ramp: light tile → subtle red → vivid red → radiant flare → Ferrari Rosso Corsa */
 export const heatRamp = [
-  'rgba(255, 255, 255, 0.05)',
+  'rgba(15, 26, 32, 0.06)',
   'rgba(255, 40, 0, 0.25)',
   'rgba(255, 40, 0, 0.50)',
   'rgba(255, 89, 64, 0.75)',
