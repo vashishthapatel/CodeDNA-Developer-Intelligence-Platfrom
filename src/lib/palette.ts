@@ -9,17 +9,17 @@ export const luxe = {
   ember: '#FF2800',     // Ferrari Rosso Corsa
   emberDeep: '#D01E00', // Deep Scuderia Rosso
   emberDark: '#991400', // Carbon Red
-  burnt: '#E2E8F0',     // Platinum Silver (0% blue, pure metallic contrast)
+  burnt: '#334155',     // Platinum Slate (dark luxury contrast)
   apricot: '#FF5940',   // Radiant Flare
   pearl: '#FFFFFF',     // Crisp Pure White
   garnet: '#FF2800',    // Ferrari Rosso Corsa
   amber: '#F59E0B',     // Speedometer Amber
-  ink: '#0F1A20',       // Ink on white
-  inkSecondary: '#1E293B', // Deep slate
-  inkMuted: '#000000',  // Steel gray
-  inkFaint: '#000000',  // Graphite light
-  hairline: 'rgba(15, 26, 32, 0.08)',
-  axis: 'rgba(15, 26, 32, 0.10)',
+  ink: '#F1F5FA',       // Ink on dark
+  inkSecondary: '#CBD5E1', // Soft slate on dark
+  inkMuted: '#94A3B8',  // Steel on dark
+  inkFaint: '#64748B',  // Graphite on dark
+  hairline: 'rgba(255, 255, 255, 0.08)',
+  axis: 'rgba(255, 255, 255, 0.10)',
 } as const
 
 /** Ordered series — vibrant & high-contrast on clean white surfaces */
@@ -34,19 +34,19 @@ export const series = [
 
 /** Luxury clean white glass tooltip with Ferrari Red micro-border */
 export const glassTooltip = {
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#121B2E',
   border: '1px solid rgba(255, 40, 0, 0.45)',
   borderRadius: '14px',
-  color: '#0F1A20',
-  boxShadow: '0 16px 40px -12px rgba(15,26,32,0.08), 0 0 16px -4px rgba(255, 40, 0, 0.18)',
+  color: '#F1F5FA',
+  boxShadow: '0 16px 40px -12px rgba(0,0,0,0.55), 0 0 16px -4px rgba(255, 40, 0, 0.25)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#000000', fontSize: 12 } as const
+export const axisTick = { fill: '#94A3B8', fontSize: 12 } as const
 
 /** Heatmap ramp: light tile → subtle red → vivid red → radiant flare → Ferrari Rosso Corsa */
 export const heatRamp = [
-  'rgba(15, 26, 32, 0.06)',
+  'rgba(255, 255, 255, 0.06)',
   'rgba(255, 40, 0, 0.25)',
   'rgba(255, 40, 0, 0.50)',
   'rgba(255, 89, 64, 0.75)',

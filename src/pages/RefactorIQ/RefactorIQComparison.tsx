@@ -190,7 +190,7 @@ export default function RefactorIQComparison() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 flex flex-col justify-between">
+        <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-7 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5"><Award className="w-4 h-4 text-accent" />Refactoring Impact Score</span>
             <span className={`px-3 py-0.5 rounded-full text-xs font-bold border ${ia.impactScore >= 80 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : ia.impactScore >= 50 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20'}`}>{ia.label}</span>
@@ -209,7 +209,7 @@ export default function RefactorIQComparison() {
           </div>
         </div>
 
-        <div className={`lg:col-span-2 rounded-3xl bg-surface border shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-4 flex flex-col justify-between ${hasRegressions ? 'border-amber-500/20' : 'border-emerald-500/20'}`}>
+        <div className={`lg:col-span-2 rounded-3xl bg-surface border shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-7 space-y-4 flex flex-col justify-between ${hasRegressions ? 'border-amber-500/20' : 'border-emerald-500/20'}`}>
           <div className="flex items-center justify-between">
             <div className={`flex items-center gap-2 ${hasRegressions ? 'text-amber-400' : 'text-emerald-400'}`}>
               <ShieldCheck className="w-5 h-5" /><h3 className="text-base font-bold text-ink">Regression Detection Engine</h3>
@@ -252,7 +252,7 @@ export default function RefactorIQComparison() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-bold text-ink flex items-center gap-2"><BarChart3 className="w-5 h-5 text-accent" />Refactoring Results Comparison</h2>
-        <div className="overflow-hidden rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)]">
+        <div className="overflow-hidden rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)]">
           <table className="w-full text-left text-xs">
             <thead className="border-b border-line bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-6">Dimension</th><th className="py-3.5 px-6 text-center text-rose-400">Before</th><th className="py-3.5 px-6 text-center text-emerald-400">After</th><th className="py-3.5 px-6 text-center">Improvement %</th><th className="py-3.5 px-6 text-right">Status</th></tr>
@@ -276,7 +276,7 @@ export default function RefactorIQComparison() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-6 space-y-4">
         <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sparkles className="w-4 h-4 text-accent" />Visual Dimension Comparison (Before vs After)</h3>
         <div className="h-72 w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">

@@ -180,7 +180,7 @@ export default function RefactorIQIssueDetails() {
         <span className="text-accent font-medium truncate">{fileName}</span>
       </div>
 
-      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-7 space-y-6">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-7 space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -227,7 +227,7 @@ export default function RefactorIQIssueDetails() {
 
       {activeTab === 'explanation' && (
         <div className="space-y-6">
-          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
+          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-6 space-y-4">
             <div className="flex items-center gap-2 text-amber-400"><ShieldAlert className="w-5 h-5" /><h3 className="text-base font-bold text-ink">Why is this a problem?</h3></div>
             <p className="text-sm text-ink-secondary leading-relaxed">{plan?.problem || 'This hotspot was flagged by deterministic threshold rules during AST traversal.'}</p>
             <ul className="space-y-2 text-xs text-ink-secondary list-disc list-inside">
@@ -237,7 +237,7 @@ export default function RefactorIQIssueDetails() {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-5">
+          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-6 space-y-5">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2 text-accent"><Sparkles className="w-5 h-5 text-accent" /><h3 className="text-base font-bold text-ink">Recommended Refactoring Pattern</h3></div>
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-accent/10 text-accent border border-accent/20">{plan?.refactoringType || 'EXTRACT_CLASS'}</span>
@@ -264,7 +264,7 @@ export default function RefactorIQIssueDetails() {
       )}
 
       {activeTab === 'metrics' && (
-        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-6 space-y-4">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-6 space-y-4">
           <h3 className="text-base font-bold text-ink">JavaParser AST Inspection Details</h3>
           <p className="text-xs text-ink-muted">Method-level decision trees and nesting depths extracted via JavaParser</p>
           {methodMetrics.length > 0 ? (
@@ -285,7 +285,7 @@ export default function RefactorIQIssueDetails() {
       )}
 
       {activeTab === 'code' && (
-        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(15,26,32,0.04),0_12px_32px_-16px_rgba(15,26,32,0.08)] p-5 space-y-3">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-5 space-y-3">
           <div className="flex justify-between items-center text-xs text-ink-muted"><span>{fileName} — Source Preview</span><span className="font-mono">{fileMetric ? `${fileMetric.linesOfCode} LOC` : ''}</span></div>
           {codeSource ? (
             <pre className="font-mono text-xs text-ink-secondary overflow-x-auto p-4 bg-void border border-line rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>

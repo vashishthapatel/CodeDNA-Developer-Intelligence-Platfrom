@@ -8,11 +8,11 @@
   <style>
     :root {
       --paper: #FDFCF9;
-      --card: #FFFFFF;
+      --card: #121B2E;
       --ink: #0F1A20;
       --muted: #6B7A89;
       --faint: #9AA8B6;
-      --line: rgba(15, 26, 32, 0.08);
+      --line: rgba(0, 0, 0, 0.35);
       --accent: #C2A47A;
       --accent-soft: #E8DCC8;
     }
@@ -29,7 +29,7 @@
       content:"";position:fixed;inset:0;pointer-events:none;opacity:0.035;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
     }
-    .card{position:relative;z-index:1;width:min(520px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 1px 0 rgba(15,26,32,0.04), 0 20px 48px -20px rgba(15,26,32,0.12)}
+    .card{position:relative;z-index:1;width:min(520px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.35), 0 20px 48px -20px rgba(0, 0, 0, 0.45)}
     .card::before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(194,164,122,0.38),transparent)}
     .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
     .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(194,164,122,0.45)}

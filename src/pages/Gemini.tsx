@@ -76,7 +76,7 @@ function RenderAssistant({ text }: { text: string }) {
           {lines.map((line, li) => (
             <span key={li}>
               {line.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).map((tok, ti) => {
-                if (tok.startsWith('`') && tok.endsWith('`')) return <code key={ti} className="px-1.5 py-0.5 rounded-md bg-[#F5F5F7] border border-line font-mono text-[0.82em] text-[#0F1A20]">{tok.slice(1, -1)}</code>
+                if (tok.startsWith('`') && tok.endsWith('`')) return <code key={ti} className="px-1.5 py-0.5 rounded-md bg-[rgba(255,255,255,0.08)] border border-white/10 font-mono text-[0.82em] text-[#F1F5FA]">{tok.slice(1, -1)}</code>
                 if (tok.startsWith('**') && tok.endsWith('**')) return <strong key={ti} className="font-semibold text-ink">{tok.slice(2, -2)}</strong>
                 return <span key={ti}>{tok}</span>
               })}
@@ -253,7 +253,7 @@ export default function Gemini() {
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
                   {QUICK.map(({ label, icon: Icon, prompt }) => (
-                    <button key={label} onClick={() => send(prompt(selectedRepo))} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3.5 py-2 text-xs font-semibold text-ink hover:border-accent/40 hover:text-accent hover:bg-accent/5 transition-colors">
+                    <button key={label} onClick={() => send(prompt(selectedRepo))} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-[var(--panel)] px-3.5 py-2 text-xs font-semibold text-ink hover:border-accent/40 hover:text-accent hover:bg-accent/5 transition-colors">
                       <Icon className="w-3.5 h-3.5" /> {label}
                     </button>
                   ))}
@@ -262,7 +262,7 @@ export default function Gemini() {
             ) : (
               messages.map((m) => (
                 <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`group relative max-w-[86%] rounded-2xl px-4 py-3.5 text-sm leading-6 ${m.role === 'user' ? 'bg-gradient-to-br from-accent to-accent-deep text-white shadow-glow-sm border border-accent/40 rounded-br-md' : m.error ? 'bg-amber-50 border border-amber-200 text-amber-900' : 'bg-white border border-line shadow-sm rounded-bl-md'}`}>
+                  <div className={`group relative max-w-[86%] rounded-2xl px-4 py-3.5 text-sm leading-6 ${m.role === 'user' ? 'bg-gradient-to-br from-accent to-accent-deep text-white shadow-glow-sm border border-accent/40 rounded-br-md' : m.error ? 'bg-amber-50 border border-amber-200 text-amber-900' : 'bg-[var(--panel)] border border-white/10 shadow-sm rounded-bl-md'}`}>
                     {m.role === 'assistant' ? (
                       <div>
                         <div className="mb-1 flex items-center gap-1.5 text-[0.68rem] tracking-luxe uppercase font-semibold text-accent">
@@ -275,7 +275,7 @@ export default function Gemini() {
                     )}
                     <button
                       onClick={() => copy(m.text, m.id)}
-                      className={`absolute -bottom-2 ${m.role === 'user' ? '-left-2' : '-right-2'} w-7 h-7 rounded-full grid place-items-center border bg-white text-ink-faint hover:text-ink hover:border-accent/30 shadow-sm transition-all ${copiedId === m.id ? '!text-emerald-600 !border-emerald-200 bg-emerald-50' : 'opacity-0 group-hover:opacity-100'}`}
+                      className={`absolute -bottom-2 ${m.role === 'user' ? '-left-2' : '-right-2'} w-7 h-7 rounded-full grid place-items-center border bg-[var(--panel)] text-ink-faint hover:text-ink hover:border-accent/30 shadow-sm transition-all ${copiedId === m.id ? '!text-emerald-600 !border-emerald-200 bg-emerald-50' : 'opacity-0 group-hover:opacity-100'}`}
                       aria-label="Copy"
                     >
                       {copiedId === m.id ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -286,7 +286,7 @@ export default function Gemini() {
             )}
             {busy && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-md bg-white border border-line px-4 py-3.5 text-sm text-ink-muted inline-flex items-center gap-2">
+                <div className="rounded-2xl rounded-bl-md bg-[var(--panel)] border border-white/10 px-4 py-3.5 text-sm text-ink-muted inline-flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin text-accent" /> Thinking…
                 </div>
               </div>
@@ -294,7 +294,7 @@ export default function Gemini() {
           </div>
 
           {/* composer */}
-          <div className="border-t border-line bg-[#FCFCFD] p-3 sm:p-4">
+          <div className="border-t border-line bg-[#0A101C] p-3 sm:p-4">
             <div className="flex items-end gap-2 sm:gap-3">
               <div className="flex-1 relative">
                 <textarea
@@ -337,7 +337,7 @@ export default function Gemini() {
             <div className="relative">
               <button
                 onClick={() => setRepoPickerOpen((v) => !v)}
-                className="w-full flex items-center justify-between gap-3 rounded-xl border border-line bg-white px-3 py-3 text-sm hover:border-accent/30 transition-colors"
+                className="w-full flex items-center justify-between gap-3 rounded-xl border border-line bg-[var(--panel)] px-3 py-3 text-sm hover:border-accent/30 transition-colors"
               >
                 <span className="flex items-center gap-2.5 min-w-0">
                   <span className="w-8 h-8 rounded-lg grid place-items-center bg-accent/10 border border-accent/20 text-accent shrink-0"><Github className="w-4 h-4" /></span>
@@ -349,7 +349,7 @@ export default function Gemini() {
                 <ChevronDown className={`w-4 h-4 text-ink-faint transition-transform ${repoPickerOpen ? 'rotate-180' : ''}`} />
               </button>
               {repoPickerOpen && (
-                <div className="absolute z-20 mt-2 w-full rounded-xl border border-line bg-white shadow-xl overflow-hidden max-h-72 overflow-auto">
+                <div className="absolute z-20 mt-2 w-full rounded-xl border border-line bg-[var(--panel)] shadow-xl overflow-hidden max-h-72 overflow-auto">
                   <button
                     onClick={() => { setSelectedRepo(''); setRepoPickerOpen(false) }}
                     className={`w-full text-left px-3 py-2.5 text-sm hover:bg-accent/5 ${!selectedRepo ? 'bg-accent/10 text-accent font-semibold' : 'text-ink'}`}
@@ -371,11 +371,11 @@ export default function Gemini() {
               )}
             </div>
             {selectedMeta && (
-              <div className="mt-3 rounded-xl bg-[#F5F5F7] border border-line p-3 space-y-2">
+              <div className="mt-3 rounded-xl bg-[rgba(255,255,255,0.06)] border border-white/10 p-3 space-y-2">
                 <p className="text-xs leading-5 text-ink-muted line-clamp-3">{selectedMeta.description || 'No description.'}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {(selectedMeta.stack || []).slice(0, 6).map((t) => (
-                    <span key={t} className="px-2 py-1 rounded-full bg-white border border-line text-[0.70rem] font-medium text-ink-secondary">{t}</span>
+                    <span key={t} className="px-2 py-1 rounded-full bg-[var(--panel)] border border-white/10 text-[0.70rem] font-medium text-ink-secondary">{t}</span>
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -397,7 +397,7 @@ export default function Gemini() {
                   key={label}
                   onClick={() => send(prompt(selectedRepo || undefined))}
                   disabled={busy}
-                  className="flex flex-col items-start gap-2 rounded-xl border border-line bg-white p-3 text-left hover:border-accent/35 hover:bg-accent/[0.04] transition-colors disabled:opacity-50"
+                  className="flex flex-col items-start gap-2 rounded-xl border border-line bg-[var(--panel)] p-3 text-left hover:border-accent/35 hover:bg-accent/[0.04] transition-colors disabled:opacity-50"
                 >
                   <span className="w-8 h-8 rounded-lg grid place-items-center bg-accent/10 border border-accent/20 text-accent"><Icon className="w-4 h-4" /></span>
                   <span className="text-xs font-semibold leading-tight text-ink">{label}</span>
@@ -407,7 +407,7 @@ export default function Gemini() {
           </div>
 
           {/* tips */}
-          <div className="rounded-xl border border-line bg-white p-4">
+          <div className="rounded-xl border border-line bg-[var(--panel)] p-4">
             <p className="text-xs font-semibold text-ink flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent" /> Tips</p>
             <ul className="mt-2 space-y-1.5 text-xs leading-5 text-ink-muted list-disc pl-4">
               <li>Paste a file or error and ask "why is this bad?"</li>
