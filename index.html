@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <!-- Background Video -->
-    <div class="bg">
+    <!-- Background Video (hidden) -->
+    <div class="bg" hidden>
         <video class="bg-video" autoplay muted loop playsinline>
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4" type="video/mp4">
         </video>
@@ -63,7 +63,8 @@
         </div>
 
         <!-- Hero -->
-        <div class="hero-wrapper">
+        <div class="hero-wrapper" id="heroStage">
+            <div id="landingAnim" aria-hidden="true"></div>
             <main class="hero">
                 <div class="hero-badge">
                     <span class="badge-pulse"></span>
@@ -575,5 +576,6 @@
     </div>
 
     <script src="/landing.js"></script>
+    <script src="/landing-anim.js"></script>
 </body>
 </html>
