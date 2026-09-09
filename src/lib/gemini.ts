@@ -21,7 +21,7 @@ const MODELS = [
 ] as const
 
 export function getKeyHelp(): string {
-  return "Get a free key at https://aistudio.google.com/apikey → Create API key → Copy the AIza… key. If you see 'API not enabled' open https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com → ENABLE."
+  return "Get a free key at https://aistudio.google.com/apikey → Create API key → Copy the key (AIza… or newer AQ.… — both work). If you see 'API not enabled' open https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com → ENABLE."
 }
 
 function getRawKey(): string | undefined {
