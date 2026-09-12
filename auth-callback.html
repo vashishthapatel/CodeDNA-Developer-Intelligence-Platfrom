@@ -7,37 +7,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #FDFCF9;
-      --card: #121B2E;
-      --ink: #0F1A20;
-      --muted: #6B7A89;
-      --faint: #9AA8B6;
-      --line: rgba(0, 0, 0, 0.35);
-      --accent: #C2A47A;
-      --accent-soft: #E8DCC8;
+      --paper: #FFFFFF;
+      --card: #FFFFFF;
+      --ink: #000000;
+      --muted: rgba(0,0,0,0.62);
+      --faint: rgba(0,0,0,0.40);
+      --line: rgba(0, 0, 0, 0.08);
+      --accent: #FF2800;
+      --accent-soft: #FF2800;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       min-height:100vh;
       display:grid;place-items:center;
-      background: var(--paper);
-      color:var(--ink);
+      background: #FFFFFF;
+      color:#000000;
       font-family:Inter,system-ui,sans-serif;
       padding:24px;
     }
     body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;opacity:0.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:0.04;
+      background:
+        radial-gradient(ellipse 900px 500px at 50% -12%, rgba(255, 40, 0, 0.08) 0%, transparent 62%);
     }
-    .card{position:relative;z-index:1;width:min(520px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.35), 0 20px 48px -20px rgba(0, 0, 0, 0.45)}
-    .card::before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(194,164,122,0.38),transparent)}
-    .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-    .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(194,164,122,0.45)}
-    h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
-    p{margin-top:10px;color:var(--muted);line-height:1.6;font-size:13.5px}
-    .mono{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--faint);word-break:break-all;margin-top:10px}
+    .card{position:relative;z-index:1;width:min(520px,100%);background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:18px;padding:32px;box-shadow:0 8px 32px -12px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06)}
+    .card::before{content:"";position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,40,0,0.35),transparent)}
+    .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:#000000;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(255, 40, 0,0.45)}
+    h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;line-height:1.2;color:#000000;letter-spacing:-0.02em}
+    p{margin-top:10px;color:rgba(0,0,0,0.68);line-height:1.6;font-size:13.5px}
+    .mono{font-family:ui-monospace,monospace;font-size:11.5px;color:rgba(0,0,0,0.45);word-break:break-all;margin-top:10px}
     a{color:var(--accent);text-underline-offset:2px}
-    a:hover{color:#8C704F}
+    a:hover{color:#D01E00}
   </style>
 </head>
 <body>

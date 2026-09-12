@@ -108,7 +108,7 @@ export default function RefactorIQAnalysis() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#C2A47A]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-accent" />
       </div>
     );
   }
@@ -181,7 +181,7 @@ export default function RefactorIQAnalysis() {
           {breakdown ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
               {breakdown.map((item, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] space-y-1">
+                <div key={idx} className="p-3 rounded-xl bg-surface-raised border border-black/10 space-y-1">
                   <div className="text-xs font-medium text-ink-secondary truncate">{item.label}</div>
                   <div className="flex justify-between items-baseline"><span className="text-xs text-ink-muted">{item.weight}</span><span className="text-xs font-bold text-ink">{item.val}</span></div>
                   <div className="text-[0.65rem] text-accent font-mono">{item.status}</div>
@@ -189,7 +189,7 @@ export default function RefactorIQAnalysis() {
               ))}
             </div>
           ) : (
-            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">No file metrics yet — analysis covered no Java files.</div>
+            <div className="rounded-xl bg-surface-raised border border-black/10 p-6 text-center text-sm text-ink-muted">No file metrics yet — analysis covered no Java files.</div>
           )}
         </div>
       </div>
@@ -204,7 +204,7 @@ export default function RefactorIQAnalysis() {
             <thead className="border-b border-line bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-4">Class / File</th><th className="py-3.5 px-4 text-center">Score</th><th className="py-3.5 px-4 text-center">LOC</th><th className="py-3.5 px-4 text-center">Complexity</th><th className="py-3.5 px-4 text-center">Nesting</th><th className="py-3.5 px-4 text-center">Imports</th><th className="py-3.5 px-4 text-center">Coverage</th><th className="py-3.5 px-4 text-right">Action</th></tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.06] text-ink-secondary">
+            <tbody className="divide-y divide-black/10 text-ink-secondary">
               {fileMetrics.length === 0 ? (
                 <tr><td colSpan={8} className="py-10 text-center text-ink-muted"><div className="flex flex-col items-center gap-2"><Inbox className="w-6 h-6 text-ink-muted" /><span>No hotspot data — this analysis had no Java files or all files were clean.</span></div></td></tr>
               ) : fileMetrics.map((fm) => (

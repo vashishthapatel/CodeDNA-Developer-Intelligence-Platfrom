@@ -118,7 +118,7 @@ export default function RefactorIQDashboard() {
                 { step: '5. Re-analyze', desc: 'Verify Clean Code' },
                 { step: '6. Improvement', desc: 'Score & Regressions' },
               ].map((item, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] transition-all hover:border-accent/30 hover:bg-surface">
+                <div key={idx} className="p-3 rounded-xl bg-surface-raised border border-black/10 transition-all hover:border-accent/30 hover:bg-surface">
                   <div className="text-xs font-bold text-ink">{item.step}</div>
                   <div className="text-[0.7rem] text-ink-muted mt-1 truncate">{item.desc}</div>
                 </div>
@@ -158,7 +158,7 @@ export default function RefactorIQDashboard() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1">
                   <Search className="w-4 h-4 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2" />
-                  <input type="text" value={repoInput} onChange={(e) => setRepoInput(e.target.value)} placeholder="e.g. vashishthapatel/DSA-JAVA or https://github.com/owner/repo" className="w-full pl-11 pr-4 py-3.5 bg-void border border-white/[0.12] rounded-2xl text-sm text-ink placeholder:text-ink-faint outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 transition-all font-mono" />
+                  <input type="text" value={repoInput} onChange={(e) => setRepoInput(e.target.value)} placeholder="e.g. vashishthapatel/DSA-JAVA or https://github.com/owner/repo" className="w-full pl-11 pr-4 py-3.5 bg-void border border-black/10 rounded-2xl text-sm text-ink placeholder:text-ink-faint outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 transition-all font-mono" />
                 </div>
                 <button onClick={() => handleAnalyzeLiveRepo()} disabled={analyzing} className="px-8 py-3.5 rounded-2xl bg-accent text-void border border-accent hover:bg-accent-deep font-bold text-sm shadow-glow-sm transition-all flex items-center justify-center gap-2 shrink-0 disabled:opacity-50">
                   {analyzing ? (<><Activity className="w-4 h-4 animate-spin" /><span>Analyzing Repository...</span></>) : (<><Zap className="w-4 h-4" /><span>Analyze Live Repository</span></>)}
@@ -210,10 +210,10 @@ export default function RefactorIQDashboard() {
             </div>
             <div className="flex items-center gap-2">
               <span className="text-xs text-ink-muted">File Name:</span>
-              <input type="text" value={customFileName} onChange={(e) => setCustomFileName(e.target.value)} className="bg-void border border-white/[0.12] rounded-lg px-3 py-1.5 text-xs text-ink placeholder:text-ink-faint outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 font-mono" placeholder="Example.java" />
+              <input type="text" value={customFileName} onChange={(e) => setCustomFileName(e.target.value)} className="bg-void border border-black/10 rounded-lg px-3 py-1.5 text-xs text-ink placeholder:text-ink-faint outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 font-mono" placeholder="Example.java" />
             </div>
           </div>
-          <textarea value={customCode} onChange={(e) => { setCustomCode(e.target.value); if (customError) setCustomError(null); }} rows={14} className="w-full font-mono text-xs text-ink bg-void border border-white/[0.12] rounded-xl p-4 outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 leading-relaxed resize-y placeholder:text-ink-faint" placeholder={EMPTY_JAVA_TEMPLATE} />
+          <textarea value={customCode} onChange={(e) => { setCustomCode(e.target.value); if (customError) setCustomError(null); }} rows={14} className="w-full font-mono text-xs text-ink bg-void border border-black/10 rounded-xl p-4 outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 leading-relaxed resize-y placeholder:text-ink-faint" placeholder={EMPTY_JAVA_TEMPLATE} />
           {customError && (
             <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs flex items-center gap-2">
               <AlertTriangle className="w-3.5 h-3.5 shrink-0" />{customError}

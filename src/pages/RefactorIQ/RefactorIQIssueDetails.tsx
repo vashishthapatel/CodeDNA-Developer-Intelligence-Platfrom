@@ -195,7 +195,7 @@ export default function RefactorIQIssueDetails() {
               <div className="text-[0.65rem] uppercase tracking-wider text-ink-muted font-semibold">Priority</div>
               <div className="font-serif text-2xl font-bold text-amber-400">{priority} <span className="text-xs font-sans text-ink-faint">pts</span></div>
             </div>
-            <div className="h-8 w-px bg-white/[0.08]" />
+            <div className="h-8 w-px bg-black/10" />
             <div className="text-right">
               <div className="text-[0.65rem] uppercase tracking-wider text-ink-muted font-semibold">Complexity</div>
               <div className="font-serif text-2xl font-bold text-ink">{fileMetric ? fileMetric.cyclomaticComplexity : '—'} <span className="text-xs font-sans text-ink-faint">/ depth {fileMetric?.maxNestingDepth ?? '—'}</span></div>
@@ -205,15 +205,15 @@ export default function RefactorIQIssueDetails() {
 
         {fileMetric ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Lines of Code</div><div className="text-base font-bold text-ink mt-1">{fileMetric.linesOfCode}</div></div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Methods</div><div className="text-base font-bold text-ink mt-1">{fileMetric.methodCount}</div></div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Complexity</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.cyclomaticComplexity}</div></div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Nesting Depth</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.maxNestingDepth}</div></div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Dependencies</div><div className="text-base font-bold text-amber-300 mt-1">{fileMetric.dependencyCount ?? fileMetric.importCount}</div></div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06]"><div className="text-[0.7rem] text-ink-muted">Complexity Score</div><div className="text-base font-bold text-amber-300 mt-1">{Math.round(fileMetric.complexityScore)}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Lines of Code</div><div className="text-base font-bold text-ink mt-1">{fileMetric.linesOfCode}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Methods</div><div className="text-base font-bold text-ink mt-1">{fileMetric.methodCount}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Complexity</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.cyclomaticComplexity}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Nesting Depth</div><div className="text-base font-bold text-rose-400 mt-1">{fileMetric.maxNestingDepth}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Dependencies</div><div className="text-base font-bold text-amber-300 mt-1">{fileMetric.dependencyCount ?? fileMetric.importCount}</div></div>
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10"><div className="text-[0.7rem] text-ink-muted">Complexity Score</div><div className="text-base font-bold text-amber-300 mt-1">{Math.round(fileMetric.complexityScore)}</div></div>
           </div>
         ) : (
-          <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-4 text-xs text-ink-muted">File-level metrics will appear here once a file metric is available for this issue.</div>
+          <div className="rounded-xl bg-surface-raised border border-black/10 p-4 text-xs text-ink-muted">File-level metrics will appear here once a file metric is available for this issue.</div>
         )}
       </div>
 
@@ -250,9 +250,9 @@ export default function RefactorIQIssueDetails() {
               </ol>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-accent flex items-center gap-1.5"><Split className="w-4 h-4" /> Extract Validator</div><p className="text-xs text-ink-muted">Move validation / guard logic into a dedicated component.</p></div>
-                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Layers className="w-4 h-4" /> Extract Side-Effects</div><p className="text-xs text-ink-muted">Isolate notifications / persistence into a separate service.</p></div>
-                <div className="p-4 rounded-xl bg-surface-raised border border-white/[0.06] space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Workflow className="w-4 h-4" /> Guard Clauses</div><p className="text-xs text-ink-muted">Invert nested conditionals into early returns to reduce nesting depth.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-black/10 space-y-2"><div className="text-xs font-bold text-accent flex items-center gap-1.5"><Split className="w-4 h-4" /> Extract Validator</div><p className="text-xs text-ink-muted">Move validation / guard logic into a dedicated component.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-black/10 space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Layers className="w-4 h-4" /> Extract Side-Effects</div><p className="text-xs text-ink-muted">Isolate notifications / persistence into a separate service.</p></div>
+                <div className="p-4 rounded-xl bg-surface-raised border border-black/10 space-y-2"><div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5"><Workflow className="w-4 h-4" /> Guard Clauses</div><p className="text-xs text-ink-muted">Invert nested conditionals into early returns to reduce nesting depth.</p></div>
               </div>
             )}
             <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-line">
@@ -270,16 +270,16 @@ export default function RefactorIQIssueDetails() {
           {methodMetrics.length > 0 ? (
             <div className="space-y-3 pt-2">
               {methodMetrics.map((m: any, idx: number) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-surface-raised border border-white/[0.06] flex items-center justify-between text-xs flex-wrap gap-2">
+                <div key={idx} className="p-3.5 rounded-xl bg-surface-raised border border-black/10 flex items-center justify-between text-xs flex-wrap gap-2">
                   <div><span className="font-mono font-bold text-ink">{m.methodName}()</span><span className="text-ink-muted ml-2 font-mono">{m.linesOfCode} lines</span></div>
                   <div className="flex items-center gap-4"><span className="text-ink-muted">Complexity: <strong className={m.cyclomaticComplexity > 10 ? 'text-rose-400' : 'text-ink-secondary'}>{m.cyclomaticComplexity}</strong></span><span className="text-ink-muted">Nesting: <strong className={m.nestingDepth > 3 ? 'text-rose-400' : 'text-ink-secondary'}>{m.nestingDepth}</strong></span></div>
                 </div>
               ))}
             </div>
           ) : fileMetric ? (
-            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">Method breakdown not available for this client-side analysis. Use a backend-persisted analysis to see per-method AST details.</div>
+            <div className="rounded-xl bg-surface-raised border border-black/10 p-6 text-center text-sm text-ink-muted">Method breakdown not available for this client-side analysis. Use a backend-persisted analysis to see per-method AST details.</div>
           ) : (
-            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-6 text-center text-sm text-ink-muted">No method metrics available for this issue.</div>
+            <div className="rounded-xl bg-surface-raised border border-black/10 p-6 text-center text-sm text-ink-muted">No method metrics available for this issue.</div>
           )}
         </div>
       )}
@@ -290,7 +290,7 @@ export default function RefactorIQIssueDetails() {
           {codeSource ? (
             <pre className="font-mono text-xs text-ink-secondary overflow-x-auto p-4 bg-void border border-line rounded-xl max-h-[500px] leading-relaxed whitespace-pre-wrap break-words">{codeSource}</pre>
           ) : (
-            <div className="rounded-xl bg-surface-raised border border-white/[0.06] p-8 text-center space-y-2">
+            <div className="rounded-xl bg-surface-raised border border-black/10 p-8 text-center space-y-2">
               <p className="text-sm text-ink">Source not available for this file.</p>
               <p className="text-xs text-ink-muted">For paste-based analyses, the source shown in the Analysis view is the pasted snippet. For live repo analyses, file contents were analyzed via the browser-side engine.</p>
             </div>

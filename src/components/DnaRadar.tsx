@@ -24,7 +24,7 @@ export default function DnaRadar({ data }: Props) {
               <stop offset="100%" stopColor={luxe.emberDeep} stopOpacity={0.22} />
             </linearGradient>
           </defs>
-          <PolarGrid stroke="rgba(255,255,255,0.08)" />
+          <PolarGrid stroke="rgba(0,0,0,0.08)" />
           <PolarAngleAxis
             dataKey="name"
             tick={{ fill: luxe.inkMuted, fontSize: 11, fontWeight: 500 }}

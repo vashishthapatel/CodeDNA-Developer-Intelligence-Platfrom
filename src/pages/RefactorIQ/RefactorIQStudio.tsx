@@ -211,7 +211,7 @@ export default function RefactorIQStudio() {
                 <div key={idx} onClick={() => toggleStep(num)} className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${isDone ? 'border-emerald-500/30 bg-emerald-500/10 text-ink' : 'border-line bg-surface-raised text-ink-muted hover:border-accent/30'}`}>
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-[0.65rem] font-bold uppercase tracking-wider text-accent">Step {num}</span>
-                    <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-bold ${isDone ? 'bg-emerald-500 text-void' : 'border border-white/[0.12] text-ink-muted'}`}>{isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : num}</div>
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[0.6rem] font-bold ${isDone ? 'bg-emerald-500 text-void' : 'border border-black/10 text-ink-muted'}`}>{isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : num}</div>
                   </div>
                   <div className="text-xs font-bold text-ink leading-snug line-clamp-3">{title}</div>
                 </div>
@@ -254,25 +254,25 @@ export default function RefactorIQStudio() {
                 <span className="text-xs font-mono font-bold text-ink flex items-center gap-2"><FileCode className="w-3.5 h-3.5 text-accent" /> Before: {fileName}</span>
                 <span className="text-[0.65rem] text-ink-muted">{beforeCode ? `${beforeCode.split('\n').length} lines` : 'empty'}</span>
               </div>
-              <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={18} placeholder="Original source — paste Java here if empty, or leave as fetched." className="w-full font-mono text-[0.7rem] bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" />
+              <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={18} placeholder="Original source — paste Java here if empty, or leave as fetched." className="w-full font-mono text-[0.7rem] bg-void border border-black/10 rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" />
             </div>
             <div className="rounded-2xl border border-emerald-500/20 bg-surface-raised shadow-sm p-4 space-y-2">
               <div className="flex items-center justify-between border-b border-line pb-2">
                 <span className="text-xs font-mono font-bold text-emerald-400">After: {fileName} (Preview)</span>
                 <span className="text-[0.65rem] text-emerald-400 font-mono">{afterCode ? 'preview ready — editable' : 'run Generate Preview'}</span>
               </div>
-              <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={18} placeholder="Refactored preview will appear here. You can edit before re-analyzing." className="w-full font-mono text-[0.7rem] bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" />
+              <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={18} placeholder="Refactored preview will appear here. You can edit before re-analyzing." className="w-full font-mono text-[0.7rem] bg-void border border-black/10 rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" />
             </div>
           </div>
         )}
         {activeView === 'before' && (
           <div className="rounded-2xl border border-line bg-surface-raised shadow-sm p-4">
-            <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Original source" />
+            <textarea value={beforeCode} onChange={(e) => setBeforeCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-black/10 rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Original source" />
           </div>
         )}
         {activeView === 'after' && (
           <div className="rounded-2xl border border-line bg-surface-raised shadow-sm p-4">
-            <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-white/[0.12] rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Refactored preview — editable before re-analysis" />
+            <textarea value={afterCode} onChange={(e) => setAfterCode(e.target.value)} rows={20} className="w-full font-mono text-xs bg-void border border-black/10 rounded-xl p-3 text-ink placeholder:text-ink-faint focus:border-accent/60 focus:ring-2 focus:ring-accent/20 outline-none resize-y leading-relaxed" placeholder="Refactored preview — editable before re-analysis" />
           </div>
         )}
         {activeView === 'diff' && (

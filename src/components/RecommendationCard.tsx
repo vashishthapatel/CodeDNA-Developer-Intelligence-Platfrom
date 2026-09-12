@@ -14,7 +14,7 @@ const difficultyColors: Record<string, string> = {
 
 const categoryColors: Record<string, string> = {
   Architecture: 'bg-accent/15 text-accent border border-accent/30',
-  Infrastructure: 'bg-white/10 text-white border border-white/20',
+  Infrastructure: 'bg-black/[0.04] text-black border border-black/10',
   Operations: 'bg-accent-teal/15 text-accent-teal border border-accent-teal/30',
 }
 

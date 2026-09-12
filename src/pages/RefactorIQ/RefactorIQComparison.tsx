@@ -117,7 +117,7 @@ export default function RefactorIQComparison() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#C2A47A]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-accent" />
       </div>
     );
   }
@@ -237,13 +237,13 @@ export default function RefactorIQComparison() {
           )}
 
           <div className="grid grid-cols-3 gap-3 pt-2">
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] text-center">
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10 text-center">
               <div className="text-xl font-bold text-emerald-400">{ia.issuesResolvedCount}</div><div className="text-[0.65rem] text-ink-muted mt-0.5">Issues Resolved</div>
             </div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] text-center">
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10 text-center">
               <div className="text-xl font-bold text-accent">{ia.remainingIssuesCount}</div><div className="text-[0.65rem] text-ink-muted mt-0.5">Remaining Smell{ia.remainingIssuesCount === 1 ? '' : 's'}</div>
             </div>
-            <div className="p-3 rounded-xl bg-surface-raised border border-white/[0.06] text-center">
+            <div className="p-3 rounded-xl bg-surface-raised border border-black/10 text-center">
               <div className={`text-xl font-bold ${hasRegressions ? 'text-amber-400' : 'text-emerald-400'}`}>{regressionCount}</div><div className="text-[0.65rem] text-ink-muted mt-0.5">Regressions</div>
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function RefactorIQComparison() {
             <thead className="border-b border-line bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-6">Dimension</th><th className="py-3.5 px-6 text-center text-rose-400">Before</th><th className="py-3.5 px-6 text-center text-emerald-400">After</th><th className="py-3.5 px-6 text-center">Improvement %</th><th className="py-3.5 px-6 text-right">Status</th></tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.06] text-ink-secondary">
+            <tbody className="divide-y divide-black/10 text-ink-secondary">
               {rows.map((row, idx) => (
                 <tr key={idx} className="hover:bg-accent/[0.06] transition-colors">
                   <td className="py-4 px-6 font-semibold text-ink">{row.name}</td>
@@ -283,7 +283,7 @@ export default function RefactorIQComparison() {
             <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <XAxis dataKey="metric" stroke="#94A3B8" fontSize={12} />
               <YAxis stroke="#94A3B8" fontSize={12} />
-              <Tooltip contentStyle={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(255,40,0,0.45)', borderRadius: '12px', color: '#0F1A20' }} />
+              <Tooltip contentStyle={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(255,40,0,0.45)', borderRadius: '12px', color: '#000000' }} />
               <Legend wrapperStyle={{ color: '#E2E8F0' }} />
               <Bar dataKey="before" name="Before Refactor" fill="#FB7185" radius={[4, 4, 0, 0]} />
               <Bar dataKey="after" name="After Refactor" fill="#34D399" radius={[4, 4, 0, 0]} />

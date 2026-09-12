@@ -146,7 +146,7 @@ export default function RepoCard({ repo, compact }: Props) {
       </div>
 
       {/* Health Metrics */}
-      <div className="mt-6 pt-6 border-t border-[rgba(255,255,255,0.06)]">
+      <div className="mt-6 pt-6 border-t border-black/10">
         <p className="mb-4 text-[0.6rem] uppercase tracking-luxe text-ink-faint">
           Derived from repository signals
         </p>
