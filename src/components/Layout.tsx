@@ -2,11 +2,9 @@ import { Outlet, useLocation } from 'react-router-dom'
 import TopNav from './TopNav'
 import ProfileGate from './ProfileGate'
 
-const PUBLIC_ROUTES = new Set(['/gemini'])
-
 export default function Layout() {
   const { pathname } = useLocation()
-  const isPublic = PUBLIC_ROUTES.has(pathname)
+  const isPublic = false
 
   return (
     <div className="min-h-screen">

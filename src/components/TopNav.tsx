@@ -16,7 +16,6 @@ import {
   RefreshCw,
   Github,
   Loader2,
-  Gem,
 } from 'lucide-react'
 import { useProfile } from '../lib/ProfileContext'
 
@@ -26,7 +25,6 @@ const nav = [
   { to: '/repositories', label: 'Repositories', icon: GitBranch },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
   { to: '/recommendations', label: 'Recommendations', icon: Lightbulb },
-  { to: '/gemini', label: 'Gemini', icon: Gem, badge: 'AI' },
 ]
 
 function ago(iso: string): string {
