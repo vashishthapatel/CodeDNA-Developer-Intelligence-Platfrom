@@ -65,7 +65,7 @@
   // subtle dot grid
   function drawGrid() {
     const gap = W < 760 ? 28 : 32;
-    ctx.fillStyle = "rgba(0,0,0,0.045)";
+    ctx.fillStyle = "rgba(255, 255, 255,0.045)";
     for (let x = gap * 0.5; x < W; x += gap) {
       for (let y = gap * 0.5; y < H; y += gap) {
         // fade grid toward center bottom so hero text stays crisp
@@ -85,7 +85,7 @@
   function drawOrbs(time) {
     const orbs = [
       { x: W * 0.72, y: H * 0.18, r: W < 760 ? 180 : 320, c: "rgba(255,40,0,0.09)", drift: 18 },
-      { x: W * 0.18, y: H * 0.82, r: W < 760 ? 160 : 280, c: "rgba(0,0,0,0.035)", drift: 14 },
+      { x: W * 0.18, y: H * 0.82, r: W < 760 ? 160 : 280, c: "rgba(255, 255, 255,0.035)", drift: 14 },
       { x: W * 0.88, y: H * 0.72, r: W < 760 ? 120 : 200, c: "rgba(255,89,64,0.07)", drift: 10 },
     ];
     for (let i = 0; i < orbs.length; i++) {
@@ -147,7 +147,7 @@
     // two strands — white base: Ferrari + charcoal (no pale-blue-on-white)
     const strands = [
       { offset: 0, colorStops: ["#FF2800", "#FF5940", "rgba(255,40,0,0.95)"], glow: "rgba(255,40,0,0.45)" },
-      { offset: Math.PI, colorStops: ["rgba(30,30,35,0.92)", "rgba(80,80,86,0.82)", "rgba(255,40,0,0.45)"], glow: "rgba(0,0,0,0.18)" },
+      { offset: Math.PI, colorStops: ["rgba(30,30,35,0.92)", "rgba(80,80,86,0.82)", "rgba(255,40,0,0.45)"], glow: "rgba(255, 255, 255,0.18)" },
     ];
 
     for (let s = 0; s < 2; s++) {
@@ -206,7 +206,7 @@
         const pulse = 0.85 + Math.sin(time * 0.003 + nx * 8 + s) * 0.15;
         const r = (s === 0 ? 2.4 : 1.7) * pulse * edge;
         // outer glow — Ferrari vs soft black on white
-        ctx.fillStyle = s === 0 ? "rgba(255,40,0,0.22)" : "rgba(0,0,0,0.09)";
+        ctx.fillStyle = s === 0 ? "rgba(255,40,0,0.22)" : "rgba(255, 255, 255,0.09)";
         ctx.beginPath();
         ctx.arc(x + parX, y, r + 3.5, 0, Math.PI * 2);
         ctx.fill();
@@ -216,7 +216,7 @@
         ctx.arc(x + parX, y, r, 0, Math.PI * 2);
         ctx.fill();
         // inner highlight
-        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        ctx.fillStyle = "rgba(10,10,10,0.92)";
         ctx.beginPath();
         ctx.arc(x + parX - r * 0.35, y - r * 0.35, r * 0.38, 0, Math.PI * 2);
         ctx.fill();
@@ -248,8 +248,8 @@
         ctx.shadowColor = "rgba(255,40,0,0.85)";
         ctx.shadowBlur = 6;
       } else {
-        ctx.fillStyle = `rgba(0,0,0,${a * 0.38 * centerFade})`;
-        ctx.shadowColor = "rgba(0,0,0,0.12)";
+        ctx.fillStyle = `rgba(255, 255, 255,${a * 0.38 * centerFade})`;
+        ctx.shadowColor = "rgba(255, 255, 255,0.12)";
         ctx.shadowBlur = 4;
       }
       ctx.beginPath();
@@ -262,7 +262,7 @@
   // faint connecting lines between nearby particles (neural mesh)
   function drawMesh() {
     const maxDist = W < 760 ? 78 : 96;
-    ctx.strokeStyle = "rgba(0,0,0,0.07)";
+    ctx.strokeStyle = "rgba(255, 255, 255,0.07)";
     ctx.lineWidth = 0.6;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -318,7 +318,7 @@
     const vig = ctx.createRadialGradient(W * 0.32, H * 0.5, 0, W * 0.32, H * 0.5, Math.max(W, H) * 0.85);
     vig.addColorStop(0, "transparent");
     vig.addColorStop(0.62, "transparent");
-    vig.addColorStop(1, "rgba(0,0,0,0.06)");
+    vig.addColorStop(1, "rgba(255, 255, 255,0.06)");
     ctx.fillStyle = vig;
     ctx.fillRect(0, 0, W, H);
   }

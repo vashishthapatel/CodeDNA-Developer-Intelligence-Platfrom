@@ -64,7 +64,7 @@ function RenderAssistant({ text }: { text: string }) {
     if (chunk.startsWith('```')) {
       const inner = chunk.replace(/^```[a-z]*\n?/, '').replace(/```$/, '')
       parts.push(
-        <pre key={i} className="mt-3 mb-3 rounded-xl bg-[#F5F5F5] text-black p-3.5 text-[0.82rem] leading-6 overflow-auto border border-black/10">
+        <pre key={i} className="mt-3 mb-3 rounded-xl bg-surface-raised text-ink p-3.5 text-[0.82rem] leading-6 overflow-auto border border-black/10">
           <code className="font-mono whitespace-pre-wrap break-words">{inner}</code>
         </pre>,
       )
@@ -76,7 +76,7 @@ function RenderAssistant({ text }: { text: string }) {
           {lines.map((line, li) => (
             <span key={li}>
               {line.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).map((tok, ti) => {
-                if (tok.startsWith('`') && tok.endsWith('`')) return <code key={ti} className="px-1.5 py-0.5 rounded-md bg-black/5 border border-black/10 font-mono text-[0.82em] text-black">{tok.slice(1, -1)}</code>
+                if (tok.startsWith('`') && tok.endsWith('`')) return <code key={ti} className="px-1.5 py-0.5 rounded-md bg-black/5 border border-black/10 font-mono text-[0.82em] text-ink">{tok.slice(1, -1)}</code>
                 if (tok.startsWith('**') && tok.endsWith('**')) return <strong key={ti} className="font-semibold text-ink">{tok.slice(2, -2)}</strong>
                 return <span key={ti}>{tok}</span>
               })}
@@ -241,7 +241,7 @@ export default function Gemini() {
           </div>
 
           {/* scroll area */}
-          <div ref={scrollerRef} className="flex-1 overflow-auto px-4 sm:px-6 py-6 space-y-5 bg-white">
+          <div ref={scrollerRef} className="flex-1 overflow-auto px-4 sm:px-6 py-6 space-y-5 bg-surface">
             {messages.length === 0 ? (
               <div className="py-10 text-center">
                 <div className="mx-auto w-14 h-14 rounded-2xl grid place-items-center bg-gradient-to-br from-accent to-accent-deep text-white shadow-glow border border-accent/30">
@@ -262,7 +262,7 @@ export default function Gemini() {
             ) : (
               messages.map((m) => (
                 <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`group relative max-w-[86%] rounded-2xl px-4 py-3.5 text-sm leading-6 ${m.role === 'user' ? 'bg-gradient-to-br from-accent to-accent-deep !text-white shadow-glow-sm border border-accent/40 rounded-br-md' : m.error ? 'bg-amber-50 border border-amber-200 text-amber-900' : 'bg-white border border-black/10 shadow-sm rounded-bl-md'}`}>
+                  <div className={`group relative max-w-[86%] rounded-2xl px-4 py-3.5 text-sm leading-6 ${m.role === 'user' ? 'bg-gradient-to-br from-accent to-accent-deep !text-white shadow-glow-sm border border-accent/40 rounded-br-md' : m.error ? 'bg-amber-50 border border-amber-200 text-amber-900' : 'bg-surface border border-black/10 shadow-sm rounded-bl-md'}`}>
                     {m.role === 'assistant' ? (
                       <div>
                         <div className="mb-1 flex items-center gap-1.5 text-[0.68rem] tracking-luxe uppercase font-semibold text-accent">
@@ -286,7 +286,7 @@ export default function Gemini() {
             )}
             {busy && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-md bg-white border border-black/10 px-4 py-3.5 text-sm text-ink-muted inline-flex items-center gap-2">
+                <div className="rounded-2xl rounded-bl-md bg-surface border border-black/10 px-4 py-3.5 text-sm text-ink-muted inline-flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin text-accent" /> Thinking…
                 </div>
               </div>
@@ -294,7 +294,7 @@ export default function Gemini() {
           </div>
 
           {/* composer */}
-          <div className="border-t border-line bg-white p-3 sm:p-4">
+          <div className="border-t border-line bg-surface p-3 sm:p-4">
             <div className="flex items-end gap-2 sm:gap-3">
               <div className="flex-1 relative">
                 <textarea
@@ -375,7 +375,7 @@ export default function Gemini() {
                 <p className="text-xs leading-5 text-ink-muted line-clamp-3">{selectedMeta.description || 'No description.'}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {(selectedMeta.stack || []).slice(0, 6).map((t) => (
-                    <span key={t} className="px-2 py-1 rounded-full bg-white border border-black/10 text-[0.70rem] font-medium text-ink-secondary">{t}</span>
+                    <span key={t} className="px-2 py-1 rounded-full bg-surface border border-black/10 text-[0.70rem] font-medium text-ink-secondary">{t}</span>
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5">

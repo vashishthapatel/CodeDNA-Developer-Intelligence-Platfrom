@@ -3,32 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeDNA - Developer Intelligence Platform</title>
+    <title>CodeDNA — Developer Intelligence Platform</title>
     <meta name="description" content="AI-powered developer intelligence platform. Turn GitHub activity into measurable Developer DNA.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/landing.css">
+    <script>document.documentElement.classList.add('fx-live');</script>
 </head>
 <body>
-    <!-- Background Video (hidden) -->
-    <div class="bg" hidden>
-        <video class="bg-video" autoplay muted loop playsinline>
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4" type="video/mp4">
-        </video>
+    <div class="l2-aurora" aria-hidden="true">
+        <span class="l2-orb l2-orb--blue"></span>
+        <span class="l2-orb l2-orb--cantaloupe"></span>
+        <span class="l2-grid"></span>
     </div>
 
-    <!-- Main Content -->
+    <!-- Header -->
     <div class="page">
-        <!-- Header -->
         <header class="header">
             <button class="logo logo--wordmark" aria-label="CodeDNA Home" onclick="window.location.href='/'">Code<span>DNA</span></button>
 
             <nav class="nav-pill">
-                <a href="#home" class="nav-link active">Home</a>
+                <a href="#home" class="nav-link active">Platform</a>
                 <a href="#refactoriq" class="nav-link">RefactorIQ</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#architecture" class="nav-link">Architecture</a>
@@ -39,7 +38,7 @@
                 <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
                 <span class="connect-gh-label">Connect with GitHub</span>
             </button>
-            <button class="burger" aria-label="Menu" aria-expanded="false">
+            <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -48,9 +47,9 @@
 
         <!-- Mobile Menu -->
         <div class="overlay" hidden></div>
-        <div class="mobile-menu" hidden>
+        <div class="mobile-menu" id="mobileMenu" hidden aria-label="Site navigation">
             <nav class="mobile-nav">
-                <a href="#home" class="mobile-link active" style="--i: 0">Home</a>
+                <a href="#home" class="mobile-link active" style="--i: 0">Platform</a>
                 <a href="#refactoriq" class="mobile-link" style="--i: 1">RefactorIQ</a>
                 <a href="#features" class="mobile-link" style="--i: 2">Features</a>
                 <a href="#architecture" class="mobile-link" style="--i: 3">Architecture</a>
@@ -61,322 +60,352 @@
                 </button>
             </nav>
         </div>
-
-        <!-- Hero -->
-        <div class="hero-wrapper" id="heroStage">
-            <main class="hero">
-                <div class="hero-badge">
-                    <span class="badge-pulse"></span>
-                    <span>AI Developer Intelligence Platform</span>
-                </div>
-
-                <!-- Headline -->
-                <h1 class="headline">
-                    <span class="headline-line">Developer DNA</span>
-                    <span class="headline-line headline-gradient">Designed to Evolve</span>
-                </h1>
-
-                <!-- Subhead -->
-                <p class="subhead">
-                    Transform raw GitHub activity, system architecture, and commit rhythm into measurable Developer DNA. Deep skill profiling, cohort analytics, and AI recommendations.
-                </p>
-
-                <!-- Hero Actions -->
-                <div class="hero-actions">
-                    <button type="button" class="btn-hero-primary connect-gh" id="heroConnectGhBtn" aria-label="Connect with GitHub">
-                        <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
-                        <span class="connect-gh-label">Connect with GitHub</span>
-                    </button>
-                </div>
-            </main>
-
-        </div>
     </div>
 
-    <!-- RefactorIQ Feature Section -->
-    <section id="refactoriq" class="section" style="padding: 60px 0;">
-        <div class="section-content">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
-                <div>
-                    <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #FF2800; border: 1px solid rgba(255,40,0,0.22); background: rgba(255,40,0,0.08); padding: 4px 10px; border-radius: 999px;">Deterministic Static Analysis & Refactoring</span>
-                    <h2 class="section-title" style="margin-top: 4px; text-align: left;">CodeDNA RefactorIQ™</h2>
-                </div>
-                <a href="/app.html#/refactoriq" class="btn-hero-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 22px; font-size: 13px;">
-                    <span>Launch RefactorIQ Studio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <p class="section-lede" style="text-align: left; margin-bottom: 32px; color: rgba(0,0,0,0.68);">
-                Close the loop on technical debt with deterministic static analysis rules. RefactorIQ analyzes JavaParser AST trees, explains root-cause complexity, recommends practical refactoring patterns, and proves measurable metric improvements with automated regression detection.
-            </p>
-
-            <!-- 6-Step Feedback Loop Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px;">
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">1. ANALYZE</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">JavaParser AST</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">Decision trees, nesting & coupling</p>
-                </div>
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">2. EXPLAIN</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">Hotspot Root Cause</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">Why the code is risky</p>
-                </div>
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">3. RECOMMEND</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">Refactoring Plan</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">Extract Class, Guard Clauses</p>
-                </div>
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">4. REFACTOR</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">Interactive Diffs</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">Safe transformations & preview</p>
-                </div>
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">5. RE-ANALYZE</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">Verify Metrics</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">Automated re-inspection</p>
-                </div>
-                <div class="feature-card" style="padding: 16px; border: 1px solid rgba(255, 40, 0, 0.18);">
-                    <div style="font-size: 11px; font-weight: 700; color: #FF2800;">6. GAIN</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #000000; margin-top: 4px;">Impact & Regressions</div>
-                    <p style="font-size: 11px; color: rgba(0,0,0,0.68); margin-top: 4px;">32.9% gain • 0 regressions</p>
-                </div>
-            </div>
-
-            <!-- Live Analyzer CTA (demo-free) -->
-            <div class="feature-card" style="padding: 28px; border: 1px solid rgba(0,0,0,0.08); background: #FFFFFF; box-shadow: 0 8px 32px -12px rgba(0,0,0,0.10);">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 14px;">
-                    <div>
-                        <span style="font-size: 11px; color: #FF2800; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">No fixtures · Any Java repo or snippet</span>
-                        <h3 style="font-size: 18px; font-weight: 700; color: #000000; margin-top: 4px;">Analyze live — pasted code or a GitHub repo</h3>
+    <main>
+        <!-- ══════════════ HERO ══════════════ -->
+        <section class="l2-hero section" id="home" aria-label="Introduction">
+            <div class="l2-hero-inner">
+                <div class="l2-hero-copy">
+                    <div class="l2-eyebrow" data-fx="fade-up">
+                        <span class="l2-dot"></span>
+                        <span>Developer intelligence, measured</span>
                     </div>
-                    <span style="padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; background: rgba(255,40,0,0.08); color: #FF2800; border: 1px solid rgba(255,40,0,0.22);">OAuth · stays in your browser</span>
+
+                    <h1 class="l2-h1">
+                        <span class="l2-h1-line" data-fx="mask">Turn commits into</span>
+                        <span class="l2-h1-line l2-h1-grad" data-fx="mask" style="--d:.08s">Developer&nbsp;DNA</span>
+                    </h1>
+
+                    <p class="l2-sub" data-fx="fade-up" style="--d:.18s">
+                        CodeDNA digests raw GitHub activity, system architecture and commit rhythm into a
+                        single measurable score — then tells you exactly what to learn next.
+                    </p>
+
+                    <div class="l2-cta-row" data-fx="fade-up" style="--d:.28s">
+                        <button type="button" class="btn-hero-primary l2-magnet connect-gh" id="heroConnectGhBtn" aria-label="Connect with GitHub">
+                            <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                            <span class="connect-gh-label">Connect with GitHub</span>
+                        </button>
+                        <a href="#refactoriq" class="btn-hero-secondary l2-ghost">
+                            <span>See RefactorIQ</span>
+                            <i class="fa-solid fa-arrow-down l2-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <ul class="l2-trust" data-fx="fade-up" style="--d:.36s">
+                        <li><i class="fa-solid fa-lock" aria-hidden="true"></i> Read-only access</li>
+                        <li><i class="fa-solid fa-clock" aria-hidden="true"></i> Score in ~60 seconds</li>
+                        <li><i class="fa-solid fa-rotate" aria-hidden="true"></i> Revoke anytime</li>
+                    </ul>
                 </div>
-                <p style="font-size: 13px; line-height: 1.6; color: rgba(0,0,0,0.68); max-width: 72ch;">
-                    RefactorIQ runs the same deterministic JavaParser + rule engine on every input — no seeded repo, no synthesized scores. Empty states tell you what to do next.
+
+                <!-- Animated dashboard visual -->
+                <div class="l2-visual" data-fx="visual">
+                    <div class="l2-visual-card l2-glow" data-tilt>
+                        <div class="l2-visual-top">
+                            <span class="l2-window-dot"></span><span class="l2-window-dot"></span><span class="l2-window-dot"></span>
+                            <span class="l2-visual-title">codedna · dashboard</span>
+                            <span class="l2-live"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i> live</span>
+                        </div>
+
+                        <div class="l2-ring" role="img" aria-label="Developer DNA score ring">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="l2-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="l2-ring-fill" cx="60" cy="60" r="52" data-count-ring></circle>
+                            </svg>
+                            <div class="l2-ring-core">
+                                <span class="l2-ring-value" data-count-to="87">0</span>
+                                <span class="l2-ring-unit">DNA score</span>
+                            </div>
+                        </div>
+
+                        <ul class="l2-signalbars">
+                            <li style="--w:86%"><span class="l2-bar" data-bar></span><em>Voice</em><b>86</b></li>
+                            <li style="--w:74%"><span class="l2-bar" data-bar></span><em>Consistency</em><b>74</b></li>
+                            <li style="--w:62%"><span class="l2-bar" data-bar></span><em>Quality</em><b>62</b></li>
+                        </ul>
+                    </div>
+
+                    <div class="l2-chip l2-chip--1" data-fx="chip" style="--d:.5s">
+                        <i class="fa-solid fa-bolt" aria-hidden="true"></i> Kafka event consumed
+                    </div>
+                    <div class="l2-chip l2-chip--2" data-fx="chip" style="--d:.65s">
+                        <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> +32.9% this sprint
+                    </div>
+                    <div class="l2-chip l2-chip--3" data-fx="chip" style="--d:.8s">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i> 214 commits parsed
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech marquee -->
+            <div class="l2-marquee" aria-hidden="true">
+                <div class="l2-marquee-track">
+                    <span>Spring Boot 3.2.5</span><span>Java 21</span><span>React 18</span><span>Kafka</span><span>PostgreSQL 16</span><span>Redis</span><span>WebSocket</span><span>Docker</span><span>JavaParser</span><span>Zeppelin checkpoints</span>
+                    <span>Spring Boot 3.2.5</span><span>Java 21</span><span>React 18</span><span>Kafka</span><span>PostgreSQL 16</span><span>Redis</span><span>WebSocket</span><span>Docker</span><span>JavaParser</span><span>Zeppelin checkpoints</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ STATS ══════════════ -->
+        <section class="l2-stats section" id="stats" aria-label="Platform statistics">
+            <div class="stats">
+                <div class="stat l2-glow" data-target="145" data-decimals="0" data-suffix="+">
+                    <span class="stat-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></span>
+                    <span class="stat-value">0</span><span class="stat-suffix"></span>
+                    <span class="stat-label">Signals weighted per profile</span>
+                </div>
+                <div class="stat l2-glow" data-target="214" data-decimals="0" data-suffix="">
+                    <span class="stat-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+                    <span class="stat-value">0</span><span class="stat-suffix"></span>
+                    <span class="stat-label">Commits parsed live</span>
+                </div>
+                <div class="stat l2-glow" data-target="32.9" data-decimals="1" data-suffix="%">
+                    <span class="stat-icon"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i></span>
+                    <span class="stat-value">0</span><span class="stat-suffix"></span>
+                    <span class="stat-label">Average complexity gain</span>
+                </div>
+                <div class="stat l2-glow" data-target="0" data-decimals="0" data-suffix="">
+                    <span class="stat-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+                    <span class="stat-value">0</span><span class="stat-suffix"></span>
+                    <span class="stat-label">Score regressions after refactor</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ REFACTORIQ PIPELINE ══════════════ -->
+        <section class="l2-section section" id="refactoriq">
+            <div class="l2-head">
+                <span class="l2-kicker" data-fx="fade-up">Deterministic static analysis</span>
+                <h2 class="l2-h2" data-fx="mask">The RefactorIQ <em>feedback loop</em></h2>
+                <p class="l2-lead" data-fx="fade-up" style="--d:.12s">
+                    JavaParser ASTs in, measurable gains out. Six deterministic stages — no seeded repos,
+                    no synthesized scores, no LLM guessing.
                 </p>
-                <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
-                    <a href="/app.html#/refactoriq" class="btn-hero-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 22px;">
-                        <span>Open RefactorIQ</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="/app.html#/refactoriq" class="btn-hero-secondary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 22px; background: #FFFFFF; color: #000000; border: 1px solid rgba(0,0,0,0.10); border-radius: 999px; font-weight: 600;">
-                        <span>Paste Java code</span>
-                        <i class="fa-solid fa-code"></i>
-                    </a>
+            </div>
+
+            <ol class="l2-pipeline">
+                <li class="l2-step l2-glow" data-fx="step" style="--i:0" data-step="1">
+                    <div class="l2-step-node"><i class="fa-solid fa-code-branch" aria-hidden="true"></i></div>
+                    <h3>Analyze</h3>
+                    <p>JavaParser builds the full AST — decision trees, nesting &amp; coupling.</p>
+                </li>
+                <li class="l2-step l2-glow" data-fx="step" style="--i:1" data-step="2">
+                    <div class="l2-step-node"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></div>
+                    <h3>Explain</h3>
+                    <p>Hotspots get a root cause: why the code is risky, not just that it is.</p>
+                </li>
+                <li class="l2-step l2-glow" data-fx="step" style="--i:2" data-step="3">
+                    <div class="l2-step-node"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></div>
+                    <h3>Recommend</h3>
+                    <p>Practical patterns — Extract Class, Guard Clauses, named in order.</p>
+                </li>
+                <li class="l2-step l2-glow" data-fx="step" style="--i:3" data-step="4">
+                    <div class="l2-step-node"><i class="fa-solid fa-code-compare" aria-hidden="true"></i></div>
+                    <h3>Refactor</h3>
+                    <p>Interactive diffs preview every safe transformation before you apply it.</p>
+                </li>
+                <li class="l2-step l2-glow" data-fx="step" style="--i:4" data-step="5">
+                    <div class="l2-step-node"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></div>
+                    <h3>Re-analyze</h3>
+                    <p>The same engine re-inspects and verifies every metric path.</p>
+                </li>
+                <li class="l2-step l2-glow" data-fx="step" style="--i:5" data-step="6">
+                    <div class="l2-step-node l2-step-node--gain"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
+                    <h3>Gain</h3>
+                    <p>32.9% average complexity gain — with zero regressions.</p>
+                </li>
+            </ol>
+            <span class="l2-pipeline-line" aria-hidden="true"></span>
+
+            <div class="l2-livecard l2-glow" data-fx="fade-up">
+                <div class="l2-livecard-copy">
+                    <span class="l2-tag">No fixtures · any Java repo or snippet</span>
+                    <h3>Analyze live — pasted code or a GitHub repo</h3>
+                    <p>RefactorIQ runs the same deterministic JavaParser + rule engine on every input. Empty states tell you what to do next, never fake numbers.</p>
+                    <div class="l2-livecard-actions">
+                        <a href="/app.html#/refactoriq" class="btn-hero-primary"><span>Open RefactorIQ</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="/app.html#/refactoriq" class="btn-hero-secondary"><span>Paste Java code</span><i class="fa-solid fa-code" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="l2-livecard-badge">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    <span>OAuth · stays in your browser</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Section (Scrollable) -->
-    <section id="features" class="section">
-        <div class="section-content">
-            <h2 class="section-title">Platform Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-dna"></i>
+        <!-- ══════════════ FEATURES — BENTO ══════════════ -->
+        <section class="l2-section section" id="features">
+            <div class="l2-head">
+                <span class="l2-kicker" data-fx="fade-up">The platform</span>
+                <h2 class="l2-h2" data-fx="mask">Built like a <em>nervous system</em></h2>
+            </div>
+
+            <div class="l2-bento">
+                <article class="l2-card l2-card--big l2-glow" data-fx="rise" style="--i:0" data-tilt>
+                    <div class="l2-card-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></div>
+                    <div>
+                        <h3>DNA Score Engine</h3>
+                        <p>Five weighted signals collapse into one 0–100 number. Composite scoring recomputes the moment a Kafka event lands — your dashboard just updates.</p>
                     </div>
-                    <h3>DNA Score Calculation</h3>
-                    <p>Advanced algorithms analyze your commits, languages, and patterns to generate a unique Developer DNA score (0-100).</p>
-                    <span class="feature-badge">Scoring Engine</span>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-brands fa-github"></i>
+                    <div class="l2-mini" aria-hidden="true">
+                        <span class="l2-mini-bar" style="--w:92%" data-bar></span>
+                        <span class="l2-mini-bar" style="--w:71%" data-bar></span>
+                        <span class="l2-mini-bar" style="--w:55%" data-bar></span>
+                        <span class="l2-mini-bar" style="--w:38%" data-bar></span>
                     </div>
+                    <span class="l2-chip-inline">Scoring Engine :8084</span>
+                </article>
+
+                <article class="l2-card l2-glow" data-fx="rise" style="--i:1">
+                    <div class="l2-card-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></div>
                     <h3>GitHub Integration</h3>
-                    <p>Seamlessly sync repositories, commits, and contributions. Real-time analysis of your entire GitHub activity.</p>
-                    <span class="feature-badge">Repository Service</span>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
+                    <p>Repos, commits, languages and orgs — synced through a revoke-anytime OAuth token.</p>
+                    <span class="l2-chip-inline">Repository Service :8082</span>
+                </article>
+
+                <article class="l2-card l2-glow" data-fx="rise" style="--i:2">
+                    <div class="l2-card-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
                     <h3>Advanced Analytics</h3>
-                    <p>Interactive charts showing activity trends, language distribution, code quality metrics, and contribution heatmaps.</p>
-                    <span class="feature-badge">Analytics Service</span>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
+                    <p>Trends, language mix, quality metrics and contribution heatmaps — live.</p>
+                    <svg class="l2-spark" viewBox="0 0 160 40" aria-hidden="true">
+                        <path d="M2 32 L22 28 L42 30 L62 22 L82 24 L102 15 L122 17 L142 8 L158 6" />
+                    </svg>
+                </article>
+
+                <article class="l2-card l2-glow" data-fx="rise" style="--i:3">
+                    <div class="l2-card-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
                     <h3>AI Recommendations</h3>
-                    <p>Personalized skill suggestions based on your profile. Learn what to study next to level up your career.</p>
-                    <span class="feature-badge">Recommendation Engine</span>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
+                    <p>Your profile becomes a ranked study plan — what to learn next for your career.</p>
+                    <span class="l2-chip-inline">Recommendations :8085</span>
+                </article>
+
+                <article class="l2-card l2-card--wide l2-glow" data-fx="rise" style="--i:4">
+                    <div class="l2-card-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                    <div>
+                        <h3>Real-time by design</h3>
+                        <p>Kafka decouples ingestion from scoring; WebSocket streams the new score straight into your browser. No refresh. No waiting room.</p>
                     </div>
+                    <div class="l2-pulse" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <span class="l2-chip-inline">WebSocket /ws</span>
+                </article>
+
+                <article class="l2-card l2-glow" data-fx="rise" style="--i:5">
+                    <div class="l2-card-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
                     <h3>Secure Authentication</h3>
-                    <p>JWT-based authentication with BCrypt password hashing. Your data is secure and encrypted.</p>
-                    <span class="feature-badge">Auth Service</span>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-bolt"></i>
+                    <p>JWT with BCrypt hashing. Read-only scopes, token in your browser only.</p>
+                    <span class="l2-chip-inline">Auth Service :8081</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- ══════════════ ARCHITECTURE ══════════════ -->
+        <section class="l2-section section" id="architecture">
+            <div class="l2-head">
+                <span class="l2-kicker" data-fx="fade-up">Under the hood</span>
+                <h2 class="l2-h2" data-fx="mask">One gateway, one <em>event stream</em></h2>
+                <p class="l2-lead" data-fx="fade-up" style="--d:.12s">
+                    Every service sits behind one gateway and talks over a Kafka event stream — so scoring
+                    never blocks a request, and a new score reaches your browser the moment it lands.
+                </p>
+            </div>
+
+            <div class="l2-arch">
+                <div class="l2-arch-node l2-glow" data-fx="rise" style="--i:0">
+                    <span class="l2-arch-kind">Client</span>
+                    <div class="arch-head">
+                        <span class="arch-icon"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
+                        <div class="arch-title"><h3>React Frontend</h3><span class="arch-port">Vite · 5173</span></div>
                     </div>
-                    <h3>Real-time Updates</h3>
-                    <p>WebSocket notifications for instant DNA score updates. Kafka-powered event-driven architecture.</p>
-                    <span class="feature-badge">API Gateway</span>
+                    <p>The dashboard, the charts and the DNA report you actually read.</p>
+                </div>
+
+                <div class="l2-flow" data-fx="rise" style="--i:1"><span>HTTPS · JWT</span></div>
+
+                <div class="l2-arch-node l2-glow" data-fx="rise" style="--i:2">
+                    <span class="l2-arch-kind l2-arch-kind--edge">Edge</span>
+                    <div class="arch-head">
+                        <span class="arch-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+                        <div class="arch-title"><h3>API Gateway</h3><span class="arch-port">:8080</span></div>
+                    </div>
+                    <p>One entry point — routing, token validation and rate limiting.</p>
+                </div>
+
+                <div class="l2-flow" data-fx="rise" style="--i:3"><span>routes /api/v1</span></div>
+
+                <div class="l2-arch-fan3" data-fx="rise" style="--i:4">
+                    <div class="l2-arch-node l2-glow">
+                        <span class="l2-arch-kind">Service</span>
+                        <div class="arch-head">
+                            <span class="arch-icon"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i></span>
+                            <div class="arch-title"><h3>Auth</h3><span class="arch-port">:8081</span></div>
+                        </div>
+                        <p>Accounts, BCrypt hashing and the JWT everything else trusts.</p>
+                    </div>
+                    <div class="l2-arch-node l2-glow">
+                        <span class="l2-arch-kind">Service</span>
+                        <div class="arch-head">
+                            <span class="arch-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+                            <div class="arch-title"><h3>Repository</h3><span class="arch-port">:8082</span></div>
+                        </div>
+                        <p>Pulls every repo, commit and language your token can see.</p>
+                    </div>
+                    <div class="l2-arch-node l2-glow">
+                        <span class="l2-arch-kind">Service</span>
+                        <div class="arch-head">
+                            <span class="arch-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+                            <div class="arch-title"><h3>Analytics</h3><span class="arch-port">:8083</span></div>
+                        </div>
+                        <p>Turns raw history into trends, heatmaps and quality metrics.</p>
+                    </div>
+                </div>
+
+                <div class="l2-flow" data-fx="rise" style="--i:5"><span>publishes events</span></div>
+
+                <div class="l2-arch-node l2-arch-node--bus l2-glow" data-fx="rise" style="--i:6">
+                    <span class="l2-arch-kind">Event stream</span>
+                    <div class="arch-head">
+                        <span class="arch-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+                        <div class="arch-title"><h3>Apache Kafka</h3><span class="arch-port">topics</span></div>
+                    </div>
+                    <p>A durable log that decouples ingestion from scoring — nothing waits in line.</p>
+                </div>
+
+                <div class="l2-flow" data-fx="rise" style="--i:7"><span>consumes events</span></div>
+
+                <div class="l2-arch-fan2" data-fx="rise" style="--i:8">
+                    <div class="l2-arch-node l2-glow">
+                        <span class="l2-arch-kind">Engine</span>
+                        <div class="arch-head">
+                            <span class="arch-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></span>
+                            <div class="arch-title"><h3>Scoring Engine</h3><span class="arch-port">:8084</span></div>
+                        </div>
+                        <p>Weighs five signals into a single 0–100 Developer DNA score.</p>
+                    </div>
+                    <div class="l2-arch-node l2-glow">
+                        <span class="l2-arch-kind">Engine</span>
+                        <div class="arch-head">
+                            <span class="arch-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span>
+                            <div class="arch-title"><h3>Recommendations</h3><span class="arch-port">:8085</span></div>
+                        </div>
+                        <p>Reads that profile and ranks what is worth learning next.</p>
+                    </div>
+                </div>
+
+                <div class="l2-flow" data-fx="rise" style="--i:9"><span>score updates</span></div>
+
+                <div class="l2-arch-node l2-arch-node--live l2-glow" data-fx="rise" style="--i:10">
+                    <span class="l2-arch-kind l2-arch-kind--live">Realtime</span>
+                    <div class="arch-head">
+                        <span class="arch-icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></span>
+                        <div class="arch-title"><h3>WebSocket Push</h3><span class="arch-port">/ws</span></div>
+                    </div>
+                    <p>Streams the new score straight back to the dashboard — no refresh.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Architecture Section -->
-    <section id="architecture" class="section">
-        <div class="section-content">
-            <h2 class="section-title">Microservices Architecture</h2>
-            <p class="section-lede">
-                Every service sits behind one gateway and talks over a Kafka event stream — so scoring
-                never blocks a request, and a new score reaches your browser the moment it lands.
-            </p>
-
-            <div class="architecture-diagram">
-                <div class="arch-map">
-                    <div class="arch-tier" data-reveal>
-                        <article class="arch-node">
-                            <span class="arch-kind">Client</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-brands fa-react" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>React Frontend</h3>
-                                    <span class="arch-port">Vite · 5173</span>
-                                </div>
-                            </div>
-                            <p>The dashboard, the charts and the DNA report you actually read.</p>
-                        </article>
-                    </div>
-
-                    <div class="arch-flow" data-reveal style="--fd: 0s">
-                        <span class="arch-flow-label">HTTPS · JWT</span>
-                    </div>
-
-                    <div class="arch-tier" data-reveal>
-                        <article class="arch-node arch-node--edge">
-                            <span class="arch-kind">Edge</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>API Gateway</h3>
-                                    <span class="arch-port">:8080</span>
-                                </div>
-                            </div>
-                            <p>One entry point — routing, token validation and rate limiting.</p>
-                        </article>
-                    </div>
-
-                    <div class="arch-flow" data-reveal style="--fd: 0.35s">
-                        <span class="arch-flow-label">routes /api/v1</span>
-                    </div>
-
-                    <div class="arch-tier arch-tier--fan arch-tier--3" data-reveal>
-                        <article class="arch-node">
-                            <span class="arch-kind">Service</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Auth</h3>
-                                    <span class="arch-port">:8081</span>
-                                </div>
-                            </div>
-                            <p>Accounts, BCrypt hashing and the JWT everything else trusts.</p>
-                        </article>
-                        <article class="arch-node">
-                            <span class="arch-kind">Service</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Repository</h3>
-                                    <span class="arch-port">:8082</span>
-                                </div>
-                            </div>
-                            <p>Pulls every repo, commit and language your token can see.</p>
-                        </article>
-                        <article class="arch-node">
-                            <span class="arch-kind">Service</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Analytics</h3>
-                                    <span class="arch-port">:8083</span>
-                                </div>
-                            </div>
-                            <p>Turns raw history into trends, heatmaps and quality metrics.</p>
-                        </article>
-                    </div>
-
-                    <div class="arch-flow" data-reveal style="--fd: 0.7s">
-                        <span class="arch-flow-label">publishes events</span>
-                    </div>
-
-                    <div class="arch-tier" data-reveal>
-                        <article class="arch-node arch-node--bus">
-                            <span class="arch-kind">Event stream</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Apache Kafka</h3>
-                                    <span class="arch-port">topics</span>
-                                </div>
-                            </div>
-                            <p>A durable log that decouples ingestion from scoring — nothing waits in line.</p>
-                        </article>
-                    </div>
-
-                    <div class="arch-flow" data-reveal style="--fd: 1.05s">
-                        <span class="arch-flow-label">consumes events</span>
-                    </div>
-
-                    <div class="arch-tier arch-tier--fan arch-tier--2" data-reveal>
-                        <article class="arch-node">
-                            <span class="arch-kind">Engine</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Scoring Engine</h3>
-                                    <span class="arch-port">:8084</span>
-                                </div>
-                            </div>
-                            <p>Weighs five signals into a single 0–100 Developer DNA score.</p>
-                        </article>
-                        <article class="arch-node">
-                            <span class="arch-kind">Engine</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>Recommendations</h3>
-                                    <span class="arch-port">:8085</span>
-                                </div>
-                            </div>
-                            <p>Reads that profile and ranks what is worth learning next.</p>
-                        </article>
-                    </div>
-
-                    <div class="arch-flow" data-reveal style="--fd: 1.4s">
-                        <span class="arch-flow-label">score updates</span>
-                    </div>
-
-                    <div class="arch-tier" data-reveal>
-                        <article class="arch-node arch-node--live">
-                            <span class="arch-kind">Realtime</span>
-                            <div class="arch-head">
-                                <span class="arch-icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></span>
-                                <div class="arch-title">
-                                    <h3>WebSocket Push</h3>
-                                    <span class="arch-port">/ws</span>
-                                </div>
-                            </div>
-                            <p>Streams the new score straight back to the dashboard — no refresh.</p>
-                        </article>
-                    </div>
-                </div>
-            </div>
             <div class="tech-stack">
                 <h3>Technology Stack</h3>
                 <div class="tech-grid">
@@ -390,100 +419,112 @@
                     <span class="tech-badge">Docker</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Inside the DNA Score -->
-    <section id="dna" class="section">
-        <div class="section-content">
-            <h2 class="section-title">Inside Your DNA Score</h2>
-            <p class="section-lede">
-                Every repository you connect feeds five weighted signals. Together they resolve into a single
-                number out of 100 — and a ranked list of what to learn next.
-            </p>
+        <!-- ══════════════ DNA SCORE ══════════════ -->
+        <section class="l2-section section" id="dna">
+            <div class="l2-head">
+                <span class="l2-kicker" data-fx="fade-up">The score</span>
+                <h2 class="l2-h2" data-fx="mask">Inside your <em>DNA score</em></h2>
+                <p class="l2-lead" data-fx="fade-up" style="--d:.12s">
+                    Every repository you connect feeds five weighted signals. Together they resolve into a single
+                    number out of 100 — and a ranked list of what to learn next.
+                </p>
+            </div>
 
-            <div class="dna-panel">
-                <div class="dna-dial" data-reveal>
-                    <div class="dna-ring">
-                        <div class="dna-ring-core">
-                            <span class="dna-ring-value">100</span>
-                            <span class="dna-ring-unit">points</span>
+            <div class="l2-dna">
+                <div class="l2-dna-dial l2-glow" data-fx="rise" style="--i:0">
+                    <div class="l2-ring l2-ring--xl" role="img" aria-label="Composite score out of 100">
+                        <svg viewBox="0 0 120 120" aria-hidden="true">
+                            <circle class="l2-ring-track" cx="60" cy="60" r="52"></circle>
+                            <circle class="l2-ring-fill" cx="60" cy="60" r="52" data-count-ring></circle>
+                        </svg>
+                        <div class="l2-ring-core">
+                            <span class="l2-ring-value" data-count-to="100">0</span>
+                            <span class="l2-ring-unit">points</span>
                         </div>
                     </div>
-                    <p class="dna-dial-note">Five weighted signals, one composite score</p>
+                    <p class="l2-dial-note">Five weighted signals, one composite score</p>
                 </div>
 
-                <ul class="dna-signals">
-                    <li class="dna-signal" data-reveal style="--w: 100%; --c: var(--accent-soft); --i: 0">
-                        <span class="dna-swatch" aria-hidden="true"></span>
-                        <div class="dna-signal-body">
-                            <div class="dna-signal-head">
-                                <h3>Code volume</h3>
-                                <span class="dna-weight">25%</span>
-                            </div>
+                <ul class="l2-signals">
+                    <li class="l2-signal l2-glow" data-fx="rise" style="--i:1">
+                        <div class="l2-signal-body">
+                            <div class="l2-signal-head"><h3>Code volume</h3><span class="l2-weight">25%</span></div>
                             <p>Commits, additions and deletions across every repository you own or contribute to.</p>
-                            <div class="dna-bar"><span></span></div>
+                            <div class="l2-dna-bar" style="--w:100%; --c:var(--accent-soft)"><span data-bar></span></div>
                         </div>
                     </li>
-                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent); --i: 1">
-                        <span class="dna-swatch" aria-hidden="true"></span>
-                        <div class="dna-signal-body">
-                            <div class="dna-signal-head">
-                                <h3>Language breadth</h3>
-                                <span class="dna-weight">20%</span>
-                            </div>
+                    <li class="l2-signal l2-glow" data-fx="rise" style="--i:2">
+                        <div class="l2-signal-body">
+                            <div class="l2-signal-head"><h3>Language breadth</h3><span class="l2-weight">20%</span></div>
                             <p>How many ecosystems you actually ship in — and how deep each one runs.</p>
-                            <div class="dna-bar"><span></span></div>
+                            <div class="l2-dna-bar" style="--w:80%; --c:var(--accent)"><span data-bar></span></div>
                         </div>
                     </li>
-                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent-deep); --i: 2">
-                        <span class="dna-swatch" aria-hidden="true"></span>
-                        <div class="dna-signal-body">
-                            <div class="dna-signal-head">
-                                <h3>Commit consistency</h3>
-                                <span class="dna-weight">20%</span>
-                            </div>
+                    <li class="l2-signal l2-glow" data-fx="rise" style="--i:3">
+                        <div class="l2-signal-body">
+                            <div class="l2-signal-head"><h3>Commit consistency</h3><span class="l2-weight">20%</span></div>
                             <p>Rhythm beats bursts: a steady streak scores above one heroic weekend.</p>
-                            <div class="dna-bar"><span></span></div>
+                            <div class="l2-dna-bar" style="--w:80%; --c:var(--accent-deep)"><span data-bar></span></div>
                         </div>
                     </li>
-                    <li class="dna-signal" data-reveal style="--w: 80%; --c: var(--accent-sapphire); --i: 3">
-                        <span class="dna-swatch" aria-hidden="true"></span>
-                        <div class="dna-signal-body">
-                            <div class="dna-signal-head">
-                                <h3>Collaboration</h3>
-                                <span class="dna-weight">20%</span>
-                            </div>
+                    <li class="l2-signal l2-glow" data-fx="rise" style="--i:4">
+                        <div class="l2-signal-body">
+                            <div class="l2-signal-head"><h3>Collaboration</h3><span class="l2-weight">20%</span></div>
                             <p>Pull requests, reviews and issues — the work that happens with other people.</p>
-                            <div class="dna-bar"><span></span></div>
+                            <div class="l2-dna-bar" style="--w:80%; --c:var(--accent-sapphire)"><span data-bar></span></div>
                         </div>
                     </li>
-                    <li class="dna-signal" data-reveal style="--w: 60%; --c: var(--accent-teal); --i: 4">
-                        <span class="dna-swatch" aria-hidden="true"></span>
-                        <div class="dna-signal-body">
-                            <div class="dna-signal-head">
-                                <h3>Code quality</h3>
-                                <span class="dna-weight">15%</span>
-                            </div>
+                    <li class="l2-signal l2-glow" data-fx="rise" style="--i:5">
+                        <div class="l2-signal-body">
+                            <div class="l2-signal-head"><h3>Code quality</h3><span class="l2-weight">15%</span></div>
                             <p>Tests, documentation and structure, read straight from the repositories themselves.</p>
-                            <div class="dna-bar"><span></span></div>
+                            <div class="l2-dna-bar" style="--w:60%; --c:var(--accent-teal)"><span data-bar></span></div>
                         </div>
                     </li>
                 </ul>
             </div>
 
-            <div class="dna-cta" data-reveal>
-                <div class="dna-cta-copy">
+            <div class="l2-band" data-fx="rise">
+                <div class="l2-band-copy">
                     <h3>See your own five</h3>
                     <p>Read-only access, a token you can revoke whenever you like, and your score in about a minute.</p>
                 </div>
-                <button type="button" class="band-btn connect-gh" id="dnaConnectBtn">
+                <button type="button" class="band-btn l2-magnet connect-gh" id="dnaConnectBtn">
                     <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
                     <span class="connect-gh-label">Connect with GitHub</span>
                 </button>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- ══════════════ FINAL CTA ══════════════ -->
+        <section class="l2-final section" aria-label="Get started">
+            <div class="l2-final-card" data-fx="rise">
+                <span class="l2-orb l2-orb--blue l2-orb--card"></span>
+                <span class="l2-orb l2-orb--cantaloupe l2-orb--card2"></span>
+                <h2>Measure your code.<br><em>Earn your DNA.</em></h2>
+                <p>One secure GitHub connection and the whole platform lights up with your real data.</p>
+                <div class="l2-final-actions">
+                    <button type="button" class="btn-hero-primary connect-gh" aria-label="Connect with GitHub">
+                        <i class="fa-brands fa-github gh-mark" aria-hidden="true"></i>
+                        <span class="connect-gh-label">Connect with GitHub</span>
+                    </button>
+                    <a href="/gemini-guide.html" class="btn-hero-secondary">Set up Gemini guide</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="l2-footer">
+        <button class="l2-footlogo" aria-label="CodeDNA Home" onclick="window.location.href='/'">Code<span>DNA</span></button>
+        <p>Developer intelligence, measured in DNA. © 2026 CodeDNA.</p>
+        <nav aria-label="Footer">
+            <a href="/app.html#/refactoriq">RefactorIQ</a>
+            <a href="/gemini-guide.html">Gemini Guide</a>
+            <a href="/app.html#/">Dashboard</a>
+        </nav>
+    </footer>
 
     <!-- Connect GitHub Modal — OAuth only -->
     <div id="githubModal" class="modal" hidden>
@@ -501,7 +542,6 @@
                 </div>
             </div>
 
-            <!-- Single centered OAuth hero — PAT card removed, OAuth untouched -->
             <div class="gh-connect-single" id="githubConnectGrid">
                 <div class="gh-oauth-card gh-oauth-card--solo">
                     <div class="gh-oauth-glow" aria-hidden="true"></div>
@@ -510,7 +550,7 @@
                         <span class="gh-oauth-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
                     </div>
                     <div>
-                        <h3 class="gh-oauth-title">Connect with GitHub <i class="fa-solid fa-bolt" style="color:#FF2800; font-size:0.9em" aria-hidden="true"></i></h3>
+                        <h3 class="gh-oauth-title">Connect with GitHub <i class="fa-solid fa-bolt" style="color:#00FF88; font-size:0.9em" aria-hidden="true"></i></h3>
                         <p class="gh-oauth-lede">One click. Redirects to <strong>github.com</strong> to authorize read-only access. No token to copy, no scopes to tick by hand.</p>
                     </div>
                     <ul class="gh-oauth-checks">
@@ -551,5 +591,6 @@
     </div>
 
     <script src="/landing.js"></script>
+    <script src="/landing-fx.js" defer></script>
 </body>
 </html>

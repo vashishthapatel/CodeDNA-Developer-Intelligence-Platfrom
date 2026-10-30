@@ -14,7 +14,7 @@ const difficultyColors: Record<string, string> = {
 
 const categoryColors: Record<string, string> = {
   Architecture: 'bg-accent/15 text-accent border border-accent/30',
-  Infrastructure: 'bg-black/[0.04] text-black border border-black/10',
+  Infrastructure: 'bg-black/5 text-ink border border-black/10',
   Operations: 'bg-accent-teal/15 text-accent-teal border border-accent-teal/30',
 }
 
@@ -37,7 +37,7 @@ export default function RecommendationCard({ recommendation: rec, index }: Props
                 <span className={`px-2 py-0.5 rounded-full text-[0.68rem] font-medium ${difficultyColors[rec.difficulty]}`}>
                   {rec.difficulty}
                 </span>
-                <span className={`px-2 py-0.5 rounded-full text-[0.68rem] font-medium ${categoryColors[rec.category] || 'bg-white/5 text-ink-muted border border-line'}`}>
+                <span className={`px-2 py-0.5 rounded-full text-[0.68rem] font-medium ${categoryColors[rec.category] || 'bg-black/5 text-ink-muted border border-line'}`}>
                   {rec.category}
                 </span>
               </div>

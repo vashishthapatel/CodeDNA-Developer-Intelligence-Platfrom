@@ -92,7 +92,7 @@ export default function RefactorIQDashboard() {
   return (
     <div className="space-y-10 pb-16 animate-fade-in">
       {/* Hero / Header — ALBA paper */}
-      <div className="relative overflow-hidden rounded-3xl bg-surface border border-line p-8 lg:p-12 shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)]">
+      <div className="relative overflow-hidden rounded-3xl bg-surface border border-line p-8 lg:p-12 shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)]">
         <div className="absolute -right-20 -top-20 w-80 h-80 bg-accent/[0.06] rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-emerald-500/[0.04] rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-4xl space-y-6">
@@ -131,13 +131,13 @@ export default function RefactorIQDashboard() {
       {/* Mode Selection Tabs */}
       <div className="flex flex-wrap items-center gap-4 border-b border-line pb-4">
         <div className="flex flex-wrap items-center gap-2">
-          <button onClick={() => setActiveTab('live-gh')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'live-gh' ? 'bg-accent text-void border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
+          <button onClick={() => setActiveTab('live-gh')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'live-gh' ? 'bg-accent text-black border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
             <span className="flex items-center gap-2"><Github className="w-4 h-4" /> Analyze Live GitHub Repo</span>
           </button>
-          <button onClick={() => setActiveTab('custom')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'custom' ? 'bg-accent text-void border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
+          <button onClick={() => setActiveTab('custom')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'custom' ? 'bg-accent text-black border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
             <span className="flex items-center gap-2"><Code2 className="w-4 h-4" /> Paste Java Code</span>
           </button>
-          <button onClick={() => setActiveTab('repos')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'repos' ? 'bg-accent text-void border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
+          <button onClick={() => setActiveTab('repos')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeTab === 'repos' ? 'bg-accent text-black border border-accent font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink hover:bg-surface-raised'}`}>
             <span className="flex items-center gap-2"><Layers className="w-4 h-4" /> Connected Repositories ({userRepos.length || repos.length})</span>
           </button>
         </div>
@@ -146,7 +146,7 @@ export default function RefactorIQDashboard() {
       {/* Tab 1: Live GitHub Repository Analysis */}
       {activeTab === 'live-gh' && (
         <div className="space-y-6">
-          <div className="rounded-3xl bg-surface border border-line p-8 shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] space-y-6">
+          <div className="rounded-3xl bg-surface border border-line p-8 shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] space-y-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5"><Github className="w-4 h-4 text-accent" /> Live GitHub Repository Scanner</span>
               <h2 className="text-2xl font-bold text-ink mt-1">Analyze Any Live Java Repository</h2>
@@ -160,7 +160,7 @@ export default function RefactorIQDashboard() {
                   <Search className="w-4 h-4 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2" />
                   <input type="text" value={repoInput} onChange={(e) => setRepoInput(e.target.value)} placeholder="e.g. vashishthapatel/DSA-JAVA or https://github.com/owner/repo" className="w-full pl-11 pr-4 py-3.5 bg-void border border-black/10 rounded-2xl text-sm text-ink placeholder:text-ink-faint outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/20 transition-all font-mono" />
                 </div>
-                <button onClick={() => handleAnalyzeLiveRepo()} disabled={analyzing} className="px-8 py-3.5 rounded-2xl bg-accent text-void border border-accent hover:bg-accent-deep font-bold text-sm shadow-glow-sm transition-all flex items-center justify-center gap-2 shrink-0 disabled:opacity-50">
+                <button onClick={() => handleAnalyzeLiveRepo()} disabled={analyzing} className="px-8 py-3.5 rounded-2xl bg-accent text-black border border-accent hover:bg-accent-deep font-bold text-sm shadow-glow-sm transition-all flex items-center justify-center gap-2 shrink-0 disabled:opacity-50">
                   {analyzing ? (<><Activity className="w-4 h-4 animate-spin" /><span>Analyzing Repository...</span></>) : (<><Zap className="w-4 h-4" /><span>Analyze Live Repository</span></>)}
                 </button>
               </div>
@@ -202,7 +202,7 @@ export default function RefactorIQDashboard() {
 
       {/* Tab 2: Custom Code Analyzer */}
       {activeTab === 'custom' && (
-        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-6 space-y-5">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-6 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-bold text-ink">Paste Java Source Code</h3>
@@ -221,7 +221,7 @@ export default function RefactorIQDashboard() {
           )}
           <div className="flex justify-end gap-3">
             <button onClick={() => { setCustomCode(''); setCustomError(null); }} className="px-4 py-2 rounded-xl text-xs text-ink-muted hover:text-ink bg-surface-raised border border-line hover:bg-surface transition-colors">Clear</button>
-            <button onClick={handleAnalyzeCustom} disabled={analyzing} className="px-6 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep font-bold text-xs shadow-glow-sm transition-all flex items-center gap-2 disabled:opacity-50">
+            <button onClick={handleAnalyzeCustom} disabled={analyzing} className="px-6 py-2.5 rounded-xl bg-accent text-black border border-accent hover:bg-accent-deep font-bold text-xs shadow-glow-sm transition-all flex items-center gap-2 disabled:opacity-50">
               {analyzing ? <Activity className="w-3.5 h-3.5 animate-spin" /> : <Zap className="w-3.5 h-3.5" />}<span>Analyze Code with RefactorIQ</span>
             </button>
           </div>
@@ -232,18 +232,18 @@ export default function RefactorIQDashboard() {
       {activeTab === 'repos' && (
         <div className="space-y-4">
           {(userRepos.length === 0 && repos.length === 0) ? (
-            <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-12 text-center space-y-4">
+            <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-12 text-center space-y-4">
               <div className="w-14 h-14 mx-auto rounded-2xl bg-surface-raised border border-line grid place-items-center"><Inbox className="w-7 h-7 text-ink-muted" /></div>
               <div>
                 <h3 className="text-base font-bold text-ink">No connected repositories</h3>
                 <p className="text-sm text-ink-muted mt-1 max-w-md mx-auto">Connect GitHub on the dashboard to see your repositories here, or use the Live Analyzer above to scan any public repo.</p>
               </div>
-              <button onClick={() => setActiveTab('live-gh')} className="px-5 py-2.5 rounded-xl bg-accent text-void border border-accent hover:bg-accent-deep text-xs font-bold transition-all inline-flex items-center gap-2 shadow-glow-sm"><Github className="w-3.5 h-3.5" /> Analyze a Repository</button>
+              <button onClick={() => setActiveTab('live-gh')} className="px-5 py-2.5 rounded-xl bg-accent text-black border border-accent hover:bg-accent-deep text-xs font-bold transition-all inline-flex items-center gap-2 shadow-glow-sm"><Github className="w-3.5 h-3.5" /> Analyze a Repository</button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {(userRepos.length > 0 ? userRepos : repos).map((repo) => (
-                <div key={repo.id || repo.name} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(0,0,0,0.35),0_12px_32px_-16px_rgba(0,0,0,0.45)] p-5 hover:border-accent/30 transition-all flex flex-col justify-between">
+                <div key={repo.id || repo.name} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-5 hover:border-accent/30 transition-all flex flex-col justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono text-accent">{repo.primaryLanguage || repo.language || 'Java'}</span>
@@ -254,7 +254,7 @@ export default function RefactorIQDashboard() {
                   </div>
                   <div className="pt-5 flex items-center justify-between border-t border-line mt-4">
                     <span className="text-[0.7rem] text-ink-faint">RefactorIQ Ready</span>
-                    <button onClick={() => { const fullName = repo.fullName || repo.name; setRepoInput(fullName); setActiveTab('live-gh'); handleAnalyzeLiveRepo(fullName); }} disabled={analyzing} className="px-3.5 py-1.5 rounded-lg bg-accent/10 border border-accent/20 text-accent text-xs font-semibold hover:bg-accent hover:text-void hover:border-accent transition-all flex items-center gap-1.5">
+                    <button onClick={() => { const fullName = repo.fullName || repo.name; setRepoInput(fullName); setActiveTab('live-gh'); handleAnalyzeLiveRepo(fullName); }} disabled={analyzing} className="px-3.5 py-1.5 rounded-lg bg-accent/10 border border-accent/20 text-accent text-xs font-semibold hover:bg-accent hover:text-black hover:border-accent transition-all flex items-center gap-1.5">
                       <Zap className="w-3 h-3" /><span>Analyze Live</span>
                     </button>
                   </div>

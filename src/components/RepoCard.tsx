@@ -160,7 +160,7 @@ export default function RepoCard({ repo, compact }: Props) {
                     cy="20"
                     r="16"
                     fill="none"
-                    stroke="rgba(0,0,0,0.45)"
+                    stroke="rgba(255, 255, 255,0.45)"
                     strokeWidth="3"
                   />
                   <circle

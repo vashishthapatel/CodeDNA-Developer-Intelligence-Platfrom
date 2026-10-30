@@ -1,55 +1,56 @@
 /**
- * CodeDNA — White + Ferrari Red palette.
- * Background is pure white, accent is Ferrari Rosso Corsa (#FF2800), all text is black.
+ * CodeDNA — Off-white theme with Electric Blue + Cantaloupe accents.
+ * Background is off-white (#000000 / #0A0A0A), primary accent is Electric Blue (#00FF88),
+ * secondary accent is Cantaloupe (#FFB800), text is deep porcelain-navy (#F0F0F0).
  */
 
 export const luxe = {
-  emberPale: '#FF8573',
-  ember: '#FF2800',     // Ferrari Rosso Corsa
-  emberDeep: '#D01E00',
-  emberDark: '#991400',
-  burnt: '#000000',
-  apricot: '#FF5940',
-  pearl: '#FFFFFF',
-  garnet: '#FF2800',
+  emberPale: '#FFB800',  // light electric blue
+  ember: '#00FF88',      // Electric Blue
+  emberDeep: '#00CC6A',
+  emberDark: '#00CC6A',
+  burnt: '#F0F0F0',
+  apricot: '#FFB800',    // Cantaloupe
+  pearl: '#F0F9FF',
+  garnet: '#FFB800',     // warm cantaloupe for low scores
   amber: '#F59E0B',
-  ink: '#000000',
-  inkSecondary: '#000000',
-  inkMuted: '#000000',
-  inkFaint: 'rgba(0,0,0,0.45)',
-  hairline: 'rgba(0, 0, 0, 0.08)',
-  axis: 'rgba(0, 0, 0, 0.12)',
+  ink: '#F0F0F0',
+  inkSecondary: '#00FF88',
+  inkMuted: 'rgba(240,240,240,0.66)',
+  inkFaint: 'rgba(240,240,240,0.45)',
+  hairline: 'rgba(255, 255, 255, 0.10)',
+  axis: 'rgba(255, 255, 255, 0.16)',
 } as const
 
-/** Ordered series — high-contrast on white */
+/** Ordered series — vivid on off-white */
 export const series = [
-  luxe.ember,
-  '#000000',
-  '#FF5940',
-  luxe.emberDeep,
-  '#333333',
-  '#991400',
+  luxe.ember,      // electric blue
+  '#FFB800',       // cantaloupe
+  '#00CC6A',       // deep blue
+  '#F59E0B',       // amber
+  '#00CC6A',       // midnight blue
+  '#FFD04D',       // soft cantaloupe
 ] as const
 
-/** White tooltip with black text + Ferrari micro-border */
+/** White tooltip with navy text + electric micro-border */
 export const glassTooltip = {
-  backgroundColor: '#FFFFFF',
-  border: '1px solid rgba(255, 40, 0, 0.30)',
+  backgroundColor: '#000000',
+  border: '1px solid rgba(0, 255, 136, 0.40)',
   borderRadius: '14px',
-  color: '#000000',
-  boxShadow: '0 16px 40px -12px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.08)',
+  color: '#F0F0F0',
+  boxShadow: '0 16px 40px -12px rgba(255, 255, 255,0.15), 0 1px 3px rgba(255, 255, 255,0.08)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#000000', fontSize: 12, opacity: 0.55 } as const
+export const axisTick = { fill: '#00FF88', fontSize: 12, opacity: 0.85 } as const
 
-/** Heatmap ramp: light grey → soft red → vivid red → Ferrari */
+/** Heatmap ramp: faint navy → soft blue → electric blue */
 export const heatRamp = [
-  'rgba(0, 0, 0, 0.06)',
-  'rgba(255, 40, 0, 0.18)',
-  'rgba(255, 40, 0, 0.38)',
-  'rgba(255, 40, 0, 0.65)',
-  '#FF2800',
+  'rgba(255, 255, 255, 0.06)',
+  'rgba(0, 255, 136, 0.22)',
+  'rgba(0, 255, 136, 0.42)',
+  'rgba(0, 255, 136, 0.68)',
+  '#00FF88',
 ] as const
 
 export function metalForScore(value: number): string {
