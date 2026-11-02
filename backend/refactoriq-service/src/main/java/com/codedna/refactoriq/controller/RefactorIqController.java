@@ -211,9 +211,14 @@ public class RefactorIqController {
     @PostMapping("/refactoring/transform")
     @Operation(summary = "Apply safe AST code transformations (Level 2 automated refactoring)")
     public ResponseEntity<RefactoringEngine.RefactorResult> transformCode(@RequestBody TransformRequest req) {
-        if ("GUARD_CLAUSE".equalsIgnoreCase(req.getTransformationType()) || "INTRODUCE_GUARD_CLAUSES".equalsIgnoreCase(req.getTransformationType())) {
+        String type = req.getTransformationType() != null ? req.getTransformationType().toUpperCase() : "GUARD_CLAUSE";
+        if (type.contains("GUARD") || type.contains("NESTING")) {
             return ResponseEntity.ok(refactoringEngine.applyGuardClauseTransformation(req.getSourceCode()));
-        } else if ("EXTRACT_CLASS".equalsIgnoreCase(req.getTransformationType())) {
+        } else if (type.contains("METHOD")) {
+            return ResponseEntity.ok(refactoringEngine.applyExtractMethodTransformation(req.getSourceCode(), null));
+        } else if (type.contains("CLEAN") || type.contains("UNWANTED") || type.contains("IMPORT")) {
+            return ResponseEntity.ok(refactoringEngine.applyCleanCodeTransformation(req.getSourceCode()));
+        } else if (type.contains("CLASS") || type.contains("VALIDATOR")) {
             return ResponseEntity.ok(refactoringEngine.generateExtractedClassScaffold(
                     req.getClassName() != null ? req.getClassName() : "ExtractedValidator.java",
                     req.getSourceCode()

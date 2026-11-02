@@ -9,7 +9,6 @@ com\codedna\refactoriq\common\enums\RefactoringType.class
 com\codedna\refactoriq\metrics\MetricsEngine.class
 com\codedna\refactoriq\repository\IssueEntityRepository.class
 com\codedna\refactoriq\comparison\ImpactScoreEngine$ImpactAssessment.class
-com\codedna\refactoriq\service\DemoScenarioService.class
 com\codedna\refactoriq\parser\ClassModel$ClassModelBuilder.class
 com\codedna\refactoriq\metrics\ComplexityScoreEngine$ScoreBreakdown$ScoreBreakdownBuilder.class
 com\codedna\refactoriq\metrics\DependencyAnalyzer.class
@@ -17,7 +16,6 @@ com\codedna\refactoriq\metrics\ComplexityScoreEngine$ScoreBreakdown.class
 com\codedna\refactoriq\recommendation\RecommendationEngine$1.class
 com\codedna\refactoriq\entity\AnalysisEntity.class
 com\codedna\refactoriq\repository\RefactoringSessionEntityRepository.class
-com\codedna\refactoriq\service\DemoScenarioService$DemoResult$DemoResultBuilder.class
 com\codedna\refactoriq\refactoring\RefactoringEngine$RefactorResult$RefactorResultBuilder.class
 com\codedna\refactoriq\metrics\ComplexityScoreEngine.class
 com\codedna\refactoriq\common\enums\AnalysisStatus.class
@@ -28,7 +26,6 @@ com\codedna\refactoriq\entity\AnalysisEntity$AnalysisEntityBuilder.class
 com\codedna\refactoriq\parser\SourceFileModel$SourceFileModelBuilder.class
 com\codedna\refactoriq\issue\IssueDetectionEngine.class
 com\codedna\refactoriq\entity\MethodMetricEntity$MethodMetricEntityBuilder.class
-com\codedna\refactoriq\service\DemoScenarioService$DemoResult.class
 com\codedna\refactoriq\RefactorIqApplication.class
 com\codedna\refactoriq\controller\RefactorIqController$CodeAnalysisRequest.class
 com\codedna\refactoriq\metrics\DuplicationAnalyzer.class
@@ -49,10 +46,12 @@ com\codedna\refactoriq\repository\FileMetricEntityRepository.class
 com\codedna\refactoriq\parser\MethodModel$MethodModelBuilder.class
 com\codedna\refactoriq\repository\AnalysisEntityRepository.class
 com\codedna\refactoriq\entity\FileMetricEntity.class
+com\codedna\refactoriq\refactoring\RefactoringEngine$ParsedCode.class
 com\codedna\refactoriq\entity\RecommendationEntity$RecommendationEntityBuilder.class
 com\codedna\refactoriq\metrics\NestingAnalyzer.class
 com\codedna\refactoriq\entity\RepositoryEntity.class
 com\codedna\refactoriq\entity\RefactoringSessionEntity.class
+com\codedna\refactoriq\refactoring\RefactoringEngine$1.class
 com\codedna\refactoriq\service\RepositoryDownloader.class
 com\codedna\refactoriq\entity\MethodMetricEntity.class
 com\codedna\refactoriq\common\enums\IssueType.class

@@ -18,7 +18,8 @@ export default function RefactorIQStudio() {
   const [afterCode, setAfterCode] = useState('');
   const [diffText, setDiffText] = useState<string | null>(null);
   const [transforming, setTransforming] = useState(false);
-  const [transformType, setTransformType] = useState<'GUARD_CLAUSE' | 'EXTRACT_CLASS'>('GUARD_CLAUSE');
+  const [transformType, setTransformType] = useState<'GUARD_CLAUSE' | 'EXTRACT_METHOD' | 'CLEAN_CODE' | 'EXTRACT_CLASS'>('GUARD_CLAUSE');
+  const [transformSummary, setTransformSummary] = useState<string | null>(null);
   const [transformError, setTransformError] = useState<string | null>(null);
   const [reanalyzing, setReanalyzing] = useState(false);
   const [reanalyzeError, setReanalyzeError] = useState<string | null>(null);
@@ -30,11 +31,20 @@ export default function RefactorIQStudio() {
   useEffect(() => {
     let cancelled = false;
     async function load() {
+      const selectBestTransform = (t?: string) => {
+        const up = String(t || '').toUpperCase();
+        if (up.includes('METHOD')) setTransformType('EXTRACT_METHOD');
+        else if (up.includes('CLASS')) setTransformType('EXTRACT_CLASS');
+        else if (up.includes('IMPORT') || up.includes('DEPENDENC')) setTransformType('CLEAN_CODE');
+        else setTransformType('GUARD_CLAUSE');
+      };
+
       if (passedPlan) {
         if (!cancelled) {
           setPlan(passedPlan);
           setBeforeCode(passedRawSource || passedPlan.beforeCodeSnippet || '');
           setAppliedSteps(passedPlan.steps ? passedPlan.steps.map((_: any, i: number) => i + 1) : []);
+          selectBestTransform(passedPlan.refactoringType);
           setLoading(false);
         }
         return;
@@ -62,6 +72,7 @@ export default function RefactorIQStudio() {
           setPlan(syntheticPlan);
           setBeforeCode(passedRawSource);
           setAppliedSteps(syntheticPlan.steps.map((_: any, i: number) => i + 1));
+          selectBestTransform(syntheticPlan.refactoringType);
           setLoading(false);
         }
         return;
@@ -73,6 +84,7 @@ export default function RefactorIQStudio() {
         setPlan(p);
         setBeforeCode(p.beforeCodeSnippet || '');
         setAppliedSteps(p.steps ? p.steps.map((_: any, i: number) => i + 1) : []);
+        selectBestTransform(p.refactoringType);
         setLoading(false);
       } catch (e: any) {
         if (!cancelled) { setError(e.message || 'Failed to load refactoring plan.'); setLoading(false); }
@@ -94,6 +106,7 @@ export default function RefactorIQStudio() {
       const res = await refactorIqApi.transformCode(code, transformType, className);
       setAfterCode(res.refactoredCode || '');
       setDiffText(res.diff || null);
+      setTransformSummary(res.summary || null);
       setActiveView('split');
     } catch (e: any) {
       setTransformError(e.message || 'Transformation failed.');
@@ -236,15 +249,23 @@ export default function RefactorIQStudio() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 bg-surface-raised p-1 rounded-xl border border-line text-xs">
+          <div className="flex items-center gap-1.5 bg-surface-raised p-1 rounded-xl border border-line text-xs">
             <button onClick={() => setTransformType('GUARD_CLAUSE')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'GUARD_CLAUSE' ? 'bg-accent text-black font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Guard Clauses</button>
+            <button onClick={() => setTransformType('EXTRACT_METHOD')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'EXTRACT_METHOD' ? 'bg-accent text-black font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Extract Method</button>
+            <button onClick={() => setTransformType('CLEAN_CODE')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'CLEAN_CODE' ? 'bg-accent text-black font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Clean & Remove Unwanted</button>
             <button onClick={() => setTransformType('EXTRACT_CLASS')} className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${transformType === 'EXTRACT_CLASS' ? 'bg-accent text-black font-bold shadow-glow-sm' : 'text-ink-muted hover:text-ink'}`}>Extract Validator</button>
           </div>
           <button onClick={handleTransform} disabled={transforming} className="px-4 py-2 rounded-xl bg-accent text-black border border-accent hover:bg-accent-deep shadow-glow-sm font-bold text-xs transition-all disabled:opacity-50 flex items-center gap-2">
             {transforming ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Wand2 className="w-3.5 h-3.5" />}<span>Generate Preview</span>
           </button>
-          <span className="text-xs text-ink-muted hidden sm:inline">Uses POST /refactoring/transform (real AST transforms, no demo fixture).</span>
+          <span className="text-xs text-ink-muted hidden sm:inline">AST-driven refactoring: lower complexity, clean code, identical output.</span>
         </div>
+        {transformSummary && (
+          <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+            <span className="leading-relaxed">{transformSummary}</span>
+          </div>
+        )}
         {transformError && <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs flex items-center gap-2"><AlertTriangle className="w-3.5 h-3.5" />{transformError}</div>}
 
         {activeView === 'split' && (

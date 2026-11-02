@@ -23,6 +23,7 @@ public class RefactorIqTests {
     private DuplicationAnalyzer duplicationAnalyzer;
     private ComplexityScoreEngine scoreEngine;
     private ImpactScoreEngine impactEngine;
+    private com.codedna.refactoriq.refactoring.RefactoringEngine refactoringEngine;
 
     @BeforeEach
     void setUp() {
@@ -34,6 +35,7 @@ public class RefactorIqTests {
         duplicationAnalyzer = new DuplicationAnalyzer();
         scoreEngine = new ComplexityScoreEngine();
         impactEngine = new ImpactScoreEngine();
+        refactoringEngine = new com.codedna.refactoriq.refactoring.RefactoringEngine();
     }
 
     @Test
@@ -125,5 +127,93 @@ public class RefactorIqTests {
         );
 
         assertTrue(assessment.getRegressionCount() >= 2);
+    }
+
+    @Test
+    void testGuardClauseTransformationAndRedundantElseRemoval() {
+        String code =
+                "package com.example;\n" +
+                "public class OrderService {\n" +
+                "    public boolean process(String id) {\n" +
+                "        if (id == null) {\n" +
+                "            return false;\n" +
+                "        } else {\n" +
+                "            System.out.println(id);\n" +
+                "            return true;\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+
+        var res = refactoringEngine.applyGuardClauseTransformation(code);
+        assertTrue(res.isAutomated());
+        assertFalse(res.getRefactoredCode().contains("else {"));
+        assertTrue(res.getRefactoredCode().contains("return false;"));
+        assertTrue(res.getRefactoredCode().contains("System.out.println(id);"));
+        assertTrue(res.getDiff().contains("-"));
+    }
+
+    @Test
+    void testExtractMethodTransformation() {
+        String code =
+                "package com.example;\n" +
+                "public class PaymentService {\n" +
+                "    public void pay(String user, int amount) {\n" +
+                "        if (user == null) {\n" +
+                "            throw new IllegalArgumentException(\"User null\");\n" +
+                "        }\n" +
+                "        if (amount <= 0) {\n" +
+                "            throw new IllegalArgumentException(\"Invalid amount\");\n" +
+                "        }\n" +
+                "        System.out.println(\"Charging \" + user + \": \" + amount);\n" +
+                "    }\n" +
+                "}";
+
+        var res = refactoringEngine.applyExtractMethodTransformation(code, "pay");
+        assertTrue(res.isAutomated());
+        assertTrue(res.getRefactoredCode().contains("validatePayParameters("));
+        assertTrue(res.getRefactoredCode().contains("private void validatePayParameters(String user, int amount)"));
+    }
+
+    @Test
+    void testCleanCodeUnusedImportsAndRedundantSyntax() {
+        String code =
+                "package com.example;\n" +
+                "import java.util.List;\n" +
+                "import java.util.ArrayList;\n" +
+                "import java.util.Map;\n" +
+                "public class CleanTest {\n" +
+                "    public boolean isPositive(int x, boolean active) {\n" +
+                "        if (active == true) {\n" +
+                "            List<String> items = new ArrayList<>();\n" +
+                "            return x > 0;\n" +
+                "        }\n" +
+                "        return false;\n" +
+                "    }\n" +
+                "}";
+
+        var res = refactoringEngine.applyCleanCodeTransformation(code);
+        assertTrue(res.isAutomated());
+        // Map is unused, so it should be stripped
+        assertFalse(res.getRefactoredCode().contains("import java.util.Map;"));
+        // active == true should be simplified to active
+        assertFalse(res.getRefactoredCode().contains("active == true"));
+        assertTrue(res.getRefactoredCode().contains("import java.util.List;"));
+    }
+
+    @Test
+    void testExtractClassValidatorDelegation() {
+        String code =
+                "package com.example;\n" +
+                "public class AccountService {\n" +
+                "    public void register(String username) {\n" +
+                "        System.out.println(username);\n" +
+                "    }\n" +
+                "}";
+
+        var res = refactoringEngine.generateExtractedClassScaffold("AccountService.java", code);
+        assertTrue(res.isAutomated());
+        assertNotNull(res.getDelegateCode());
+        assertTrue(res.getDelegateCode().contains("public class AccountValidator"));
+        assertTrue(res.getRefactoredCode().contains("AccountValidator validator"));
     }
 }
