@@ -276,17 +276,17 @@ export default function RefactorIQComparison() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_12px_32px_-16px_rgba(0,0,0,0.6)] p-6 space-y-4">
         <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sparkles className="w-4 h-4 text-accent" />Visual Dimension Comparison (Before vs After)</h3>
         <div className="h-72 w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <XAxis dataKey="metric" stroke="#00FF88" fontSize={12} />
-              <YAxis stroke="#00FF88" fontSize={12} />
-              <Tooltip contentStyle={{ backgroundColor: '#000000', borderColor: 'rgba(0,255,136,0.45)', borderRadius: '12px', color: '#F0F0F0' }} />
-              <Legend wrapperStyle={{ color: '#E2E8F0' }} />
-              <Bar dataKey="before" name="Before Refactor" fill="#FFB800" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="after" name="After Refactor" fill="#00FF88" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="metric" stroke="#94A3B8" fontSize={12} />
+              <YAxis stroke="#94A3B8" fontSize={12} />
+              <Tooltip contentStyle={{ backgroundColor: '#111117', borderColor: 'rgba(204,255,0,0.40)', borderRadius: '12px', color: '#F8FAFC' }} />
+              <Legend wrapperStyle={{ color: '#94A3B8' }} />
+              <Bar dataKey="before" name="Before Refactor" fill="#5E5CE6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="after" name="After Refactor" fill="#CCFF00" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
