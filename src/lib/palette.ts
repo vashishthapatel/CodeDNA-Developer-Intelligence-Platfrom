@@ -1,59 +1,58 @@
 /**
- * CodeDNA — Radioactive Wasabi (#CCFF00) + Royal Iris (#5E5CE6) on Stealth Basalt (#08080C).
- * Strand A: Radioactive Wasabi (Code Logic & AST execution)
- * Strand B: Royal Iris (Developer Genetics & Identity)
+ * CodeDNA — Obsidian & Aged Brass, with a restrained mineral-blue comparison series.
+ * Brass communicates primary brand action; semantic colors remain reserved for status.
  */
 
 export const luxe = {
-  emberPale: '#E5FF66',  // light wasabi
-  ember: '#CCFF00',      // Radioactive Wasabi (Strand A)
-  emberDeep: '#9EC200',
-  emberDark: '#7A9600',
-  iris: '#5E5CE6',       // Royal Iris (Strand B)
-  irisLight: '#8382F0',
-  irisDeep: '#4442B5',
-  burnt: '#F8FAFC',
-  apricot: '#FB923C',    // Signal Coral
-  pearl: '#F8FAFC',
-  garnet: '#FB923C',     // warm signal coral for lower scores
-  amber: '#F59E0B',
-  ink: '#F8FAFC',
-  inkSecondary: '#94A3B8', // balanced graphite slate
-  inkMuted: 'rgba(248, 250, 252, 0.65)',
-  inkFaint: 'rgba(248, 250, 252, 0.40)',
-  hairline: 'rgba(255, 255, 255, 0.08)',
-  axis: 'rgba(255, 255, 255, 0.12)',
+  emberPale: '#E0C58D',
+  ember: '#C8A96B',
+  emberDeep: '#9D7D48',
+  emberDark: '#765B32',
+  iris: '#7F9DB2',
+  irisLight: '#A7BDCB',
+  irisDeep: '#506F83',
+  burnt: '#7F9DB2',
+  apricot: '#C58A55',
+  pearl: '#F4F0E8',
+  garnet: '#B85C52',
+  amber: '#C58A55',
+  ink: '#F4F0E8',
+  inkSecondary: '#B9B4AA',
+  inkMuted: 'rgba(244, 240, 232, 0.68)',
+  inkFaint: 'rgba(244, 240, 232, 0.44)',
+  hairline: 'rgba(244, 240, 232, 0.10)',
+  axis: 'rgba(244, 240, 232, 0.16)',
 } as const
 
-/** Ordered series — complementary genomic strands */
+/** Ordered series — brass lead with subdued analytical companions */
 export const series = [
-  luxe.ember,      // radioactive wasabi
-  luxe.iris,       // royal iris
-  '#FB923C',       // signal coral
-  '#8382F0',       // iris light
-  '#9EC200',       // wasabi deep
-  '#F59E0B',       // amber
+  luxe.ember,
+  luxe.iris,
+  luxe.apricot,
+  luxe.irisLight,
+  luxe.emberDeep,
+  '#6E8773',
 ] as const
 
-/** Glass tooltip with carbon text + wasabi micro-border */
+/** Obsidian tooltip with a subtle aged-brass keyline */
 export const glassTooltip = {
-  backgroundColor: '#111117',
-  border: '1px solid rgba(204, 255, 0, 0.35)',
+  backgroundColor: '#211F1B',
+  border: '1px solid rgba(200, 169, 107, 0.35)',
   borderRadius: '14px',
-  color: '#F8FAFC',
-  boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(255, 255, 255, 0.04)',
+  color: '#F4F0E8',
+  boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(244, 240, 232, 0.04)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#94A3B8', fontSize: 12, opacity: 0.85 } as const
+export const axisTick = { fill: '#B9B4AA', fontSize: 12, opacity: 0.85 } as const
 
-/** Heatmap ramp: faint carbon → soft iris → royal iris → vivid wasabi */
+/** Heatmap ramp: muted obsidian → mineral blue → aged brass */
 export const heatRamp = [
-  'rgba(255, 255, 255, 0.05)',
-  'rgba(94, 92, 230, 0.25)',
-  'rgba(94, 92, 230, 0.55)',
-  'rgba(204, 255, 0, 0.65)',
-  '#CCFF00',
+  'rgba(244, 240, 232, 0.05)',
+  'rgba(127, 157, 178, 0.25)',
+  'rgba(127, 157, 178, 0.55)',
+  'rgba(200, 169, 107, 0.62)',
+  '#C8A96B',
 ] as const
 
 export function metalForScore(value: number): string {

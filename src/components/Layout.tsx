@@ -10,7 +10,7 @@ export default function Layout() {
     <div className="min-h-screen">
       <TopNav />
       <main className="app-main">
-        <div key={pathname} className="shell-inner page-shell">
+        <div key={pathname} className="shell-inner page-shell page-enter">
           {isPublic ? <Outlet /> : <ProfileGate><Outlet /></ProfileGate>}
         </div>
       </main>

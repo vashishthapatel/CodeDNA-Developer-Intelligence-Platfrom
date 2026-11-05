@@ -92,7 +92,7 @@ export default function RefactorIQDashboard() {
   return (
     <div className="space-y-10 pb-16 animate-fade-in">
       {/* Hero / Header — ALBA paper */}
-      <div className="relative overflow-hidden rounded-3xl bg-surface border border-line p-8 lg:p-12 shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)]">
+      <div className="relative overflow-hidden rounded-3xl bg-surface border border-line p-8 lg:p-12 shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)]">
         <div className="absolute -right-20 -top-20 w-80 h-80 bg-accent/[0.06] rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-emerald-500/[0.04] rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-4xl space-y-6">
@@ -146,7 +146,7 @@ export default function RefactorIQDashboard() {
       {/* Tab 1: Live GitHub Repository Analysis */}
       {activeTab === 'live-gh' && (
         <div className="space-y-6">
-          <div className="rounded-3xl bg-surface border border-line p-8 shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] space-y-6">
+          <div className="rounded-3xl bg-surface border border-line p-8 shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] space-y-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5"><Github className="w-4 h-4 text-accent" /> Live GitHub Repository Scanner</span>
               <h2 className="text-2xl font-bold text-ink mt-1">Analyze Any Live Java Repository</h2>
@@ -202,7 +202,7 @@ export default function RefactorIQDashboard() {
 
       {/* Tab 2: Custom Code Analyzer */}
       {activeTab === 'custom' && (
-        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-6 space-y-5">
+        <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-6 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-bold text-ink">Paste Java Source Code</h3>
@@ -232,7 +232,7 @@ export default function RefactorIQDashboard() {
       {activeTab === 'repos' && (
         <div className="space-y-4">
           {(userRepos.length === 0 && repos.length === 0) ? (
-            <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-12 text-center space-y-4">
+            <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-12 text-center space-y-4">
               <div className="w-14 h-14 mx-auto rounded-2xl bg-surface-raised border border-line grid place-items-center"><Inbox className="w-7 h-7 text-ink-muted" /></div>
               <div>
                 <h3 className="text-base font-bold text-ink">No connected repositories</h3>
@@ -243,7 +243,7 @@ export default function RefactorIQDashboard() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {(userRepos.length > 0 ? userRepos : repos).map((repo) => (
-                <div key={repo.id || repo.name} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-5 hover:border-accent/30 transition-all flex flex-col justify-between">
+                <div key={repo.id || repo.name} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-5 hover:border-accent/30 transition-all flex flex-col justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono text-accent">{repo.primaryLanguage || repo.language || 'Java'}</span>

@@ -210,7 +210,7 @@ export default function RefactorIQStudio() {
         <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-start gap-2"><AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" /><span>{reanalyzeError}</span></div>
       )}
 
-      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-6 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sliders className="w-4 h-4 text-accent" />Structured Step-by-Step Refactoring Plan</h3>
           <span className="text-xs text-ink-muted">{appliedSteps.length} of {steps.length || 1} steps selected</span>
@@ -236,7 +236,7 @@ export default function RefactorIQStudio() {
         )}
       </div>
 
-      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(255, 255, 255,0.35),0_12px_32px_-16px_rgba(255, 255, 255,0.45)] p-6 space-y-4">
+      <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-4">
           <div className="flex items-center gap-3"><Code2 className="w-5 h-5 text-accent" /><span className="text-sm font-bold text-ink">Before vs After Code</span><span className="text-xs text-ink-muted hidden sm:inline">— {fileName}</span></div>
           <div className="flex items-center gap-2 flex-wrap">
