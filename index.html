@@ -548,7 +548,7 @@
                         <span class="gh-oauth-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
                     </div>
                     <div>
-                        <h3 class="gh-oauth-title">Connect with GitHub <i class="fa-solid fa-bolt" style="color:#00FF88; font-size:0.9em" aria-hidden="true"></i></h3>
+                        <h3 class="gh-oauth-title">Connect with GitHub <i class="fa-solid fa-bolt" style="color:#CCFF00; font-size:0.9em" aria-hidden="true"></i></h3>
                         <p class="gh-oauth-lede">One click. Redirects to <strong>github.com</strong> to authorize read-only access. No token to copy, no scopes to tick by hand.</p>
                     </div>
                     <ul class="gh-oauth-checks">
@@ -563,6 +563,24 @@
                         </button>
                         <p class="gh-oauth-scopes">Requires <code>repo</code> · <code>read:user</code> · <code>read:org</code></p>
                     </div>
+                </div>
+                <div class="gh-pat-card" style="margin-top:12px;">
+                    <div class="gh-pat-head">
+                        <span class="gh-pat-icon"><i class="fa-solid fa-key" aria-hidden="true"></i></span>
+                        <div>
+                            <div class="gh-pat-title">Or paste a token</div>
+                            <div class="gh-pat-sub">Personal access token — works on any deployment</div>
+                        </div>
+                    </div>
+                    <form class="gh-pat-form" id="ghPatForm">
+                        <div class="form-group">
+                            <input type="password" id="ghPatInput" placeholder="ghp_… or github_pat_…" autocomplete="off" style="width:100%;">
+                        </div>
+                        <div class="gh-pat-actions">
+                            <button type="submit" class="gh-pat-submit btn-hero-primary" id="ghPatSubmit" style="flex:1;min-height:44px;">Connect with token</button>
+                        </div>
+                        <p class="gh-token-out" style="font-size:0.7rem;color:rgba(248,250,252,0.45);margin-top:6px;">Token is validated against api.github.com and kept in this browser only.</p>
+                    </form>
                 </div>
             </div>
 
