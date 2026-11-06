@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Github, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/Button';
 import { DNABackground } from '../three/DNABackground';
+import { createGitHubOAuthUrl } from '../../lib/githubOAuth';
 
 export function FinalCTA() {
   return (
@@ -49,7 +50,7 @@ export function FinalCTA() {
 
           {/* CTA & Trust note */}
           <div className="flex flex-col items-center justify-center gap-4">
-            <Button href="app.html" variant="primary" size="lg" className="w-full sm:w-auto">
+            <Button onClick={() => window.location.assign(createGitHubOAuthUrl())} variant="primary" size="lg" className="w-full sm:w-auto">
               <Github className="w-4 h-4 shrink-0" />
               <span>Generate My CodeDNA</span>
               <ArrowRight className="w-4 h-4 shrink-0" />

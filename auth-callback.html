@@ -60,9 +60,18 @@ function fail(m, d){
 ;(async function main(){
   const params = new URLSearchParams(location.search)
   const code = params.get('code')
+  const state = params.get('state')
+  const expectedState = sessionStorage.getItem('gh_oauth_state')
   const err = params.get('error')
   const errDesc = params.get('error_description')
   var _origin = location.origin;
+  if(expectedState){
+    sessionStorage.removeItem('gh_oauth_state')
+    if(state !== expectedState){
+      fail('GitHub sign-in could not be verified.', 'Go back to ' + _origin + ' and click Connect with GitHub again.')
+      return
+    }
+  }
   if(err){
     if(err === 'access_denied'){
       fail('You cancelled the GitHub authorize screen.', 'Go back to ' + _origin + ' and click Connect with GitHub again.')
@@ -151,4 +160,3 @@ function fail(m, d){
 </script>
 </body>
 </html>
-

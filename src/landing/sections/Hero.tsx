@@ -7,6 +7,7 @@ import { Sparkles, Github, ArrowRight, GitBranch, GitCommit, Zap } from 'lucide-
 import { Button } from '../components/Button';
 import { useMouseParallax } from '../hooks/useMouseParallax';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { createGitHubOAuthUrl } from '../../lib/githubOAuth';
 
 const GOLD_C = new THREE.Color('#B99A5D');
 const PLAT_C = new THREE.Color('#C4C8CE');
@@ -293,7 +294,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
         >
-          <Button href="app.html" variant="primary" size="lg" className="w-full sm:w-auto">
+          <Button onClick={() => window.location.assign(createGitHubOAuthUrl())} variant="primary" size="lg" className="w-full sm:w-auto">
             <Github className="w-4 h-4 shrink-0" />
             <span>Discover Your CodeDNA</span>
           </Button>

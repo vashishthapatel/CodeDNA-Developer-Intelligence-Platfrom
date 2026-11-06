@@ -17,29 +17,7 @@ import {
 } from 'lucide-react'
 import { useProfile } from '../lib/ProfileContext'
 import { GitHubError } from '../lib/github'
-
-// OAuth — public client id only; the secret stays on the backend.
-const OAUTH_CLIENT_ID =
-  (import.meta.env.VITE_GITHUB_CLIENT_ID as string | undefined)?.trim() || 'Ov23liozfUubDI7kfWVD'
-const OAUTH_REDIRECT_URI =
-  (import.meta.env.VITE_GITHUB_REDIRECT_URI as string | undefined)?.trim() ||
-  'http://localhost:5173/auth-callback.html'
-const OAUTH_SCOPE = 'repo,read:user,read:org'
-const OAUTH_AUTHORIZE_BASES = ['/api/v1/auth/github/authorize', 'http://localhost:8081/api/v1/auth/github/authorize']
-
-function buildDirectOAuthUrl(): string | null {
-  if (!OAUTH_CLIENT_ID) return null
-  const u = new URL('https://github.com/login/oauth/authorize')
-  u.searchParams.set('client_id', OAUTH_CLIENT_ID)
-  u.searchParams.set('redirect_uri', OAUTH_REDIRECT_URI)
-  u.searchParams.set('scope', OAUTH_SCOPE)
-  try {
-    const st = Math.random().toString(36).slice(2, 10)
-    sessionStorage.setItem('gh_oauth_state', st)
-    u.searchParams.set('state', st)
-  } catch {}
-  return u.toString()
-}
+import { createGitHubOAuthUrl } from '../lib/githubOAuth'
 
 export default function ProfileGate({ children }: { children: ReactNode }) {
   const { status } = useProfile()
@@ -60,27 +38,9 @@ function ConnectPanel() {
     setOauthBusy(true)
     setProblem(null)
     try {
-      for (const base of OAUTH_AUTHORIZE_BASES) {
-        try {
-          const r = await fetch(base, { headers: { Accept: 'application/json' } })
-          if (!r.ok) continue
-          const j = (await r.json().catch(() => ({}))) as Record<string, string>
-          const url = j.url || j.authorizeUrl || j.authorize_url
-          if (url) {
-            window.location.href = url
-            return
-          }
-        } catch {
-          /* try next base, then direct URL */
-        }
-      }
-      const direct = buildDirectOAuthUrl()
-      if (direct) {
-        window.location.href = direct
-        return
-      }
-      setProblem('Could not reach the auth backend. Make sure it is running on :8081.')
-    } finally {
+      window.location.assign(createGitHubOAuthUrl())
+    } catch (error) {
+      setProblem(error instanceof Error ? error.message : 'Could not start GitHub sign-in.')
       setOauthBusy(false)
     }
   }

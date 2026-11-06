@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Dna, Github, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { createGitHubOAuthUrl } from '../../lib/githubOAuth';
 
 const navLinks = [
   { label: 'Platform', href: '#product' },
@@ -11,6 +12,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const connectGitHub = () => window.location.assign(createGitHubOAuthUrl());
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -66,13 +68,14 @@ export function Navbar() {
             >
               Sign In
             </a>
-            <a
-              href="app.html"
+            <button
+              type="button"
+              onClick={connectGitHub}
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#B99A5D] to-[#8F7545] text-[#0B100D] font-bold text-xs tracking-wide px-4 py-2 border border-[#B99A5D]/60 shadow-[0_4px_16px_-2px_rgba(185,154,93,0.4)] hover:brightness-110 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Github className="w-3.5 h-3.5" />
               <span>Connect GitHub</span>
-            </a>
+            </button>
           </div>
 
           {/* Mobile Hamburger Toggle */}
@@ -113,13 +116,14 @@ export function Navbar() {
             <Sparkles className="w-3.5 h-3.5 text-[#B99A5D]" />
             <span>Developer Intelligence Atelier</span>
           </div>
-          <a
-            href="app.html"
+          <button
+            type="button"
+            onClick={connectGitHub}
             className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#B99A5D] to-[#8F7545] text-[#0B100D] font-bold text-sm tracking-wide px-5 py-3.5 border border-[#B99A5D]/60 shadow-[0_4px_16px_-2px_rgba(185,154,93,0.4)]"
           >
             <Github className="w-4 h-4" />
             <span>Connect with GitHub</span>
-          </a>
+          </button>
           <a
             href="app.html"
             className="w-full inline-flex items-center justify-center py-2.5 text-xs text-[#A0AA9D] hover:text-[#F1EEE5]"

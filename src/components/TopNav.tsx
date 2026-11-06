@@ -18,6 +18,7 @@ import {
   Loader2,
 } from 'lucide-react'
 import { useProfile } from '../lib/ProfileContext'
+import { createGitHubOAuthUrl } from '../lib/githubOAuth'
 
 const nav = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -36,28 +37,6 @@ function ago(iso: string): string {
   return `${Math.round(hours / 24)} d ago`
 }
 
-const OAUTH_CLIENT_ID =
-  (import.meta.env.VITE_GITHUB_CLIENT_ID as string | undefined)?.trim() || 'Ov23liozfUubDI7kfWVD'
-const OAUTH_REDIRECT_URI =
-  (import.meta.env.VITE_GITHUB_REDIRECT_URI as string | undefined)?.trim() ||
-  'http://localhost:5173/auth-callback.html'
-const OAUTH_SCOPE = 'repo,read:user,read:org'
-const OAUTH_AUTHORIZE_BASES = ['/api/v1/auth/github/authorize', 'http://localhost:8081/api/v1/auth/github/authorize']
-
-function buildDirectOAuthUrl(): string | null {
-  if (!OAUTH_CLIENT_ID) return null
-  const u = new URL('https://github.com/login/oauth/authorize')
-  u.searchParams.set('client_id', OAUTH_CLIENT_ID)
-  u.searchParams.set('redirect_uri', OAUTH_REDIRECT_URI)
-  u.searchParams.set('scope', OAUTH_SCOPE)
-  try {
-    const st = Math.random().toString(36).slice(2, 10)
-    sessionStorage.setItem('gh_oauth_state', st)
-    u.searchParams.set('state', st)
-  } catch {}
-  return u.toString()
-}
-
 export default function TopNav() {
   const { profile, status, disconnect, refresh, refreshing, fetchedAt } = useProfile()
   const navigate = useNavigate()
@@ -66,28 +45,17 @@ export default function TopNav() {
   const [query, setQuery] = useState('')
   const [bellOpen, setBellOpen] = useState(false)
   const [oauthBusy, setOauthBusy] = useState(false)
+  const [oauthProblem, setOauthProblem] = useState<string | null>(null)
   const bellRef = useRef<HTMLDivElement>(null)
   const user = profile?.user
 
   async function handleConnectGithub() {
     setOauthBusy(true)
+    setOauthProblem(null)
     try {
-      for (const base of OAUTH_AUTHORIZE_BASES) {
-        try {
-          const r = await fetch(base, { headers: { Accept: 'application/json' } })
-          if (!r.ok) continue
-          const j = (await r.json().catch(() => ({}))) as Record<string, string>
-          const url = j.url || j.authorizeUrl || j.authorize_url
-          if (url) {
-            window.location.href = url
-            return
-          }
-        } catch {
-          /* try next base, then direct */
-        }
-      }
-      const direct = buildDirectOAuthUrl()
-      if (direct) window.location.href = direct
+      window.location.assign(createGitHubOAuthUrl())
+    } catch (error) {
+      setOauthProblem(error instanceof Error ? error.message : 'Could not start GitHub sign-in.')
     } finally {
       setOauthBusy(false)
     }
@@ -176,12 +144,14 @@ export default function TopNav() {
               type="button"
               onClick={handleConnectGithub}
               disabled={oauthBusy}
+              title={oauthProblem ?? undefined}
               className="hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-deep text-white font-bold tracking-wide border border-accent/60 px-4 py-2 text-xs shadow-glow hover:brightness-110 disabled:opacity-50 transition-all"
             >
               {oauthBusy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Github className="w-3.5 h-3.5" />}
               {oauthBusy ? 'Connecting…' : 'Connect GitHub'}
             </button>
           )}
+          {oauthProblem && <span role="alert" className="text-xs text-red-400">{oauthProblem}</span>}
           <button
             type="button"
             onClick={refresh}
@@ -298,6 +268,7 @@ export default function TopNav() {
               void handleConnectGithub()
             }}
             disabled={oauthBusy}
+            title={oauthProblem ?? undefined}
             className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-deep text-white font-bold tracking-wide border border-accent/60 px-4 py-3 text-sm disabled:opacity-50 shadow-glow"
           >
             {oauthBusy ? <Loader2 className="w-4 h-4 animate-spin" /> : <Github className="w-4 h-4" />}
