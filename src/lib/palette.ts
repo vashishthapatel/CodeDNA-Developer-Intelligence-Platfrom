@@ -1,27 +1,26 @@
 /**
- * CodeDNA — Obsidian & Aged Brass, with a restrained mineral-blue comparison series.
- * Brass communicates primary brand action; semantic colors remain reserved for status.
+ * CodeDNA — Deep Forest & Brushed Gold, with sage analytical companions.
  */
 
 export const luxe = {
-  emberPale: '#E0C58D',
-  ember: '#C8A96B',
-  emberDeep: '#9D7D48',
-  emberDark: '#765B32',
-  iris: '#7F9DB2',
-  irisLight: '#A7BDCB',
-  irisDeep: '#506F83',
-  burnt: '#7F9DB2',
-  apricot: '#C58A55',
-  pearl: '#F4F0E8',
-  garnet: '#B85C52',
-  amber: '#C58A55',
-  ink: '#F4F0E8',
-  inkSecondary: '#B9B4AA',
-  inkMuted: 'rgba(244, 240, 232, 0.68)',
-  inkFaint: 'rgba(244, 240, 232, 0.44)',
-  hairline: 'rgba(244, 240, 232, 0.10)',
-  axis: 'rgba(244, 240, 232, 0.16)',
+  emberPale: '#D1B678',
+  ember: '#B99A5D',
+  emberDeep: '#8F7545',
+  emberDark: '#675631',
+  iris: '#80917B',
+  irisLight: '#A0AA9D',
+  irisDeep: '#596B57',
+  burnt: '#80917B',
+  apricot: '#B99A5D',
+  pearl: '#F1EEE5',
+  garnet: '#A66A57',
+  amber: '#B99A5D',
+  ink: '#F1EEE5',
+  inkSecondary: '#A0AA9D',
+  inkMuted: 'rgba(241, 238, 229, 0.68)',
+  inkFaint: 'rgba(241, 238, 229, 0.44)',
+  hairline: 'rgba(241, 238, 229, 0.10)',
+  axis: 'rgba(241, 238, 229, 0.16)',
 } as const
 
 /** Ordered series — brass lead with subdued analytical companions */
@@ -31,28 +30,28 @@ export const series = [
   luxe.apricot,
   luxe.irisLight,
   luxe.emberDeep,
-  '#6E8773',
+  '#80917B',
 ] as const
 
 /** Obsidian tooltip with a subtle aged-brass keyline */
 export const glassTooltip = {
-  backgroundColor: '#211F1B',
-  border: '1px solid rgba(200, 169, 107, 0.35)',
+  backgroundColor: '#121A15',
+  border: '1px solid rgba(185, 154, 93, 0.35)',
   borderRadius: '14px',
-  color: '#F4F0E8',
-  boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(244, 240, 232, 0.04)',
+  color: '#F1EEE5',
+  boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(241, 238, 229, 0.04)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#B9B4AA', fontSize: 12, opacity: 0.85 } as const
+export const axisTick = { fill: '#A0AA9D', fontSize: 12, opacity: 0.85 } as const
 
 /** Heatmap ramp: muted obsidian → mineral blue → aged brass */
 export const heatRamp = [
-  'rgba(244, 240, 232, 0.05)',
-  'rgba(127, 157, 178, 0.25)',
-  'rgba(127, 157, 178, 0.55)',
-  'rgba(200, 169, 107, 0.62)',
-  '#C8A96B',
+  'rgba(241, 238, 229, 0.05)',
+  'rgba(128, 145, 123, 0.25)',
+  'rgba(128, 145, 123, 0.55)',
+  'rgba(185, 154, 93, 0.62)',
+  '#B99A5D',
 ] as const
 
 export function metalForScore(value: number): string {

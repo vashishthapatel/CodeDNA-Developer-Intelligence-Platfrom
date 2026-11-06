@@ -155,7 +155,7 @@ export default function RefactorIQAnalysis() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-7 flex flex-col justify-between">
+        <div className="rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(241, 238, 229,0.35),0_12px_32px_-16px_rgba(241, 238, 229,0.45)] p-7 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-ink-muted">Overall Complexity Score</span>
             <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${isHighRisk ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : isModerate ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'}`}>{isHighRisk ? 'CRITICAL RISK' : isModerate ? 'MODERATE SMELLS' : 'HEALTHY'}</span>
@@ -170,7 +170,7 @@ export default function RefactorIQAnalysis() {
           </div>
         </div>
 
-        <div className="lg:col-span-2 rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-7 space-y-4">
+        <div className="lg:col-span-2 rounded-3xl bg-surface border border-line shadow-[0_1px_0_rgba(241, 238, 229,0.35),0_12px_32px_-16px_rgba(241, 238, 229,0.45)] p-7 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-base font-bold text-ink flex items-center gap-2"><Sparkles className="w-4 h-4 text-accent" />Explainable Scoring Breakdown</h3>
@@ -199,7 +199,7 @@ export default function RefactorIQAnalysis() {
           <div className="flex items-center gap-2"><Flame className="w-5 h-5 text-rose-400" /><h2 className="text-xl font-bold text-ink">Complexity Hotspots</h2></div>
           <span className="text-xs text-ink-muted">Ranked by Hotspot Score = 40% Complexity + 20% LOC + 15% Changes + 15% Low Coverage + 10% Coupling</span>
         </div>
-        <div className="overflow-hidden rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)]">
+        <div className="overflow-hidden rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(241, 238, 229,0.35),0_12px_32px_-16px_rgba(241, 238, 229,0.45)]">
           <table className="w-full text-left text-xs">
             <thead className="border-b border-line bg-surface-raised text-ink-muted font-semibold uppercase tracking-wider">
               <tr><th className="py-3.5 px-4">Class / File</th><th className="py-3.5 px-4 text-center">Score</th><th className="py-3.5 px-4 text-center">LOC</th><th className="py-3.5 px-4 text-center">Complexity</th><th className="py-3.5 px-4 text-center">Nesting</th><th className="py-3.5 px-4 text-center">Imports</th><th className="py-3.5 px-4 text-center">Coverage</th><th className="py-3.5 px-4 text-right">Action</th></tr>
@@ -234,7 +234,7 @@ export default function RefactorIQAnalysis() {
           </div>
         </div>
         {filteredIssues.length === 0 ? (
-          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-10 text-center space-y-2">
+          <div className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(241, 238, 229,0.35),0_12px_32px_-16px_rgba(241, 238, 229,0.45)] p-10 text-center space-y-2">
             <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-500/10 border border-emerald-500/20 grid place-items-center"><CheckCircle2 className="w-5 h-5 text-emerald-400" /></div>
             <p className="text-sm font-semibold text-ink">{issues.length === 0 ? 'No issues detected — this codebase looks clean.' : `No ${activeFilter} issues in this analysis.`}</p>
             <p className="text-xs text-ink-muted">{issues.length === 0 ? 'Try a more complex file or a larger repository to surface hotspots.' : 'Try a different severity filter.'}</p>
@@ -242,7 +242,7 @@ export default function RefactorIQAnalysis() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredIssues.map((issue) => (
-              <div key={issue.id} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(244, 240, 232,0.35),0_12px_32px_-16px_rgba(244, 240, 232,0.45)] p-5 space-y-3 hover:border-accent/30 transition-all flex flex-col justify-between">
+              <div key={issue.id} className="rounded-2xl bg-surface border border-line shadow-[0_1px_0_rgba(241, 238, 229,0.35),0_12px_32px_-16px_rgba(241, 238, 229,0.45)] p-5 space-y-3 hover:border-accent/30 transition-all flex flex-col justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2"><span className={`px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border ${issue.severity === 'CRITICAL' ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : issue.severity === 'HIGH' ? 'bg-orange-500/10 text-orange-400 border-orange-500/20' : 'bg-amber-500/10 text-amber-300 border-amber-500/20'}`}>{issue.severity} · {issue.type}</span><span className="text-xs font-mono text-ink-muted truncate max-w-[160px]">{issue.filePath}</span></div>
                   <h4 className="text-sm font-bold text-ink">{issue.message}</h4>

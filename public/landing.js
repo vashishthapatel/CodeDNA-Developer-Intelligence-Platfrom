@@ -243,52 +243,6 @@ ghOauthBtn?.addEventListener('click', async () => {
     }
 });
 
-// -- PAT (personal access token) connect: works on static deployments -----------
-async function connectWithPatToken(rawToken) {
-    const token = (rawToken || '').trim();
-    if (!token) { setStatus('Paste a GitHub token first.', 'error'); return false; }
-    setStatus('Validating token…', 'busy');
-    try {
-        const r = await fetch('https://api.github.com/user', {
-            headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
-        });
-        if (!r.ok) {
-            setStatus(`GitHub rejected the token (HTTP ${r.status}). Check scopes: repo, read:user, read:org.`, 'error');
-            return false;
-        }
-        const u = await r.json();
-        localStorage.setItem(GH_TOKEN_KEY, token);
-        const profile = {
-            login: u.login,
-            name: u.name || u.login,
-            avatarUrl: u.avatar_url,
-            publicRepos: u.public_repos || 0,
-            privateRepos: 0,
-            repoCount: u.public_repos || 0
-        };
-        localStorage.setItem(GH_USER_KEY, JSON.stringify(profile));
-        localStorage.setItem(GH_CONNECTED_AT_KEY, new Date().toISOString());
-        githubUser = profile;
-        updateConnectButtons();
-        renderConnected(profile);
-        setStatus(`Connected as @${u.login}.`, 'ok');
-        return true;
-    } catch (e) {
-        setStatus('Could not reach api.github.com. Check your connection.', 'error');
-        return false;
-    }
-}
-
-document.getElementById('ghPatForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const input = document.getElementById('ghPatInput');
-    const btn = document.getElementById('ghPatSubmit');
-    const orig = btn ? btn.textContent : '';
-    if (btn) { btn.disabled = true; btn.textContent = 'Connecting…'; }
-    await connectWithPatToken(input ? input.value : '');
-    if (btn) { btn.disabled = false; btn.textContent = orig || 'Connect with token'; }
-});
-
 // Button Event Listeners — always open the OAuth modal
 document.querySelectorAll('#connectGithubBtn, #mobileConnectGithubBtn').forEach(btn => {
     btn.addEventListener('click', (e) => {
