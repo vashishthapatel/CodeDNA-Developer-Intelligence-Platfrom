@@ -4,7 +4,6 @@ import Dashboard from './pages/Dashboard';
 import Repositories from './pages/Repositories';
 import Analytics from './pages/Analytics';
 import Recommendations from './pages/Recommendations';
-import SignalPortfolio from './pages/SignalPortfolio';
 import RefactorIQDashboard from './pages/RefactorIQ/RefactorIQDashboard';
 import RefactorIQAnalysis from './pages/RefactorIQ/RefactorIQAnalysis';
 import RefactorIQIssueDetails from './pages/RefactorIQ/RefactorIQIssueDetails';
@@ -24,7 +23,6 @@ export default function App() {
           <Route path="repositories" element={<Repositories />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="recommendations" element={<Recommendations />} />
-          <Route path="portfolio" element={<SignalPortfolio />} />
 
           {/* RefactorIQ Central Feedback Loop Routes */}
           <Route path="refactoriq" element={<RefactorIQDashboard />} />

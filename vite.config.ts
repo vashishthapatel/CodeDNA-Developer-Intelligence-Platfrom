@@ -24,8 +24,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './index.html',
-        app: './app.html',
+        main: './index.html',       // Landing page (new React app)
+        app: './app.html',          // Dashboard (existing React app)
         luxe: './luxe.html',
         'auth-callback': './auth-callback.html',
       }
