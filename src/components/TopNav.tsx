@@ -6,6 +6,7 @@ import {
   GitBranch,
   BarChart3,
   Lightbulb,
+  BadgeCheck,
   Sparkles,
   Dna,
   LogOut,
@@ -25,6 +26,7 @@ const nav = [
   { to: '/repositories', label: 'Repositories', icon: GitBranch },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
   { to: '/recommendations', label: 'Recommendations', icon: Lightbulb },
+  { to: '/portfolio', label: 'Signal Portfolio', icon: BadgeCheck, badge: 'NEW' },
 ]
 
 function ago(iso: string): string {
