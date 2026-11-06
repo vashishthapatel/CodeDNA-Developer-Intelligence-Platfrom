@@ -11,6 +11,7 @@ export default function Recommendations() {
   const [openRecommendationId, setOpenRecommendationId] = useState<string | null>(null)
   if (!profile) return null
   const { recommendations, dna, meta } = profile
+  const openRecommendation = recommendations.find((recommendation) => recommendation.id === openRecommendationId)
 
   const topDifficulty = recommendations.reduce<Difficulty | null>(
     (top, r) => (!top || ORDER.indexOf(r.difficulty) > ORDER.indexOf(top) ? r.difficulty : top),
@@ -110,17 +111,31 @@ export default function Recommendations() {
         </div>
 
         {recommendations.length ? (
-          <div className="stack-grid md:grid-cols-2">
-            {recommendations.map((rec, index) => (
-              <RecommendationCard
-                key={rec.id}
-                recommendation={rec}
-                index={index}
-                expanded={openRecommendationId === rec.id}
-                onToggle={() => setOpenRecommendationId((current) => (current === rec.id ? null : rec.id))}
-              />
-            ))}
-          </div>
+          <>
+            {openRecommendation && (
+              <div className="max-w-3xl mx-auto mb-6">
+                <RecommendationCard
+                  recommendation={openRecommendation}
+                  index={-1}
+                  expanded
+                  selected
+                  onToggle={() => setOpenRecommendationId(null)}
+                />
+              </div>
+            )}
+            <div className="stack-grid md:grid-cols-2">
+              {recommendations.map((rec, index) => (
+                <RecommendationCard
+                  key={rec.id}
+                  recommendation={rec}
+                  index={index}
+                  expanded={false}
+                  selected={openRecommendationId === rec.id}
+                  onToggle={() => setOpenRecommendationId(rec.id)}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <div className="card p-12 text-center">
             <div className="icon-tile icon-tile--ember w-16 h-16 mx-auto mb-5">

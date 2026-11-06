@@ -6,6 +6,7 @@ interface Props {
   recommendation: Recommendation
   index: number
   expanded: boolean
+  selected?: boolean
   onToggle: () => void
 }
 
@@ -90,7 +91,7 @@ function guideFor(rec: Recommendation): SkillGuide {
   }
 }
 
-export default function RecommendationCard({ recommendation: rec, index, expanded, onToggle }: Props) {
+export default function RecommendationCard({ recommendation: rec, index, expanded, selected = false, onToggle }: Props) {
   const cardRef = useRef<HTMLElement>(null)
   const guide = guideFor(rec)
 
@@ -103,7 +104,7 @@ export default function RecommendationCard({ recommendation: rec, index, expande
     <div>
       <article
         ref={cardRef}
-        className={`card pad-luxe group h-full transition-all duration-300 ${expanded ? 'border-accent/40 shadow-glow' : ''}`}
+        className={`card pad-luxe group h-full transition-all duration-300 ${selected ? 'border-accent/40 shadow-glow' : ''}`}
       >
         <div className="flex items-start justify-between gap-3 mb-5">
           <div className="flex items-center gap-4 min-w-0">
