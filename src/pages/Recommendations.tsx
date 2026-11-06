@@ -1,5 +1,6 @@
 import RecommendationCard from '../components/RecommendationCard'
 import { Sparkles, Target, Zap, Rocket, ShieldCheck } from 'lucide-react'
+import { useState } from 'react'
 import { useProfile } from '../lib/ProfileContext'
 import type { Difficulty } from '../lib/types'
 
@@ -7,6 +8,7 @@ const ORDER: Difficulty[] = ['Beginner', 'Intermediate', 'Advanced']
 
 export default function Recommendations() {
   const { profile } = useProfile()
+  const [openRecommendationId, setOpenRecommendationId] = useState<string | null>(null)
   if (!profile) return null
   const { recommendations, dna, meta } = profile
 
@@ -110,7 +112,13 @@ export default function Recommendations() {
         {recommendations.length ? (
           <div className="stack-grid md:grid-cols-2">
             {recommendations.map((rec, index) => (
-              <RecommendationCard key={rec.id} recommendation={rec} index={index} />
+              <RecommendationCard
+                key={rec.id}
+                recommendation={rec}
+                index={index}
+                expanded={openRecommendationId === rec.id}
+                onToggle={() => setOpenRecommendationId((current) => (current === rec.id ? null : rec.id))}
+              />
             ))}
           </div>
         ) : (

@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { BookOpen, CheckCircle2, ChevronDown, Clock, Sparkles } from 'lucide-react'
 import type { Recommendation } from '../lib/types'
 
 interface Props {
   recommendation: Recommendation
   index: number
+  expanded: boolean
+  onToggle: () => void
 }
 
 const difficultyColors: Record<string, string> = {
@@ -88,13 +90,21 @@ function guideFor(rec: Recommendation): SkillGuide {
   }
 }
 
-export default function RecommendationCard({ recommendation: rec, index }: Props) {
-  const [expanded, setExpanded] = useState(false)
+export default function RecommendationCard({ recommendation: rec, index, expanded, onToggle }: Props) {
+  const cardRef = useRef<HTMLElement>(null)
   const guide = guideFor(rec)
+
+  useEffect(() => {
+    if (!expanded || !cardRef.current) return
+    cardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [expanded])
 
   return (
     <div>
-      <article className="card pad-luxe group h-full">
+      <article
+        ref={cardRef}
+        className={`card pad-luxe group h-full transition-all duration-300 ${expanded ? 'border-accent/40 shadow-glow' : ''}`}
+      >
         <div className="flex items-start justify-between gap-3 mb-5">
           <div className="flex items-center gap-4 min-w-0">
             <div className="icon-tile icon-tile--ember w-11 h-11 shrink-0">
@@ -116,7 +126,7 @@ export default function RecommendationCard({ recommendation: rec, index }: Props
           </div>
           <button
             type="button"
-            onClick={() => setExpanded((value) => !value)}
+            onClick={onToggle}
             className="icon-btn !w-9 !h-9 !rounded-xl shrink-0"
             aria-expanded={expanded}
             aria-label={`${expanded ? 'Hide' : 'Show'} learning plan for ${rec.title}`}
