@@ -62,12 +62,13 @@ export function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden sm:flex items-center gap-3 shrink-0">
-            <a
-              href="app.html"
+            <button
+              type="button"
+              onClick={connectGitHub}
               className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-[#A0AA9D] hover:text-[#F1EEE5] transition-colors"
             >
               Sign In
-            </a>
+            </button>
             <button
               type="button"
               onClick={connectGitHub}
