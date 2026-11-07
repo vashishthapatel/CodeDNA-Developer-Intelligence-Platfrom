@@ -3,24 +3,24 @@
  */
 
 export const luxe = {
-  emberPale: '#D1B678',
-  ember: '#B99A5D',
-  emberDeep: '#8F7545',
+  emberPale: '#F6C744',
+  ember: '#4B7D21',
+  emberDeep: '#385D19',
   emberDark: '#675631',
-  iris: '#80917B',
-  irisLight: '#A0AA9D',
+  iris: '#83A94B',
+  irisLight: '#72785D',
   irisDeep: '#596B57',
-  burnt: '#80917B',
-  apricot: '#B99A5D',
-  pearl: '#F1EEE5',
-  garnet: '#A66A57',
-  amber: '#B99A5D',
-  ink: '#F1EEE5',
-  inkSecondary: '#A0AA9D',
-  inkMuted: 'rgba(241, 238, 229, 0.68)',
-  inkFaint: 'rgba(241, 238, 229, 0.44)',
-  hairline: 'rgba(241, 238, 229, 0.10)',
-  axis: 'rgba(241, 238, 229, 0.16)',
+  burnt: '#83A94B',
+  apricot: '#4B7D21',
+  pearl: '#24301B',
+  garnet: '#D95043',
+  amber: '#4B7D21',
+  ink: '#24301B',
+  inkSecondary: '#72785D',
+  inkMuted: 'rgba(36, 48, 27, 0.68)',
+  inkFaint: 'rgba(36, 48, 27, 0.44)',
+  hairline: 'rgba(36, 48, 27, 0.10)',
+  axis: 'rgba(36, 48, 27, 0.16)',
 } as const
 
 /** Ordered series — brass lead with subdued analytical companions */
@@ -30,28 +30,28 @@ export const series = [
   luxe.apricot,
   luxe.irisLight,
   luxe.emberDeep,
-  '#80917B',
+  '#83A94B',
 ] as const
 
 /** Obsidian tooltip with a subtle aged-brass keyline */
 export const glassTooltip = {
-  backgroundColor: '#121A15',
-  border: '1px solid rgba(185, 154, 93, 0.35)',
+  backgroundColor: '#F4F6D7',
+  border: '1px solid rgba(75, 125, 33, 0.35)',
   borderRadius: '14px',
-  color: '#F1EEE5',
-  boxShadow: '0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(241, 238, 229, 0.04)',
+  color: '#24301B',
+  boxShadow: '0 16px 40px -12px rgba(51, 63, 25, 0.12), 0 1px 3px rgba(36, 48, 27, 0.04)',
   padding: '10px 14px',
 } as const
 
-export const axisTick = { fill: '#A0AA9D', fontSize: 12, opacity: 0.85 } as const
+export const axisTick = { fill: '#72785D', fontSize: 12, opacity: 0.85 } as const
 
 /** Heatmap ramp: muted obsidian → mineral blue → aged brass */
 export const heatRamp = [
-  'rgba(241, 238, 229, 0.05)',
-  'rgba(128, 145, 123, 0.25)',
-  'rgba(128, 145, 123, 0.55)',
-  'rgba(185, 154, 93, 0.62)',
-  '#B99A5D',
+  'rgba(36, 48, 27, 0.05)',
+  'rgba(131, 169, 75, 0.25)',
+  'rgba(131, 169, 75, 0.55)',
+  'rgba(75, 125, 33, 0.62)',
+  '#4B7D21',
 ] as const
 
 export function metalForScore(value: number): string {

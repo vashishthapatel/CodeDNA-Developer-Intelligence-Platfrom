@@ -3,9 +3,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
-const GOLD = new THREE.Color('#B99A5D');
-const PLATINUM = new THREE.Color('#C4C8CE');
-const IRIS = new THREE.Color('#80917B');
+const GOLD = new THREE.Color('#4B7D21');
+const PLATINUM = new THREE.Color('#72785D');
+const IRIS = new THREE.Color('#83A94B');
 
 function BackgroundHelix() {
   const groupRef = useRef<THREE.Group>(null);
@@ -94,7 +94,7 @@ export function DNABackground({ className = '' }: DNABackgroundProps) {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.25} />
-          <pointLight position={[2, 3, 2]} intensity={0.5} color="#B99A5D" />
+          <pointLight position={[2, 3, 2]} intensity={0.5} color="#4B7D21" />
           <Environment preset="night" />
           <BackgroundHelix />
         </Suspense>

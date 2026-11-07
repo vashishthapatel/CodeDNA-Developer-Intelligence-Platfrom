@@ -37,7 +37,7 @@ export function FloatingParticles() {
     <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#B99A5D"
+        color="#4B7D21"
         size={0.024}
         sizeAttenuation
         depthWrite={false}

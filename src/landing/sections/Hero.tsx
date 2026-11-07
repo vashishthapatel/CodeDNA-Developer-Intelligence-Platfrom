@@ -9,9 +9,9 @@ import { useMouseParallax } from '../hooks/useMouseParallax';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { createGitHubOAuthUrl } from '../../lib/githubOAuth';
 
-const GOLD_C = new THREE.Color('#B99A5D');
-const PLAT_C = new THREE.Color('#C4C8CE');
-const GLASS_C = new THREE.Color('#80917B');
+const GOLD_C = new THREE.Color('#4B7D21');
+const PLAT_C = new THREE.Color('#72785D');
+const GLASS_C = new THREE.Color('#83A94B');
 const NUM_PAIRS = 20;
 const RADIUS = 0.85;
 const PITCH = 0.36;
@@ -167,7 +167,7 @@ function AmbientParticles() {
     <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#B99A5D"
+        color="#4B7D21"
         size={0.024}
         sizeAttenuation
         depthWrite={false}
@@ -201,7 +201,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0B100D] pt-24 pb-16 sm:pt-28 sm:pb-20"
+      className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#FFFDF2] pt-24 pb-16 sm:pt-28 sm:pb-20"
     >
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0 pointer-events-none sm:pointer-events-auto">
@@ -213,8 +213,8 @@ export function Hero() {
           <Suspense fallback={null}>
             <ambientLight intensity={0.4} />
             <directionalLight position={[5, 8, 5]} intensity={0.9} color="#FFFFFF" />
-            <pointLight position={[0, 0, 3]} intensity={0.65} color="#B99A5D" distance={8} />
-            <pointLight position={[-3, 2, -2]} intensity={0.3} color="#C4C8CE" distance={6} />
+            <pointLight position={[0, 0, 3]} intensity={0.65} color="#4B7D21" distance={8} />
+            <pointLight position={[-3, 2, -2]} intensity={0.3} color="#72785D" distance={6} />
             <Environment preset="night" />
             <AmbientParticles />
             <HelixScene
@@ -231,13 +231,13 @@ export function Hero() {
       {floatingLabels.map((label) => (
         <motion.div
           key={label.text}
-          className={`absolute hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#121A15]/75 border border-[rgba(241,238,229,0.08)] backdrop-blur-md ${label.style} z-10 shadow-[0_4px_16px_rgba(0,0,0,0.5)]`}
+          className={`absolute hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F4F6D7]/75 border border-[rgba(36,48,27,0.08)] backdrop-blur-md ${label.style} z-10 shadow-[0_4px_16px_rgba(51,63,25,0.12)]`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="w-1.5 h-1.5 rounded-full bg-[#B99A5D] shadow-[0_0_8px_rgba(185,154,93,0.7)]" />
-          <span className="text-[10px] font-mono font-medium text-[#A0AA9D] tracking-[0.14em] uppercase">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#4B7D21] shadow-[0_0_8px_rgba(75,125,33,0.7)]" />
+          <span className="text-[10px] font-mono font-medium text-[#72785D] tracking-[0.14em] uppercase">
             {label.text}
           </span>
         </motion.div>
@@ -252,24 +252,24 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#B99A5D]" />
-          <span className="font-mono text-[0.72rem] tracking-luxe uppercase text-[#D1B678] font-bold">
+          <Sparkles className="w-3.5 h-3.5 text-[#4B7D21]" />
+          <span className="font-mono text-[0.72rem] tracking-luxe uppercase text-[#385D19] font-bold">
             Developer Atelier
           </span>
-          <span className="hidden sm:inline text-[#A0AA9D] text-xs">·</span>
-          <span className="hidden sm:inline text-xs text-[#A0AA9D]">AI Intelligence Platform</span>
+          <span className="hidden sm:inline text-[#72785D] text-xs">·</span>
+          <span className="hidden sm:inline text-xs text-[#72785D]">AI Intelligence Platform</span>
         </motion.div>
 
         {/* Headline with serif display touch */}
         <motion.h1
-          className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F1EEE5] leading-[0.98] tracking-tight mb-5 sm:mb-7 font-normal"
+          className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#24301B] leading-[0.98] tracking-tight mb-5 sm:mb-7 font-normal"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           Your Code.<br />
           Your{' '}
-          <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#B99A5D] via-[#D1B678] to-[#8F7545]">
+          <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#4B7D21] via-[#F6C744] to-[#385D19]">
             DNA
           </span>
           .<br />
@@ -278,7 +278,7 @@ export function Hero() {
 
         {/* Supporting text */}
         <motion.p
-          className="text-sm sm:text-base md:text-lg text-[#A0AA9D] max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2"
+          className="text-sm sm:text-base md:text-lg text-[#72785D] max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
@@ -318,12 +318,12 @@ export function Hero() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-[rgba(241,238,229,0.08)] bg-[#121A15]/80 backdrop-blur-sm text-center"
+              className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-[rgba(36,48,27,0.08)] bg-[#F4F6D7]/80 backdrop-blur-sm text-center"
             >
-              <div className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-[#F1EEE5]">
+              <div className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-[#24301B]">
                 {stat.value}
               </div>
-              <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#A0AA9D] mt-1 truncate">
+              <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#72785D] mt-1 truncate">
                 {stat.label}
               </div>
             </div>
@@ -332,7 +332,7 @@ export function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0B100D] to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FFFDF2] to-transparent pointer-events-none z-10" />
     </section>
   );
 }

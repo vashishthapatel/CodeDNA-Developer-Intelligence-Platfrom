@@ -9,9 +9,9 @@ interface DNAHelixSceneProps {
   scrollProgress: number;
 }
 
-const GOLD = new THREE.Color('#B99A5D');
-const PLATINUM = new THREE.Color('#C4C8CE');
-const GLASS_COLOR = new THREE.Color('#80917B');
+const GOLD = new THREE.Color('#4B7D21');
+const PLATINUM = new THREE.Color('#72785D');
+const GLASS_COLOR = new THREE.Color('#83A94B');
 
 function HelixNode({ position, color, scale = 1 }: {
   position: [number, number, number];
@@ -184,13 +184,13 @@ export function DNAHelix({
           <pointLight
             position={[0, 0, 3]}
             intensity={0.65}
-            color="#B99A5D"
+            color="#4B7D21"
             distance={8}
           />
           <pointLight
             position={[-3, 2, -2]}
             intensity={0.3}
-            color="#C4C8CE"
+            color="#72785D"
             distance={6}
           />
           <Environment preset="night" />

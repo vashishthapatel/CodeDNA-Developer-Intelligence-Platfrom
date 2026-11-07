@@ -37,7 +37,7 @@ export function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.6, delay: 0.08, ease: 'easeOut' }}
-        className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#F1EEE5] tracking-tight leading-[1.08] font-normal ${titleClassName}`}
+        className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#24301B] tracking-tight leading-[1.08] font-normal ${titleClassName}`}
       >
         {title}
       </motion.h2>
@@ -47,7 +47,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.16, ease: 'easeOut' }}
-          className={`text-sm sm:text-base md:text-lg text-[#A0AA9D] mt-4 leading-relaxed font-sans ${align === 'center' ? 'max-w-2xl' : 'max-w-xl'}`}
+          className={`text-sm sm:text-base md:text-lg text-[#72785D] mt-4 leading-relaxed font-sans ${align === 'center' ? 'max-w-2xl' : 'max-w-xl'}`}
         >
           {subtitle}
         </motion.p>

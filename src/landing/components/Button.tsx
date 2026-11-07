@@ -44,8 +44,8 @@ export function Button({
     : 'px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm';
 
   const variantClasses = variant === 'primary'
-    ? 'bg-gradient-to-r from-[#B99A5D] to-[#8F7545] text-[#0B100D] font-bold tracking-wide border border-[#B99A5D]/60 shadow-[0_4px_16px_-2px_rgba(185,154,93,0.4)] hover:brightness-110 active:scale-[0.98]'
-    : 'bg-[#121A15] border border-[rgba(241,238,229,0.12)] text-[#F1EEE5] font-semibold hover:border-[#B99A5D]/40 hover:bg-[#1B2820] hover:text-[#D1B678] active:scale-[0.98]';
+    ? 'bg-gradient-to-r from-[#4B7D21] to-[#385D19] text-[#FFFDF2] font-bold tracking-wide border border-[#4B7D21]/60 shadow-[0_4px_16px_-2px_rgba(75,125,33,0.4)] hover:brightness-110 active:scale-[0.98]'
+    : 'bg-[#F4F6D7] border border-[rgba(36,48,27,0.12)] text-[#24301B] font-semibold hover:border-[#4B7D21]/40 hover:bg-[#FFFFFF] hover:text-[#385D19] active:scale-[0.98]';
 
   const baseClasses = `
     inline-flex items-center justify-center gap-2 rounded-full

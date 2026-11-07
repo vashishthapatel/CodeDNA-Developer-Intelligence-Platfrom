@@ -6,33 +6,33 @@
 
 /* ============================================
    CODEDNA UNIFIED PALETTE & TOKENS
-   Deep Emerald Forest & Brushed Gold
+   Citrus Pop — warm paper, leafy green, and sunny yellow
    ============================================ */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /* Dashboard matched colors */
-  --bg-void: #0B100D;
-  --bg-surface: #1B2820;
-  --bg-surface-elevated: #121A15;
-  --bg-surface-hover: #29372D;
+  --bg-void: #FFFDF2;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F4F6D7;
+  --bg-surface-hover: #EEF0DE;
 
-  --line: rgba(241, 238, 229, 0.10);
-  --line-soft: rgba(241, 238, 229, 0.06);
-  --line-accent: rgba(185, 154, 93, 0.35);
+  --line: rgba(36, 48, 27, 0.10);
+  --line-soft: rgba(36, 48, 27, 0.06);
+  --line-accent: rgba(75, 125, 33, 0.35);
 
-  --ink: #F1EEE5;
-  --ink-secondary: #A0AA9D;
-  --ink-muted: rgba(241, 238, 229, 0.68);
-  --ink-faint: rgba(241, 238, 229, 0.44);
+  --ink: #24301B;
+  --ink-secondary: #72785D;
+  --ink-muted: rgba(36, 48, 27, 0.68);
+  --ink-faint: rgba(36, 48, 27, 0.44);
 
-  --accent: #B99A5D;
-  --accent-light: #D1B678;
-  --accent-deep: #8F7545;
-  --accent-iris: #80917B;
+  --accent: #4B7D21;
+  --accent-light: #F6C744;
+  --accent-deep: #385D19;
+  --accent-iris: #83A94B;
 
-  --gold: #C6A56B;
-  --gold-muted: #A88952;
+  --gold: #F6C744;
+  --gold-muted: #4B7D21;
   --gold-shine: #E8D5A3;
 
   --radius: 14px;
@@ -79,9 +79,9 @@ body::before {
   pointer-events: none;
   opacity: 0.14;
   background:
-    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(185, 154, 93, 0.28) 0%, transparent 62%),
-    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(128, 145, 123, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 800px 600px at 0% 50%, rgba(185, 154, 93, 0.15) 0%, transparent 60%);
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(75, 125, 33, 0.28) 0%, transparent 62%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(131, 169, 75, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 600px at 0% 50%, rgba(75, 125, 33, 0.15) 0%, transparent 60%);
   z-index: 0;
 }
 
@@ -93,7 +93,7 @@ body::after {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(185, 154, 93, 0.45) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(75, 125, 33, 0.45) 50%, transparent 100%);
   pointer-events: none;
   z-index: 60;
 }
@@ -125,8 +125,8 @@ html.lenis {
    SELECTION & SCROLLBAR
    ============================================ */
 ::selection {
-  background: rgba(185, 154, 93, 0.30);
-  color: #0B100D;
+  background: rgba(75, 125, 33, 0.30);
+  color: #FFFDF2;
 }
 
 ::-webkit-scrollbar {
@@ -137,11 +137,11 @@ html.lenis {
   background: var(--bg-void);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(185, 154, 93, 0.3);
+  background: rgba(75, 125, 33, 0.3);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(185, 154, 93, 0.6);
+  background: rgba(75, 125, 33, 0.6);
 }
 
 /* ============================================
@@ -177,7 +177,7 @@ html.lenis {
   height: 0.38rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 8px rgba(185, 154, 93, 0.6);
+  box-shadow: 0 0 8px rgba(75, 125, 33, 0.6);
   flex-shrink: 0;
 }
 
@@ -204,27 +204,27 @@ html.lenis {
   background: var(--bg-surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(241, 238, 229, 0.04);
+  box-shadow: 0 8px 32px -12px rgba(51, 63, 25, 0.12), 0 1px 3px rgba(36, 48, 27, 0.04);
   transition: border-color 220ms var(--e-luxe), box-shadow 220ms var(--e-luxe), transform 220ms var(--e-luxe);
 }
 .luxe-card:hover {
-  border-color: rgba(185, 154, 93, 0.35);
-  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 0 24px -4px rgba(185, 154, 93, 0.16);
+  border-color: rgba(75, 125, 33, 0.35);
+  box-shadow: 0 16px 40px -12px rgba(51, 63, 25, 0.12), 0 0 24px -4px rgba(75, 125, 33, 0.16);
 }
 
 /* Gold Gradient Button */
 .btn-gold {
-  background: linear-gradient(135deg, #B99A5D 0%, #8F7545 100%);
-  color: #0B100D;
+  background: linear-gradient(135deg, #4B7D21 0%, #385D19 100%);
+  color: #FFFDF2;
   font-weight: 700;
   letter-spacing: 0.02em;
-  border: 1px solid rgba(185, 154, 93, 0.6);
-  box-shadow: 0 4px 16px -2px rgba(185, 154, 93, 0.4);
+  border: 1px solid rgba(75, 125, 33, 0.6);
+  box-shadow: 0 4px 16px -2px rgba(75, 125, 33, 0.4);
   transition: all 200ms var(--e-luxe);
 }
 .btn-gold:hover {
-  background: linear-gradient(135deg, #D1B678 0%, #B99A5D 100%);
-  box-shadow: 0 6px 24px -2px rgba(185, 154, 93, 0.55);
+  background: linear-gradient(135deg, #F6C744 0%, #4B7D21 100%);
+  box-shadow: 0 6px 24px -2px rgba(75, 125, 33, 0.55);
   transform: translateY(-1px);
 }
 
@@ -235,7 +235,7 @@ html.lenis {
   transition: all 200ms var(--e-luxe);
 }
 .btn-outline:hover {
-  border-color: rgba(185, 154, 93, 0.35);
+  border-color: rgba(75, 125, 33, 0.35);
   background: var(--bg-surface);
   color: var(--accent-light);
   transform: translateY(-1px);

@@ -38,7 +38,7 @@ export default function ComplexityChart({ data }: Props) {
             tickLine={false}
           />
           <YAxis domain={[0, 100]} tick={axisTick} axisLine={false} tickLine={false} />
-          <Tooltip contentStyle={glassTooltip} cursor={{ fill: 'rgba(185,154,93,0.08)' }} />
+          <Tooltip contentStyle={glassTooltip} cursor={{ fill: 'rgba(75,125,33,0.08)' }} />
           <Legend
             iconType="circle"
             iconSize={10}

@@ -37,7 +37,7 @@ export function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="how-it-works" className="relative py-20 sm:py-28 md:py-36 bg-[#0B100D]">
+    <section id="how-it-works" className="relative py-20 sm:py-28 md:py-36 bg-[#FFFDF2]">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           label="03 — Methodology"
@@ -49,7 +49,7 @@ export function HowItWorks() {
 
         {/* Step Selector - Responsive Tab / Stepper */}
         <div className="flex items-center justify-center mb-10 sm:mb-14">
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 p-1.5 rounded-full bg-[#121A15] border border-[rgba(241,238,229,0.08)] max-w-xl w-full">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 p-1.5 rounded-full bg-[#F4F6D7] border border-[rgba(36,48,27,0.08)] max-w-xl w-full">
             {steps.map((step, i) => (
               <button
                 key={step.number}
@@ -57,8 +57,8 @@ export function HowItWorks() {
                 onClick={() => setActiveStep(i)}
                 className={`flex items-center justify-center gap-2 py-2 sm:py-2.5 px-2 sm:px-4 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 select-none ${
                   i === activeStep
-                    ? 'bg-gradient-to-r from-[#B99A5D] to-[#8F7545] text-[#0B100D] shadow-[0_2px_12px_rgba(185,154,93,0.35)]'
-                    : 'text-[#A0AA9D] hover:text-[#F1EEE5] hover:bg-[#1B2820]'
+                    ? 'bg-gradient-to-r from-[#4B7D21] to-[#385D19] text-[#FFFDF2] shadow-[0_2px_12px_rgba(75,125,33,0.35)]'
+                    : 'text-[#72785D] hover:text-[#24301B] hover:bg-[#FFFFFF]'
                 }`}
               >
                 <span className="font-mono text-[10px] sm:text-xs">{step.number}</span>
@@ -79,8 +79,8 @@ export function HowItWorks() {
                 onClick={() => setActiveStep(i)}
                 className={`rounded-2xl border p-6 sm:p-7 cursor-pointer transition-all duration-300 flex flex-col justify-between ${
                   isActive
-                    ? 'border-[#B99A5D]/50 bg-[#1B2820] shadow-[0_16px_40px_-12px_rgba(0,0,0,0.7),0_0_24px_-4px_rgba(185,154,93,0.2)] scale-[1.01]'
-                    : 'border-[rgba(241,238,229,0.08)] bg-[#121A15]/70 hover:border-[rgba(241,238,229,0.16)] hover:bg-[#1B2820]'
+                    ? 'border-[#4B7D21]/50 bg-[#FFFFFF] shadow-[0_16px_40px_-12px_rgba(51,63,25,0.14),0_0_24px_-4px_rgba(75,125,33,0.2)] scale-[1.01]'
+                    : 'border-[rgba(36,48,27,0.08)] bg-[#F4F6D7]/70 hover:border-[rgba(36,48,27,0.16)] hover:bg-[#FFFFFF]'
                 }`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export function HowItWorks() {
                   <div className="flex items-center justify-between mb-5">
                     <span
                       className={`font-mono text-xs font-bold tracking-luxe transition-colors ${
-                        isActive ? 'text-[#D1B678]' : 'text-[#A0AA9D]'
+                        isActive ? 'text-[#385D19]' : 'text-[#72785D]'
                       }`}
                     >
                       {step.number}
@@ -99,8 +99,8 @@ export function HowItWorks() {
                     <span
                       className={`w-10 h-10 rounded-[10px] grid place-items-center transition-all ${
                         isActive
-                          ? 'bg-gradient-to-br from-[#B99A5D] to-[#8F7545] text-[#0B100D] shadow-[0_2px_12px_rgba(185,154,93,0.35)]'
-                          : 'bg-[#121A15] border border-[rgba(241,238,229,0.10)] text-[#A0AA9D]'
+                          ? 'bg-gradient-to-br from-[#4B7D21] to-[#385D19] text-[#FFFDF2] shadow-[0_2px_12px_rgba(75,125,33,0.35)]'
+                          : 'bg-[#F4F6D7] border border-[rgba(36,48,27,0.10)] text-[#72785D]'
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -109,20 +109,20 @@ export function HowItWorks() {
 
                   <h3
                     className={`font-display text-xl sm:text-2xl mb-2.5 font-normal transition-colors ${
-                      isActive ? 'text-[#F1EEE5]' : 'text-[#F1EEE5]/80'
+                      isActive ? 'text-[#24301B]' : 'text-[#24301B]/80'
                     }`}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#A0AA9D] leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-[#72785D] leading-relaxed mb-4">
                     {step.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[rgba(241,238,229,0.06)]">
+                <div className="pt-4 border-t border-[rgba(36,48,27,0.06)]">
                   <p
                     className={`text-xs leading-relaxed transition-opacity ${
-                      isActive ? 'text-[#D1B678]' : 'text-[#A0AA9D]/60'
+                      isActive ? 'text-[#385D19]' : 'text-[#72785D]/60'
                     }`}
                   >
                     {step.detail}

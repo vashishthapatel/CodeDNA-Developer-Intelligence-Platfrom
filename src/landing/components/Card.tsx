@@ -10,13 +10,13 @@ interface CardProps {
 export function Card({
   children,
   className = '',
-  glowColor = 'rgba(185,154,93,0.18)',
+  glowColor = 'rgba(75,125,33,0.18)',
   tilt = true,
 }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({
     transform: 'perspective(800px) rotateX(0deg) rotateY(0deg)',
-    background: '#1B2820',
+    background: '#FFFFFF',
   });
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -35,14 +35,14 @@ export function Card({
 
     setStyle({
       transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-      background: `radial-gradient(circle at ${pctX}% ${pctY}%, rgba(185,154,93,0.08) 0%, #1B2820 65%)`,
+      background: `radial-gradient(circle at ${pctX}% ${pctY}%, rgba(75,125,33,0.08) 0%, #FFFFFF 65%)`,
     });
   };
 
   const handleMouseLeave = () => {
     setStyle({
       transform: 'perspective(800px) rotateX(0deg) rotateY(0deg)',
-      background: '#1B2820',
+      background: '#FFFFFF',
     });
   };
 
@@ -50,14 +50,14 @@ export function Card({
     <div
       ref={ref}
       className={`
-        rounded-2xl border border-[rgba(241,238,229,0.10)] p-5 sm:p-7 md:p-8
+        rounded-2xl border border-[rgba(36,48,27,0.10)] p-5 sm:p-7 md:p-8
         transition-all duration-300 ease-out relative group overflow-hidden
-        hover:border-[rgba(185,154,93,0.35)]
+        hover:border-[rgba(75,125,33,0.35)]
         ${className}
       `}
       style={{
         ...style,
-        boxShadow: '0 8px 32px -12px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(241, 238, 229, 0.04)',
+        boxShadow: '0 8px 32px -12px rgba(51, 63, 25, 0.12), 0 1px 3px rgba(36, 48, 27, 0.04)',
         transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1), background 0.25s ease, box-shadow 0.35s ease, border-color 0.25s ease',
       }}
       onMouseMove={handleMouseMove}

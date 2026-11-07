@@ -12,7 +12,7 @@ export function LandingApp() {
   useSmoothScroll();
 
   return (
-    <div className="relative min-h-screen bg-[#0B100D] text-[#F1EEE5] overflow-x-hidden selection:bg-[#B99A5D]/30 selection:text-[#F1EEE5]">
+    <div className="relative min-h-screen bg-[#FFFDF2] text-[#24301B] overflow-x-hidden selection:bg-[#4B7D21]/30 selection:text-[#24301B]">
       <Navbar />
       <main className="relative z-10 w-full overflow-x-hidden">
         <Hero />
