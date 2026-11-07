@@ -122,6 +122,7 @@ export interface Repository {
   issues: number
   contributors: number
   dnaContribution: number
+  dnaScore?: number
   updatedAt: string
   visibility: 'public' | 'private'
   health: RepoHealth

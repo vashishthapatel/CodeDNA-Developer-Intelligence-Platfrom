@@ -435,6 +435,16 @@ function buildRepositories(details: Detail[]): Repository[] {
         issues: d.issues,
         contributors: d.contributorCount,
         dnaContribution: Math.round(share * 100),
+        // A transparent repository score based on observed engineering hygiene.
+        // Unlike the account score, this does not attribute account-wide activity
+        // to individual repositories.
+        dnaScore: clamp(
+          (repoHealth(s).codeQuality * 0.25) +
+          (repoHealth(s).documentation * 0.2) +
+          (repoHealth(s).testing * 0.25) +
+          (repoHealth(s).maintainability * 0.2) +
+          ((100 - repoHealth(s).complexity) * 0.1),
+        ),
         updatedAt: (d.repo.pushed_at ?? d.repo.updated_at).slice(0, 10),
         visibility: d.repo.private ? ('private' as const) : ('public' as const),
         health: repoHealth(s),

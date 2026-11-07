@@ -16,6 +16,7 @@ import {
   RefreshCw,
   Github,
   Loader2,
+  FileText,
 } from 'lucide-react'
 import { useProfile } from '../lib/ProfileContext'
 import { createGitHubOAuthUrl } from '../lib/githubOAuth'
@@ -26,6 +27,7 @@ const nav = [
   { to: '/repositories', label: 'Repositories', icon: GitBranch },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
   { to: '/recommendations', label: 'Recommendations', icon: Lightbulb },
+  { to: '/dna-report', label: 'DNA Report', icon: FileText },
 ]
 
 function ago(iso: string): string {

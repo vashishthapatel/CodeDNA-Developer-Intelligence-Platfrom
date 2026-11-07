@@ -745,3 +745,19 @@ button, input, select, textarea { font: inherit; }
   .topnav-wordmark { display: none; }
   .page-title { font-size: 1.75rem; }
 }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body, #root { background: #fff !important; color: #171714 !important; }
+  .topnav, .no-print { display: none !important; }
+  .app-main { padding: 0 !important; }
+  .page-shell { max-width: none !important; padding: 0 !important; }
+  .dna-report { gap: 1rem !important; }
+  .dna-report .card, .dna-report .report-repo { break-inside: avoid; box-shadow: none !important; border-color: #d7d4cc !important; background: #fff !important; }
+  .dna-report .text-ink, .dna-report .text-ink-muted, .dna-report .text-ink-faint,
+  .dna-report .eyebrow, .dna-report p, .dna-report h1, .dna-report h2, .dna-report h3,
+  .dna-report span, .dna-report b { color: #25241f !important; opacity: 1 !important; }
+  .dna-report .bg-surface, .dna-report .bg-surface-raised { background: #f3f2ee !important; }
+  .dna-report .meter-fill { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .section-stack > section, .section-stack > header { animation: none !important; }
+}
